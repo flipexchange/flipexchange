@@ -17,13 +17,21 @@ public class PlayerControls : MonoBehaviour {
 	public float jumpForceBlue = 650f;
 	public float gravityBlue = 1f;
 	public Transform groundCheck;
+	public Transform groundCheckTop;
+	public Transform groundCheckLeft;
+	public Transform groundCheckRight;
 	private bool grounded = false;
+	private bool sloped = false;
+	private bool tilted = false;
 	private bool pink = true;
 
 	// Use this for initialization
 	void Start () {
 		rb2d = GetComponent<Rigidbody2D>();
 		groundCheck = transform.Find("groundCheck");
+		groundCheckTop = transform.Find("groundCheckTop");
+		groundCheckLeft = transform.Find("groundCheckLeft");
+		groundCheckRight = transform.Find("groundCheckRight");
 		var blueStuff = GameObject.FindGameObjectsWithTag("Blue");
 		foreach (var obj in blueStuff) {
 			Vector3 newPos = new Vector3(obj.transform.position.x, -obj.transform.position.y, obj.transform.position.z);
@@ -34,7 +42,13 @@ public class PlayerControls : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		grounded = Physics2D.Linecast(transform.position, groundCheck.position, 1 << LayerMask.NameToLayer("Ground"));
+		sloped = Physics2D.Linecast(transform.position, groundCheck.position, 1 << LayerMask.NameToLayer("Slope"));
 
+		tilted = Physics2D.Linecast (transform.position, groundCheckTop.position, 1 << LayerMask.NameToLayer ("Ground"));
+		tilted = tilted || Physics2D.Linecast (transform.position, groundCheckLeft.position, 1 << LayerMask.NameToLayer ("Ground"));
+		tilted = tilted || Physics2D.Linecast (transform.position, groundCheckRight.position, 1 << LayerMask.NameToLayer ("Ground"));
+
+		sloped = sloped || Physics2D.Linecast (transform.position, groundCheckTop.position, 1 << LayerMask.NameToLayer ("Slope")) || Physics2D.Linecast (transform.position, groundCheckLeft.position, 1 << LayerMask.NameToLayer ("Slope")) || Physics2D.Linecast (transform.position, groundCheckRight.position, 1 << LayerMask.NameToLayer ("Slope"));
 		if (Input.GetButtonDown("Switch"))
 		{
 			swap = true;
@@ -55,6 +69,19 @@ public class PlayerControls : MonoBehaviour {
 			maxSpeed = maxSpeedBlue;
 			jumpForce = jumpForceBlue;
 		}
+		if (sloped) {
+			if (pink) {
+				moveForce = 0f;
+				maxSpeed = 3f;
+			} else {
+				moveForce /= 20;
+			}
+		}
+
+		if (tilted) {
+			rb2d.rotation = 0f;
+		}
+
 		float h = Input.GetAxis("Horizontal");
 
 		if (h * rb2d.velocity.x < maxSpeed)
