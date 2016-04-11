@@ -275,7 +275,7 @@ RectTransform:
   m_RootOrder: 0
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -10, y: -10}
+  m_AnchoredPosition: {x: -10, y: -2}
   m_SizeDelta: {x: 471, y: 306}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1509443228
@@ -310,11 +310,11 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "Ice Maiden: You will never be accepted in Iceland! \nLava Lady: Lavaland
-    doesn't want your kind either!\n\nWizard: BOOM! ZAP! BAM!\n\nIM: Why do I feel
-    so hot?\nLL: And why do I feel so cold?\n\nWizard: I'm tired of this war between
-    the Iceland and Lavaland. I'm making each of you walk a mile in the other's shoes.\n\nIM
-    & LL: GASP!\n"
+  m_Text: "Ice Maiden: You will never be accepted in Iceland! You're too reactive
+    and don't think before jumping into action!\n\nLava Lady: Lavaland doesn't want
+    your kind\n either! You crawl when you should jump and you overthink things!\n\nWizard:
+    BOOM! ZAP! BAM!\n\nWizard: I'm tired of this war between the Iceland and Lavaland.
+    I'm making each of you walk a mile in the other's shoes.\n\n[ ENTER ]"
 --- !u!222 &1509443229
 CanvasRenderer:
   m_ObjectHideFlags: 0

@@ -2,11 +2,11 @@
 using System.Collections;
 using UnityEngine.SceneManagement;
 
-public class IntroBehaviourScript : MonoBehaviour {
+public class InstructionsBehaviourScript : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-
+		Debug.Log ("This is the instructions scene");
 	}
 	
 	// Update is called once per frame
@@ -14,7 +14,8 @@ public class IntroBehaviourScript : MonoBehaviour {
 
 		if(Input.GetButtonDown("Submit"))
 		{
-			SceneManager.LoadScene("instructionScene", LoadSceneMode.Single);
+			Debug.Log ("Load portal scene");
+			SceneManager.LoadScene("portalScene", LoadSceneMode.Single);
 		}
 	}
 }
