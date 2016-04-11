@@ -25,3 +25,5 @@ ExportedObj/
 # Unity3D Generated File On Crash Reports
 sysinfo.txt
 Status API Training Shop Blog About
+
+*.DS_Store
