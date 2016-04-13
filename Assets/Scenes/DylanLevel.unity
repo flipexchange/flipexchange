@@ -1475,7 +1475,7 @@ MonoBehaviour:
   swap: 0
   moveForcePink: 500
   maxSpeedPink: 4
-  jumpForcePink: 600
+  jumpForcePink: 300
   gravityPink: 1
   moveForceBlue: 200
   maxSpeedBlue: 2
