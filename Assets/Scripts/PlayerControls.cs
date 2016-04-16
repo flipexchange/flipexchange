@@ -4,17 +4,18 @@ using System.Collections;
 public class PlayerControls : MonoBehaviour {
 
 	private Rigidbody2D rb2d;
+	private SpriteRenderer sr;
 
 	[HideInInspector] public bool facingRight = true;
 	[HideInInspector] public bool jump = false;
 	[HideInInspector] public bool swap = false;
 	public float moveForcePink = 500f;
-	public float maxSpeedPink = 7f;
-	public float jumpForcePink = 400f;
-	public float gravityPink = 2.5f;
-	public float moveForceBlue = 250f;
-	public float maxSpeedBlue = 5f;
-	public float jumpForceBlue = 650f;
+	public float maxSpeedPink = 4f;
+	public float jumpForcePink = 300f;
+	public float gravityPink = 2f;
+	public float moveForceBlue = 200f;
+	public float maxSpeedBlue = 3f;
+	public float jumpForceBlue = 200f;
 	public float gravityBlue = 1f;
 	public Transform groundCheck;
 	public Transform groundCheckTop;
@@ -28,6 +29,7 @@ public class PlayerControls : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 		rb2d = GetComponent<Rigidbody2D>();
+		sr = GetComponent<SpriteRenderer>();
 		groundCheck = transform.Find("groundCheck");
 		groundCheckTop = transform.Find("groundCheckTop");
 		groundCheckLeft = transform.Find("groundCheckLeft");
@@ -97,12 +99,20 @@ public class PlayerControls : MonoBehaviour {
 		}
 		if (swap) {
 			pink = !pink;
+			var box = GetComponent<BoxCollider2D>();
+			var circle = GetComponent<CircleCollider2D>();
 			if (pink) {
 				rb2d.gravityScale = gravityPink;
-				rb2d.transform.localScale = new Vector3 (1, 1, 1);
+				sr.sprite = Resources.Load<Sprite>("rectangle");
+				box.enabled = true;
+				circle.enabled = false;
+				transform.localScale = new Vector3 (.2f,.2f,1);
 			} else {
 				rb2d.gravityScale = gravityBlue;
-				rb2d.transform.localScale = new Vector3 (1, 2, 1);
+				sr.sprite = Resources.Load<Sprite>("circle");
+				box.enabled = false;
+				circle.enabled = true;
+				transform.localScale = new Vector3 (.25f,.25f,1);
 			}
 			var pinkStuff = GameObject.FindGameObjectsWithTag("Pink");
 			foreach (var obj in pinkStuff) {
