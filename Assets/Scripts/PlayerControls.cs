@@ -11,7 +11,7 @@ public class PlayerControls : MonoBehaviour {
 	[HideInInspector] public bool swap = false;
 	public float moveForcePink = 500f;
 	public float maxSpeedPink = 4f;
-	public float jumpForcePink = 300f;
+	public float jumpForcePink = 500f;
 	public float gravityPink = 2f;
 	public float moveForceBlue = 200f;
 	public float maxSpeedBlue = 3f;
@@ -51,7 +51,6 @@ public class PlayerControls : MonoBehaviour {
         tilted = Physics2D.Linecast (transform.position, groundCheckTop.position, 1 << LayerMask.NameToLayer ("Ground"));
 		tilted = tilted || Physics2D.Linecast (transform.position, groundCheckLeft.position, 1 << LayerMask.NameToLayer ("Ground"));
 		tilted = tilted || Physics2D.Linecast (transform.position, groundCheckRight.position, 1 << LayerMask.NameToLayer ("Ground"));
-
 		sloped = sloped || Physics2D.Linecast (transform.position, groundCheckTop.position, 1 << LayerMask.NameToLayer ("Slope")) || Physics2D.Linecast (transform.position, groundCheckLeft.position, 1 << LayerMask.NameToLayer ("Slope")) || Physics2D.Linecast (transform.position, groundCheckRight.position, 1 << LayerMask.NameToLayer ("Slope"));
 		if (Input.GetButtonDown("Switch"))
 		{
@@ -79,9 +78,9 @@ public class PlayerControls : MonoBehaviour {
 		if (sloped) {
 			if (pink) {
 				moveForce = 0f;
-				maxSpeed = 3f;
+				maxSpeed = 1.5f;
 			} else {
-				moveForce /= 20;
+				moveForce /= 10;
 			}
 		}
 
@@ -118,12 +117,14 @@ public class PlayerControls : MonoBehaviour {
 				box.enabled = true;
 				circle.enabled = false;
 				transform.localScale = new Vector3 (.2f,.2f,1);
+				rb2d.constraints = RigidbodyConstraints2D.None;
 			} else {
 				rb2d.gravityScale = gravityBlue;
 				sr.sprite = Resources.Load<Sprite>("circle");
 				box.enabled = false;
 				circle.enabled = true;
 				transform.localScale = new Vector3 (.25f,.25f,1);
+				rb2d.constraints = RigidbodyConstraints2D.FreezeRotation;
 			}
 			var pinkStuff = GameObject.FindGameObjectsWithTag("Pink");
 			foreach (var obj in pinkStuff) {
