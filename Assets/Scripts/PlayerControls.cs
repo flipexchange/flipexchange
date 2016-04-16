@@ -24,6 +24,7 @@ public class PlayerControls : MonoBehaviour {
 	private bool grounded = false;
 	private bool sloped = false;
 	private bool tilted = false;
+    private bool dead = false;
 	private bool pink = true;
 
 	// Use this for initialization
@@ -40,13 +41,14 @@ public class PlayerControls : MonoBehaviour {
 			obj.transform.position = newPos;
 		}
 	}
-
-	// Update is called once per frame
-	void Update () {
+    
+    // Update is called once per frame
+    void Update () {
 		grounded = Physics2D.Linecast(transform.position, groundCheck.position, 1 << LayerMask.NameToLayer("Ground"));
 		sloped = Physics2D.Linecast(transform.position, groundCheck.position, 1 << LayerMask.NameToLayer("Slope"));
+        dead = Physics2D.Linecast(transform.position, groundCheck.position, 1 << LayerMask.NameToLayer("Death"));
 
-		tilted = Physics2D.Linecast (transform.position, groundCheckTop.position, 1 << LayerMask.NameToLayer ("Ground"));
+        tilted = Physics2D.Linecast (transform.position, groundCheckTop.position, 1 << LayerMask.NameToLayer ("Ground"));
 		tilted = tilted || Physics2D.Linecast (transform.position, groundCheckLeft.position, 1 << LayerMask.NameToLayer ("Ground"));
 		tilted = tilted || Physics2D.Linecast (transform.position, groundCheckRight.position, 1 << LayerMask.NameToLayer ("Ground"));
 
@@ -59,6 +61,9 @@ public class PlayerControls : MonoBehaviour {
 		{
 			jump = true;
 		}
+        //Debug.Log(transform.position.x);
+        Debug.Log(transform.Find("checkpoint1").position);
+        //if (transform.position.x > 10) {}
 	}
 
 	void FixedUpdate()
@@ -83,6 +88,12 @@ public class PlayerControls : MonoBehaviour {
 		if (tilted) {
 			rb2d.rotation = 0f;
 		}
+
+        if (dead) {
+            Vector3 newpos = new Vector3(-7, -6, 0);
+            rb2d.transform.position = newpos;
+            dead = false;
+        }
 
 		float h = Input.GetAxis("Horizontal");
 
