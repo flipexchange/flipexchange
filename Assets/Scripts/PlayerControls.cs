@@ -55,11 +55,13 @@ public class PlayerControls : MonoBehaviour {
     void Update () {
 		grounded = Physics2D.Linecast(transform.position, groundCheck.position, 1 << LayerMask.NameToLayer("Ground"));
 		sloped = Physics2D.Linecast(transform.position, groundCheck.position, 1 << LayerMask.NameToLayer("Slope"));
+        /*
         bool deadTop = Physics2D.Linecast(transform.position, groundCheckTop.position, 1 << LayerMask.NameToLayer("Death"));
         bool deadBot = Physics2D.Linecast(transform.position, groundCheck.position, 1 << LayerMask.NameToLayer("Death"));
         bool deadLeft = Physics2D.Linecast(transform.position, groundCheckLeft.position, 1 << LayerMask.NameToLayer("Death"));
         bool deadRight = Physics2D.Linecast(transform.position, groundCheckRight.position, 1 << LayerMask.NameToLayer("Death"));
         dead = deadBot || deadLeft || deadRight || deadTop;
+        */
 
         tilted = Physics2D.Linecast (transform.position, groundCheckTop.position, 1 << LayerMask.NameToLayer ("Ground"));
 		tilted = tilted || Physics2D.Linecast (transform.position, groundCheckLeft.position, 1 << LayerMask.NameToLayer ("Ground"));
@@ -154,11 +156,10 @@ public class PlayerControls : MonoBehaviour {
 		}
 	}
 
-    void OnCollisionEnter(Collision collision) {
-        Debug.Log(collision.gameObject.layer);
-        if (collision.gameObject.layer == 10 //int value of 'Death' in layer manager(User Defined starts at 10) 
-             && !dead)
-        {
+    void OnCollisionEnter2D(Collision2D col) {
+        //Debug.Log("gO: "+col.gameObject.layer);
+        //Debug.Log("collider: " + col.collider.gameObject.layer);
+        if (col.gameObject.layer == 10) {//int value of 'Death' in layer manager(User Defined starts at 10)
             dead = true;
         }
     }
