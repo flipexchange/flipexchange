@@ -75,6 +75,9 @@ public class PlayerControls : MonoBehaviour {
 		if (Input.GetButtonDown("Jump") && grounded){
 			jump = true;
 		}
+		if (kick && Input.GetButtonDown ("Kick")) {
+			StartCoroutine(kickIt());
+		}
         if (transform.position.x > 53)
         {
             lastCheckpoint = GameObject.Find("checkpoint3");
@@ -162,11 +165,34 @@ public class PlayerControls : MonoBehaviour {
 		}
 	}
 
+	IEnumerator kickIt() {
+		var old = kickee.transform.position.y;
+		while (kickee.transform.position.y<-old) {
+			Vector3 mwah = new Vector3(kickee.transform.position.x, kickee.transform.position.y+2, kickee.transform.position.z);
+			kickee.transform.position = mwah;
+			yield return new WaitForSeconds (0.03f);
+		}
+		Vector3 mwa = new Vector3(kickee.transform.position.x, -old, kickee.transform.position.z);
+		kickee.transform.position = mwa;
+	}
+
     void OnCollisionEnter2D(Collision2D col) {
         //Debug.Log("gO: "+col.gameObject.layer);
         //Debug.Log("collider: " + col.collider.gameObject.layer);
         if (col.gameObject.layer == 10) {//int value of 'Death' in layer manager(User Defined starts at 10)
             dead = true;
         }
+		if (col.transform.gameObject.name == "Kickable") {
+			kick = true;
+			kickee = col.transform.gameObject;
+		}
     }
+
+	void OnCollisionExit2D(Collision2D col) {
+		//Debug.Log("gO: "+col.gameObject.layer);
+		//Debug.Log("collider: " + col.collider.gameObject.layer);
+		if (col.transform.gameObject.name == "Kickable") {
+			kick = false;
+		}
+	}
 }
