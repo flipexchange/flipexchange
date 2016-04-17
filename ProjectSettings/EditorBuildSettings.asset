@@ -6,11 +6,15 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/introScene.unity
+    path: Assets/Scenes/CutScenes/introScene.unity
   - enabled: 1
-    path: Assets/Scenes/instructionScene.unity
+    path: Assets/Scenes/CutScenes/instructionScene.unity
   - enabled: 1
     path: Assets/Scenes/portalScene.unity
+  - enabled: 1
+    path: Assets/Scenes/CutScenes/cutScene.unity
+  - enabled: 1
+    path: Assets/Scenes/CutScenes/cutScene2.unity
   - enabled: 0
     path: Assets/Scenes/Prototype.unity
   - enabled: 1

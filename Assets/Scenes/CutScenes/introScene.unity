@@ -275,8 +275,8 @@ RectTransform:
   m_RootOrder: 0
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -13, y: -23}
-  m_SizeDelta: {x: 648, y: 463}
+  m_AnchoredPosition: {x: -13, y: -3}
+  m_SizeDelta: {x: 648, y: 502}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1509443228
 MonoBehaviour:
@@ -310,11 +310,12 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "Ice Maiden: You will never be accepted in Iceland! You're too reactive
-    and don't think before jumping into action!\n\nLava Lady: Lavaland doesn't want
-    your kind\n either! You crawl when you should jump and you overthink things!\n\nWizard:
-    BOOM! ZAP! BAM!\n\nWizard: I'm tired of this war between the Iceland and Lavaland.
-    I'm making each of you walk a mile in the other's shoes.\n\n[ ENTER ]"
+  m_Text: "Wizard: People in Lavaland and Iceworld are protesting to combine the nations.
+    It\u2019s up to you two to make this merge work.  \n\nIce Maiden: I think Lavaland
+    people are too reactive and don't think before jumping into action!\n\nLava Lady:
+    Well Iceworld people are always scheming and overthink things. There\u2019s no
+    way that we could unite our nations without destroying everything.\n\n[ ENTER
+    ]"
 --- !u!222 &1509443229
 CanvasRenderer:
   m_ObjectHideFlags: 0
