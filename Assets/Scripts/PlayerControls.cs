@@ -27,6 +27,8 @@ public class PlayerControls : MonoBehaviour {
     private bool dead = false;
 	private bool pink = true;
 
+    GameObject lastCheckpoint;
+
 	// Use this for initialization
 	void Start () {
 		rb2d = GetComponent<Rigidbody2D>();
@@ -40,6 +42,7 @@ public class PlayerControls : MonoBehaviour {
 			Vector3 newPos = new Vector3(obj.transform.position.x, -obj.transform.position.y, obj.transform.position.z);
 			obj.transform.position = newPos;
 		}
+        lastCheckpoint = GameObject.Find("checkpoint1");
 	}
     
     // Update is called once per frame
@@ -52,18 +55,21 @@ public class PlayerControls : MonoBehaviour {
 		tilted = tilted || Physics2D.Linecast (transform.position, groundCheckLeft.position, 1 << LayerMask.NameToLayer ("Ground"));
 		tilted = tilted || Physics2D.Linecast (transform.position, groundCheckRight.position, 1 << LayerMask.NameToLayer ("Ground"));
 		sloped = sloped || Physics2D.Linecast (transform.position, groundCheckTop.position, 1 << LayerMask.NameToLayer ("Slope")) || Physics2D.Linecast (transform.position, groundCheckLeft.position, 1 << LayerMask.NameToLayer ("Slope")) || Physics2D.Linecast (transform.position, groundCheckRight.position, 1 << LayerMask.NameToLayer ("Slope"));
-		if (Input.GetButtonDown("Switch"))
-		{
+		if (Input.GetButtonDown("Switch")){
 			swap = true;
 		}
-		if (Input.GetButtonDown("Jump") && grounded)
-		{
+		if (Input.GetButtonDown("Jump") && grounded){
 			jump = true;
 		}
-        //Debug.Log(transform.position.x);
-        Debug.Log(transform.Find("checkpoint1").position);
-        //if (transform.position.x > 10) {}
-	}
+        Debug.Log(transform.position.x);
+        if (transform.position.x > 38) {
+            lastCheckpoint = GameObject.Find("checkpoint2");
+        }
+        else if (transform.position.x > 53)
+        {
+            lastCheckpoint = GameObject.Find("checkpoint3");
+        }
+    }
 
 	void FixedUpdate()
 	{
@@ -89,8 +95,7 @@ public class PlayerControls : MonoBehaviour {
 		}
 
         if (dead) {
-            Vector3 newpos = new Vector3(-7, -6, 0);
-            rb2d.transform.position = newpos;
+            rb2d.transform.position = lastCheckpoint.transform.position;
             dead = false;
         }
 
