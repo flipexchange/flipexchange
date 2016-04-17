@@ -30,7 +30,8 @@ public class PlayerControls : MonoBehaviour {
 	private GameObject kickee;
 
     // variable to store lastCheckpoint object
-    GameObject lastCheckpoint;
+    private int checkpointNum = 1; 
+    private GameObject lastCheckpoint;
 
 	// Use this for initialization
 	void Start () {
@@ -50,7 +51,7 @@ public class PlayerControls : MonoBehaviour {
 			Vector3 newPos = new Vector3(obj.transform.position.x, -obj.transform.position.y, obj.transform.position.z);
 			obj.transform.position = newPos;
 		}
-        lastCheckpoint = GameObject.Find("checkpoint1");
+        lastCheckpoint = GameObject.Find("checkpoint"+checkpointNum);
 	}
     
     // Update is called once per frame
@@ -75,13 +76,11 @@ public class PlayerControls : MonoBehaviour {
 		if (Input.GetButtonDown("Jump") && grounded){
 			jump = true;
 		}
-        if (transform.position.x > 53)
+        /*if (transform.position.x > lastCheckpoint.transform.position.x)
         {
-            lastCheckpoint = GameObject.Find("checkpoint3");
-		}
-		else if (transform.position.x > 38) {
-			lastCheckpoint = GameObject.Find("checkpoint2");
-		}
+            checkpointNum++;
+            lastCheckpoint = GameObject.Find("checkpoint"+checkpointNum);
+		}*/
     }
 
 	void FixedUpdate()
