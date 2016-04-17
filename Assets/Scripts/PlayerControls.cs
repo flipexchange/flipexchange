@@ -26,6 +26,8 @@ public class PlayerControls : MonoBehaviour {
 	private bool tilted = false;
     private bool dead = false;
 	private bool pink = true;
+	private bool kick = false;
+	private GameObject kickee;
 
     // variable to store lastCheckpoint object
     GameObject lastCheckpoint;
@@ -55,11 +57,13 @@ public class PlayerControls : MonoBehaviour {
     void Update () {
 		grounded = Physics2D.Linecast(transform.position, groundCheck.position, 1 << LayerMask.NameToLayer("Ground"));
 		sloped = Physics2D.Linecast(transform.position, groundCheck.position, 1 << LayerMask.NameToLayer("Slope"));
+        /*
         bool deadTop = Physics2D.Linecast(transform.position, groundCheckTop.position, 1 << LayerMask.NameToLayer("Death"));
         bool deadBot = Physics2D.Linecast(transform.position, groundCheck.position, 1 << LayerMask.NameToLayer("Death"));
         bool deadLeft = Physics2D.Linecast(transform.position, groundCheckLeft.position, 1 << LayerMask.NameToLayer("Death"));
         bool deadRight = Physics2D.Linecast(transform.position, groundCheckRight.position, 1 << LayerMask.NameToLayer("Death"));
         dead = deadBot || deadLeft || deadRight || deadTop;
+        */
 
         tilted = Physics2D.Linecast (transform.position, groundCheckTop.position, 1 << LayerMask.NameToLayer ("Ground"));
 		tilted = tilted || Physics2D.Linecast (transform.position, groundCheckLeft.position, 1 << LayerMask.NameToLayer ("Ground"));
@@ -71,13 +75,13 @@ public class PlayerControls : MonoBehaviour {
 		if (Input.GetButtonDown("Jump") && grounded){
 			jump = true;
 		}
-        if (transform.position.x > 38) {
-            lastCheckpoint = GameObject.Find("checkpoint2");
-        }
-        else if (transform.position.x > 53)
+        if (transform.position.x > 53)
         {
             lastCheckpoint = GameObject.Find("checkpoint3");
-        }
+		}
+		else if (transform.position.x > 38) {
+			lastCheckpoint = GameObject.Find("checkpoint2");
+		}
     }
 
 	void FixedUpdate()
@@ -100,7 +104,11 @@ public class PlayerControls : MonoBehaviour {
 		}
 
 		if (tilted) {
-			rb2d.rotation = 0f;
+			if (rb2d.rotation == 0f) {
+				rb2d.AddForce (new Vector2(0f,-jumpForce));
+			} else {
+				rb2d.rotation = 0f;
+			}
 		}
 
         if (dead) {
@@ -154,11 +162,10 @@ public class PlayerControls : MonoBehaviour {
 		}
 	}
 
-    void OnCollisionEnter(Collision collision) {
-        Debug.Log(collision.gameObject.layer);
-        if (collision.gameObject.layer == 10 //int value of 'Death' in layer manager(User Defined starts at 10) 
-             && !dead)
-        {
+    void OnCollisionEnter2D(Collision2D col) {
+        //Debug.Log("gO: "+col.gameObject.layer);
+        //Debug.Log("collider: " + col.collider.gameObject.layer);
+        if (col.gameObject.layer == 10) {//int value of 'Death' in layer manager(User Defined starts at 10)
             dead = true;
         }
     }
