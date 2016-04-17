@@ -14,9 +14,7 @@ public class bulletController : MonoBehaviour {
 
     void OnCollisionEnter2D(Collision2D col)
     {
-        Debug.Log(col.collider.gameObject.layer);
         if (col.collider.gameObject.layer != 11) {
-            Debug.Log("COLLIDE");
             Destroy(gameObject);
         }
         Destroy(gameObject);

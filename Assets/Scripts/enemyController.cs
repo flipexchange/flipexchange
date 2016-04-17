@@ -22,12 +22,15 @@ public class enemyController : MonoBehaviour
     //Enter the Speed of the Bullet from the Component Inspector.
     public float Bullet_Forward_Force;
 
+    private int firingCounter;
+
     public void Start()
     {
         _originalPosition = gameObject.transform.position;
         _transform = GetComponent<Transform>();
         velocity = new Vector3(speed, 0, 0);
         _transform.Translate(velocity.x * Time.deltaTime, 0, 0);
+        firingCounter = 0;
     }
 
     void Update()
@@ -50,9 +53,11 @@ public class enemyController : MonoBehaviour
 
             _transform.Translate(velocity.x * Time.deltaTime, 0, 0);
         }
-
-        if (Input.GetKeyDown("space"))
+        firingCounter++;
+        if (firingCounter > 75)
         {
+            firingCounter = 0;
+
             //The Bullet instantiation happens here.
             GameObject Temporary_Bullet_Handler;
             Temporary_Bullet_Handler = Instantiate(Bullet, Bullet_Emitter.transform.position, Bullet_Emitter.transform.rotation) as GameObject;
@@ -66,7 +71,10 @@ public class enemyController : MonoBehaviour
             Temporary_RigidBody = Temporary_Bullet_Handler.GetComponent<Rigidbody2D>();
 
             //Tell the bullet to be "pushed" forward by an amount set by Bullet_Forward_Force.
-            Temporary_RigidBody.AddForce(Vector2.left * Bullet_Forward_Force);
+            if(isGoingLeft)
+                Temporary_RigidBody.AddForce(Vector2.left * Bullet_Forward_Force);
+            else
+                Temporary_RigidBody.AddForce(Vector2.right * Bullet_Forward_Force);
 
             //Basic Clean Up, set the Bullets to self destruct after 10 Seconds, I am being VERY generous here, normally 3 seconds is plenty.
             Destroy(Temporary_Bullet_Handler, 10.0f);
