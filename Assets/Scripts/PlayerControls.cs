@@ -27,11 +27,17 @@ public class PlayerControls : MonoBehaviour {
     private bool dead = false;
 	private bool pink = true;
 
+    // variable to store lastCheckpoint object
     GameObject lastCheckpoint;
 
 	// Use this for initialization
 	void Start () {
-		rb2d = GetComponent<Rigidbody2D>();
+        // Set Deathbed's alpha to 0
+        Color colorPicker = new Color(0.5f, 0.5f, 0.5f);
+        colorPicker.a = 0;
+        GameObject.Find("Deathbed").GetComponent<Renderer>().material.SetColor("_Color", colorPicker);
+
+        rb2d = GetComponent<Rigidbody2D>();
 		sr = GetComponent<SpriteRenderer>();
 		groundCheck = transform.Find("groundCheck");
 		groundCheckTop = transform.Find("groundCheckTop");
@@ -49,7 +55,11 @@ public class PlayerControls : MonoBehaviour {
     void Update () {
 		grounded = Physics2D.Linecast(transform.position, groundCheck.position, 1 << LayerMask.NameToLayer("Ground"));
 		sloped = Physics2D.Linecast(transform.position, groundCheck.position, 1 << LayerMask.NameToLayer("Slope"));
-        dead = Physics2D.Linecast(transform.position, groundCheck.position, 1 << LayerMask.NameToLayer("Death"));
+        bool deadTop = Physics2D.Linecast(transform.position, groundCheckTop.position, 1 << LayerMask.NameToLayer("Death"));
+        bool deadBot = Physics2D.Linecast(transform.position, groundCheck.position, 1 << LayerMask.NameToLayer("Death"));
+        bool deadLeft = Physics2D.Linecast(transform.position, groundCheckLeft.position, 1 << LayerMask.NameToLayer("Death"));
+        bool deadRight = Physics2D.Linecast(transform.position, groundCheckRight.position, 1 << LayerMask.NameToLayer("Death"));
+        dead = deadBot || deadLeft || deadRight || deadTop;
 
         tilted = Physics2D.Linecast (transform.position, groundCheckTop.position, 1 << LayerMask.NameToLayer ("Ground"));
 		tilted = tilted || Physics2D.Linecast (transform.position, groundCheckLeft.position, 1 << LayerMask.NameToLayer ("Ground"));
@@ -61,7 +71,6 @@ public class PlayerControls : MonoBehaviour {
 		if (Input.GetButtonDown("Jump") && grounded){
 			jump = true;
 		}
-        Debug.Log(transform.position.x);
         if (transform.position.x > 38) {
             lastCheckpoint = GameObject.Find("checkpoint2");
         }
@@ -144,4 +153,13 @@ public class PlayerControls : MonoBehaviour {
 			swap = false;
 		}
 	}
+
+    void OnCollisionEnter(Collision collision) {
+        Debug.Log(collision.gameObject.layer);
+        if (collision.gameObject.layer == 10 //int value of 'Death' in layer manager(User Defined starts at 10) 
+             && !dead)
+        {
+            dead = true;
+        }
+    }
 }
