@@ -26,6 +26,8 @@ public class PlayerControls : MonoBehaviour {
 	private bool tilted = false;
     private bool dead = false;
 	private bool pink = true;
+	private bool kick = false;
+	private GameObject kickee;
 
     // variable to store lastCheckpoint object
     GameObject lastCheckpoint;
@@ -73,13 +75,13 @@ public class PlayerControls : MonoBehaviour {
 		if (Input.GetButtonDown("Jump") && grounded){
 			jump = true;
 		}
-        if (transform.position.x > 38) {
-            lastCheckpoint = GameObject.Find("checkpoint2");
-        }
-        else if (transform.position.x > 53)
+        if (transform.position.x > 53)
         {
             lastCheckpoint = GameObject.Find("checkpoint3");
-        }
+		}
+		else if (transform.position.x > 38) {
+			lastCheckpoint = GameObject.Find("checkpoint2");
+		}
     }
 
 	void FixedUpdate()
@@ -102,7 +104,11 @@ public class PlayerControls : MonoBehaviour {
 		}
 
 		if (tilted) {
-			rb2d.rotation = 0f;
+			if (rb2d.rotation == 0f) {
+				rb2d.AddForce (new Vector2(0f,-jumpForce));
+			} else {
+				rb2d.rotation = 0f;
+			}
 		}
 
         if (dead) {
