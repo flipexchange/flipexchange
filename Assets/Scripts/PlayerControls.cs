@@ -30,7 +30,7 @@ public class PlayerControls : MonoBehaviour {
 	private GameObject kickee;
 
     // variable to store lastCheckpoint object
-    private int checkpointNum = 1; 
+    private int checkpointNum = 0; 
     private GameObject lastCheckpoint;
 
 	// Use this for initialization
