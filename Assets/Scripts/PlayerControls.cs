@@ -44,7 +44,7 @@ public class PlayerControls : MonoBehaviour {
         // Set Deathbed's alpha to 0
         Color colorPicker = new Color(0.5f, 0.5f, 0.5f);
         colorPicker.a = 0;
-        GameObject.Find("Deathbed").GetComponent<Renderer>().material.SetColor("_Color", colorPicker);
+        //GameObject.Find("Deathbed").GetComponent<Renderer>().material.SetColor("_Color", colorPicker);
 
         rb2d = GetComponent<Rigidbody2D>();
 		sr = GetComponent<SpriteRenderer>();
