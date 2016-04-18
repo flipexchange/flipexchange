@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UnityEngine.SceneManagement;
 
 public class PlayerControls : MonoBehaviour {
 
@@ -30,15 +31,20 @@ public class PlayerControls : MonoBehaviour {
 	private GameObject kickee;
 
     // variable to store lastCheckpoint object
-    private int checkpointNum = 1; 
+    private int checkpointNum = 0; 
     private GameObject lastCheckpoint;
+    private GameObject nextCheckpoint;
+
+    // variables for SecondLevel
+    private bool currentSceneIsSecondLevel;
+    private bool boulderTriggered = false;
 
 	// Use this for initialization
 	void Start () {
         // Set Deathbed's alpha to 0
         Color colorPicker = new Color(0.5f, 0.5f, 0.5f);
         colorPicker.a = 0;
-        GameObject.Find("Deathbed").GetComponent<Renderer>().material.SetColor("_Color", colorPicker);
+        //GameObject.Find("Deathbed").GetComponent<Renderer>().material.SetColor("_Color", colorPicker);
 
         rb2d = GetComponent<Rigidbody2D>();
 		sr = GetComponent<SpriteRenderer>();
@@ -51,13 +57,16 @@ public class PlayerControls : MonoBehaviour {
 			Vector3 newPos = new Vector3(obj.transform.position.x, -obj.transform.position.y, obj.transform.position.z);
 			obj.transform.position = newPos;
 		}
-        lastCheckpoint = GameObject.Find("checkpoint"+checkpointNum);
-	}
-    
+        // to iterate through the checkpoints: {checkpoint0, checkpoint1, ...}
+        nextCheckpoint = GameObject.Find("checkpoint"+checkpointNum);
+        currentSceneIsSecondLevel = SceneManager.GetActiveScene().name=="SecondLevel";
+    }
+
     // Update is called once per frame
-    void Update () {
-		grounded = Physics2D.Linecast(transform.position, groundCheck.position, 1 << LayerMask.NameToLayer("Ground"));
-		sloped = Physics2D.Linecast(transform.position, groundCheck.position, 1 << LayerMask.NameToLayer("Slope"));
+    void Update()
+    {
+        grounded = Physics2D.Linecast(transform.position, groundCheck.position, 1 << LayerMask.NameToLayer("Ground"));
+        sloped = Physics2D.Linecast(transform.position, groundCheck.position, 1 << LayerMask.NameToLayer("Slope"));
         /*
         bool deadTop = Physics2D.Linecast(transform.position, groundCheckTop.position, 1 << LayerMask.NameToLayer("Death"));
         bool deadBot = Physics2D.Linecast(transform.position, groundCheck.position, 1 << LayerMask.NameToLayer("Death"));
@@ -66,26 +75,33 @@ public class PlayerControls : MonoBehaviour {
         dead = deadBot || deadLeft || deadRight || deadTop;
         */
 
-        tilted = Physics2D.Linecast (transform.position, groundCheckTop.position, 1 << LayerMask.NameToLayer ("Ground"));
-		tilted = tilted || Physics2D.Linecast (transform.position, groundCheckLeft.position, 1 << LayerMask.NameToLayer ("Ground"));
-		tilted = tilted || Physics2D.Linecast (transform.position, groundCheckRight.position, 1 << LayerMask.NameToLayer ("Ground"));
-		sloped = sloped || Physics2D.Linecast (transform.position, groundCheckTop.position, 1 << LayerMask.NameToLayer ("Slope")) || Physics2D.Linecast (transform.position, groundCheckLeft.position, 1 << LayerMask.NameToLayer ("Slope")) || Physics2D.Linecast (transform.position, groundCheckRight.position, 1 << LayerMask.NameToLayer ("Slope"));
-		if (Input.GetButtonDown("Switch")){
-			swap = true;
-		}
-		if (Input.GetButtonDown("Jump") && grounded){
-			jump = true;
-		}
-		if (kick && Input.GetButtonDown ("Kick")) {
-			StartCoroutine(kickIt());
-		}
-		if (transform.position.x > 53)
-		{
-			lastCheckpoint = GameObject.Find("checkpoint3");
-		}
-		else if (transform.position.x > 38) {
-			lastCheckpoint = GameObject.Find("checkpoint2");
-		}
+        tilted = Physics2D.Linecast(transform.position, groundCheckTop.position, 1 << LayerMask.NameToLayer("Ground"));
+        tilted = tilted || Physics2D.Linecast(transform.position, groundCheckLeft.position, 1 << LayerMask.NameToLayer("Ground"));
+        tilted = tilted || Physics2D.Linecast(transform.position, groundCheckRight.position, 1 << LayerMask.NameToLayer("Ground"));
+        sloped = sloped || Physics2D.Linecast(transform.position, groundCheckTop.position, 1 << LayerMask.NameToLayer("Slope")) || Physics2D.Linecast(transform.position, groundCheckLeft.position, 1 << LayerMask.NameToLayer("Slope")) || Physics2D.Linecast(transform.position, groundCheckRight.position, 1 << LayerMask.NameToLayer("Slope"));
+        if (Input.GetButtonDown("Switch"))
+            swap = true;
+        if (Input.GetButtonDown("Jump") && grounded)
+            jump = true;
+        if (kick && Input.GetButtonDown("Kick"))
+            StartCoroutine(kickIt());
+
+        // Checkpoint logic
+        if (transform.position.x > nextCheckpoint.transform.position.x) {
+            lastCheckpoint = GameObject.Find("checkpoint" + checkpointNum);
+            checkpointNum++;
+            if(GameObject.Find("checkpoint" + checkpointNum) != null)
+                nextCheckpoint = GameObject.Find("checkpoint" + checkpointNum);
+        }
+
+        // SecondLevel Methods
+        if (currentSceneIsSecondLevel) { //These scripts are specific to SecondLevel
+            if (transform.position.x > 14 && !boulderTriggered)
+            {
+                boulderTriggered = true;
+                GameObject.Find("boulder").transform.position = new Vector3(39f,-2f,0f);
+            }
+        }
     }
 
 	void FixedUpdate()
@@ -118,6 +134,13 @@ public class PlayerControls : MonoBehaviour {
         if (dead) {
             rb2d.transform.position = lastCheckpoint.transform.position;
             dead = false;
+            if (currentSceneIsSecondLevel && checkpointNum < 2) {
+                GameObject boulder = GameObject.Find("boulder");
+                boulder.transform.position = new Vector3(41f, -2f, 0f);
+                boulder.GetComponent<Rigidbody2D>().velocity = Vector3.zero;
+                boulder.GetComponent<Rigidbody2D>().angularVelocity = 0;
+                boulderTriggered = false;
+            }
         }
 
 		float h = Input.GetAxis("Horizontal");
@@ -178,9 +201,7 @@ public class PlayerControls : MonoBehaviour {
 	}
 
     void OnCollisionEnter2D(Collision2D col) {
-        //Debug.Log("gO: "+col.gameObject.layer);
-        //Debug.Log("collider: " + col.collider.gameObject.layer);
-        if (col.gameObject.layer == 10) {//int value of 'Death' in layer manager(User Defined starts at 10)
+        if (col.gameObject.layer == 10) { //int value of 'Death' in layer manager(User Defined starts at 10)
             dead = true;
         }
 		if(col.collider.bounds.Contains(transform.position))
@@ -191,6 +212,25 @@ public class PlayerControls : MonoBehaviour {
 			kick = true;
 			kickee = col.transform.gameObject;
 		}
+
+        // SecondLevel Methods
+        if (currentSceneIsSecondLevel)
+        { //These scripts are specific to SecondLevel
+            if (col.gameObject.name == "bridge" && !pink)
+            { // Cheating hardcoded bridge method
+                col.gameObject.GetComponent<Rigidbody2D>().mass = 1;
+            }
+            //if (col.gameObject.name == "boulder") {
+            /*
+            if (col.gameObject.layer == 10 && checkpointNum < 2)
+            {
+                GameObject boulder = GameObject.Find("boulder");
+                boulder.transform.position = new Vector3(41f, -2f, 0f);
+                boulder.GetComponent<Rigidbody2D>().velocity = Vector3.zero;
+                boulder.GetComponent<Rigidbody2D>().angularVelocity = 0;
+                boulderTriggered = false;
+            }*/
+        }
     }
 
 	void OnCollisionExit2D(Collision2D col) {
