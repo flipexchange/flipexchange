@@ -34,7 +34,10 @@ public class PlayerControls : MonoBehaviour {
     private int checkpointNum = 0; 
     private GameObject lastCheckpoint;
     private GameObject nextCheckpoint;
-    private string currentScene;
+
+    // variables for SecondLevel
+    private bool currentSceneIsSecondLevel;
+    private bool boulderTriggered = false;
 
 	// Use this for initialization
 	void Start () {
@@ -56,13 +59,12 @@ public class PlayerControls : MonoBehaviour {
 		}
         // to iterate through the checkpoints: {checkpoint0, checkpoint1, ...}
         nextCheckpoint = GameObject.Find("checkpoint"+checkpointNum);
-        currentScene = SceneManager.GetActiveScene().name;
+        currentSceneIsSecondLevel = SceneManager.GetActiveScene().name=="SecondLevel";
     }
 
     // Update is called once per frame
     void Update()
     {
-        
         grounded = Physics2D.Linecast(transform.position, groundCheck.position, 1 << LayerMask.NameToLayer("Ground"));
         sloped = Physics2D.Linecast(transform.position, groundCheck.position, 1 << LayerMask.NameToLayer("Slope"));
         /*
@@ -93,11 +95,11 @@ public class PlayerControls : MonoBehaviour {
         }
 
         // SecondLevel Methods
-        if (currentScene == "SecondLevel") { //These scripts are specific to SecondLevel
-            if (transform.position.x > 15)
+        if (currentSceneIsSecondLevel) { //These scripts are specific to SecondLevel
+            if (transform.position.x > 14 && !boulderTriggered)
             {
+                boulderTriggered = true;
                 GameObject.Find("boulder").transform.position = new Vector3(39f,-2f,0f);
-                lastCheckpoint = GameObject.Find("checkpoint" + checkpointNum);
             }
         }
     }
@@ -132,6 +134,13 @@ public class PlayerControls : MonoBehaviour {
         if (dead) {
             rb2d.transform.position = lastCheckpoint.transform.position;
             dead = false;
+            if (currentSceneIsSecondLevel && checkpointNum < 2) {
+                GameObject boulder = GameObject.Find("boulder");
+                boulder.transform.position = new Vector3(41f, -2f, 0f);
+                boulder.GetComponent<Rigidbody2D>().velocity = Vector3.zero;
+                boulder.GetComponent<Rigidbody2D>().angularVelocity = 0;
+                boulderTriggered = false;
+            }
         }
 
 		float h = Input.GetAxis("Horizontal");
@@ -192,17 +201,6 @@ public class PlayerControls : MonoBehaviour {
 	}
 
     void OnCollisionEnter2D(Collision2D col) {
-        // SecondLevel Methods
-        if (currentScene == "SecondLevel") { //These scripts are specific to SecondLevel
-            if (col.gameObject.name == "bridge" && !pink) { // Cheating hardcoded bridge method
-                col.gameObject.GetComponent<Rigidbody2D>().mass = 1;
-            }
-            if (col.gameObject.name == "boulder") {
-                dead = true;
-                col.gameObject.transform.position = new Vector3(30f,-1f,0f);
-            }
-        }
-
         if (col.gameObject.layer == 10) { //int value of 'Death' in layer manager(User Defined starts at 10)
             dead = true;
         }
@@ -210,6 +208,25 @@ public class PlayerControls : MonoBehaviour {
 			kick = true;
 			kickee = col.transform.gameObject;
 		}
+
+        // SecondLevel Methods
+        if (currentSceneIsSecondLevel)
+        { //These scripts are specific to SecondLevel
+            if (col.gameObject.name == "bridge" && !pink)
+            { // Cheating hardcoded bridge method
+                col.gameObject.GetComponent<Rigidbody2D>().mass = 1;
+            }
+            //if (col.gameObject.name == "boulder") {
+            /*
+            if (col.gameObject.layer == 10 && checkpointNum < 2)
+            {
+                GameObject boulder = GameObject.Find("boulder");
+                boulder.transform.position = new Vector3(41f, -2f, 0f);
+                boulder.GetComponent<Rigidbody2D>().velocity = Vector3.zero;
+                boulder.GetComponent<Rigidbody2D>().angularVelocity = 0;
+                boulderTriggered = false;
+            }*/
+        }
     }
 
 	void OnCollisionExit2D(Collision2D col) {
