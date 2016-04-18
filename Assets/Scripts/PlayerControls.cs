@@ -109,7 +109,7 @@ public class PlayerControls : MonoBehaviour {
 
 		if (tilted) {
 			if (rb2d.rotation == 0f) {
-				rb2d.AddForce (new Vector2(0f,-jumpForce));
+				rb2d.AddForce (new Vector2(0f,-10000));
 			} else {
 				rb2d.rotation = 0f;
 			}
@@ -183,6 +183,10 @@ public class PlayerControls : MonoBehaviour {
         if (col.gameObject.layer == 10) {//int value of 'Death' in layer manager(User Defined starts at 10)
             dead = true;
         }
+		if(col.collider.bounds.Contains(transform.position))
+		{
+			dead = true;
+		}
 		if (col.transform.gameObject.name == "Kickable") {
 			kick = true;
 			kickee = col.transform.gameObject;
