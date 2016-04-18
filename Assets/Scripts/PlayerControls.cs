@@ -79,13 +79,11 @@ public class PlayerControls : MonoBehaviour {
 		if (kick && Input.GetButtonDown ("Kick")) {
 			StartCoroutine(kickIt());
 		}
-		if (transform.position.x > 53)
-		{
-			lastCheckpoint = GameObject.Find("checkpoint3");
-		}
-		else if (transform.position.x > 38) {
-			lastCheckpoint = GameObject.Find("checkpoint2");
-		}
+        if (transform.position.x > lastCheckpoint.transform.position.x)
+        {
+            checkpointNum++;
+            lastCheckpoint = GameObject.Find("checkpoint" + checkpointNum);
+        }
     }
 
 	void FixedUpdate()
@@ -187,6 +185,10 @@ public class PlayerControls : MonoBehaviour {
 			kick = true;
 			kickee = col.transform.gameObject;
 		}
+        if (col.gameObject.name == "bridge" && !pink)
+        {
+            col.gameObject.GetComponent<Rigidbody2D>().mass = 1;
+        }
     }
 
 	void OnCollisionExit2D(Collision2D col) {
