@@ -36,6 +36,8 @@ public class PlayerControls : MonoBehaviour {
     private int checkpointNum = 0; 
     private GameObject lastCheckpoint;
     private GameObject nextCheckpoint;
+	private GameObject infoBox;
+	private GameObject dialougeBox;
 
     // variables for SecondLevel
     private bool currentSceneIsSecondLevel;
@@ -64,12 +66,16 @@ public class PlayerControls : MonoBehaviour {
         // to iterate through the checkpoints: {checkpoint0, checkpoint1, ...}
         nextCheckpoint = GameObject.Find("checkpoint"+checkpointNum);
         currentSceneIsSecondLevel = SceneManager.GetActiveScene().name=="SecondLevel";
+		//find the next info tutorial point
+		infoBox = GameObject.Find("Info");
+		dialougeBox = GameObject.Find ("DialougeBox");
+		dialougeBox.SetActive (false);
     }
 
     // Update is called once per frame
     void Update()
     {
-        grounded = Physics2D.Linecast(transform.position, groundCheck.position, 1 << LayerMask.NameToLayer("Ground"));
+		grounded = Physics2D.Linecast(transform.position, groundCheck.position, 1 << LayerMask.NameToLayer("Ground"));
 		sloped = Physics2D.Linecast(transform.position, slopeCheck.position, 1 << LayerMask.NameToLayer("Slope")) || Physics2D.Linecast(transform.position, slopeCheckBack.position, 1 << LayerMask.NameToLayer("Slope"));
         /*
         bool deadTop = Physics2D.Linecast(transform.position, groundCheckTop.position, 1 << LayerMask.NameToLayer("Death"));
@@ -108,6 +114,10 @@ public class PlayerControls : MonoBehaviour {
                 GameObject.Find("boulder").transform.position = new Vector3(39f,-2f,0f);
             }
         }
+		//the tutorial info box shows up when collide
+		if (transform.position.x > infoBox.transform.position.x) {
+			dialougeBox.SetActive (true);
+		}
     }
 
 	void FixedUpdate()
