@@ -12,7 +12,7 @@ public class PlayerControls : MonoBehaviour {
 	[HideInInspector] public bool swap = false;
 	public float moveForcePink = 500f;
 	public float maxSpeedPink = 4f;
-	public float jumpForcePink = 500f;
+	public float jumpForcePink = 450f;
 	public float gravityPink = 2f;
 	public float moveForceBlue = 200f;
 	public float maxSpeedBlue = 3f;
@@ -22,6 +22,8 @@ public class PlayerControls : MonoBehaviour {
 	public Transform groundCheckTop;
 	public Transform groundCheckLeft;
 	public Transform groundCheckRight;
+	public Transform slopeCheck;
+	public Transform slopeCheckBack;
 	private bool grounded = false;
 	private bool sloped = false;
 	private bool tilted = false;
@@ -52,6 +54,8 @@ public class PlayerControls : MonoBehaviour {
 		groundCheckTop = transform.Find("groundCheckTop");
 		groundCheckLeft = transform.Find("groundCheckLeft");
 		groundCheckRight = transform.Find("groundCheckRight");
+		slopeCheck = transform.Find ("slopeCheck");
+		slopeCheckBack = transform.Find ("slopeCheckBack");
 		var blueStuff = GameObject.FindGameObjectsWithTag("Blue");
 		foreach (var obj in blueStuff) {
 			Vector3 newPos = new Vector3(obj.transform.position.x, -obj.transform.position.y, obj.transform.position.z);
@@ -66,7 +70,7 @@ public class PlayerControls : MonoBehaviour {
     void Update()
     {
         grounded = Physics2D.Linecast(transform.position, groundCheck.position, 1 << LayerMask.NameToLayer("Ground"));
-        sloped = Physics2D.Linecast(transform.position, groundCheck.position, 1 << LayerMask.NameToLayer("Slope"));
+		sloped = Physics2D.Linecast(transform.position, slopeCheck.position, 1 << LayerMask.NameToLayer("Slope")) || Physics2D.Linecast(transform.position, slopeCheckBack.position, 1 << LayerMask.NameToLayer("Slope"));
         /*
         bool deadTop = Physics2D.Linecast(transform.position, groundCheckTop.position, 1 << LayerMask.NameToLayer("Death"));
         bool deadBot = Physics2D.Linecast(transform.position, groundCheck.position, 1 << LayerMask.NameToLayer("Death"));
@@ -78,8 +82,10 @@ public class PlayerControls : MonoBehaviour {
         tilted = Physics2D.Linecast(transform.position, groundCheckTop.position, 1 << LayerMask.NameToLayer("Ground"));
         tilted = tilted || Physics2D.Linecast(transform.position, groundCheckLeft.position, 1 << LayerMask.NameToLayer("Ground"));
         tilted = tilted || Physics2D.Linecast(transform.position, groundCheckRight.position, 1 << LayerMask.NameToLayer("Ground"));
-        sloped = sloped || Physics2D.Linecast(transform.position, groundCheckTop.position, 1 << LayerMask.NameToLayer("Slope")) || Physics2D.Linecast(transform.position, groundCheckLeft.position, 1 << LayerMask.NameToLayer("Slope")) || Physics2D.Linecast(transform.position, groundCheckRight.position, 1 << LayerMask.NameToLayer("Slope"));
-        if (Input.GetButtonDown("Switch"))
+        //sloped = sloped || Physics2D.Linecast(transform.position, groundCheckTop.position, 1 << LayerMask.NameToLayer("Slope")) || Physics2D.Linecast(transform.position, groundCheckLeft.position, 1 << LayerMask.NameToLayer("Slope")) || Physics2D.Linecast(transform.position, groundCheckRight.position, 1 << LayerMask.NameToLayer("Slope"));
+		if (transform.position.y < -10)
+			dead = true;
+		if (Input.GetButtonDown("Switch"))
             swap = true;
         if (Input.GetButtonDown("Jump") && grounded)
             jump = true;
@@ -164,14 +170,12 @@ public class PlayerControls : MonoBehaviour {
 				box.enabled = true;
 				circle.enabled = false;
 				transform.localScale = new Vector3 (.2f,.2f,1);
-				rb2d.constraints = RigidbodyConstraints2D.None;
 			} else {
 				rb2d.gravityScale = gravityBlue;
 				sr.sprite = Resources.Load<Sprite>("circle");
 				box.enabled = false;
 				circle.enabled = true;
 				transform.localScale = new Vector3 (.25f,.25f,1);
-				rb2d.constraints = RigidbodyConstraints2D.FreezeRotation;
 			}
 			var pinkStuff = GameObject.FindGameObjectsWithTag("Pink");
 			foreach (var obj in pinkStuff) {
@@ -198,14 +202,17 @@ public class PlayerControls : MonoBehaviour {
 		kickee.transform.position = mwa;
 	}
 
+	void OnCollisionStay2D(Collision2D col) {
+		if(col.collider.bounds.Contains(transform.position) && (col.gameObject.tag=="Pink" || col.gameObject.tag=="Blue"))
+		{
+			Debug.Log ("inside");
+		}
+	}
+
     void OnCollisionEnter2D(Collision2D col) {
         if (col.gameObject.layer == 10) { //int value of 'Death' in layer manager(User Defined starts at 10)
             dead = true;
         }
-		/*if(col.collider.bounds.Contains(transform.position))
-		{
-			dead = true;
-		}*/
 		if (col.transform.gameObject.name == "Kickable") {
 			kick = true;
 			kickee = col.transform.gameObject;
