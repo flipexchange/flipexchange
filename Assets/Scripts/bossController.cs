@@ -23,6 +23,7 @@ public class bossController : MonoBehaviour {
     public GameObject healthbar;
     public GameObject healthbarRed;
     private float health;
+    public GameObject wall; //wall disappears after boss dies
 
     public void Start()
     {
@@ -109,6 +110,7 @@ public class bossController : MonoBehaviour {
                 gameObject.SetActive(false);
                 healthbar.SetActive(false);
                 healthbarRed.SetActive(false);
+                wall.SetActive(false);
             }
             healthbar.transform.localScale = new Vector3(health / 2 * healthbar.transform.localScale.x, healthbar.transform.localScale.y, healthbar.transform.localScale.z);
             Destroy(col.collider.gameObject);
