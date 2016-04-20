@@ -210,13 +210,19 @@ public class PlayerControls : MonoBehaviour {
 			var pinkStuff = GameObject.FindGameObjectsWithTag("Pink");
 			foreach (var obj in pinkStuff) {
 				Vector3 newPos = new Vector3(obj.transform.position.x, -obj.transform.position.y, obj.transform.position.z);
+
 				obj.transform.position = newPos;
+				obj.transform.Rotate(0, 0, 180);
+
 			}
 			var blueStuff = GameObject.FindGameObjectsWithTag("Blue");
 			foreach (var obj in blueStuff) {
 				Vector3 newPos = new Vector3(obj.transform.position.x, -obj.transform.position.y, obj.transform.position.z);
 				obj.transform.position = newPos;
+				obj.transform.Rotate(0, 0, 180);
 			}
+
+
 			swap = false;
 		}
 	}
