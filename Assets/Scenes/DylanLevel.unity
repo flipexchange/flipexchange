@@ -1537,7 +1537,7 @@ GameObject:
   - 4: {fileID: 1054749756}
   - 212: {fileID: 1054749755}
   m_Layer: 0
-  m_Name: DialougeBox
+  m_Name: DialogueBox
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
