@@ -1,13 +1,15 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class enemyController : MonoBehaviour
-{
+public class bossController : MonoBehaviour {
+
     /*  PATROL LOGIC  */
-    protected Vector3 velocity;
-    public Transform _transform;
     public float distance = 5f;
     public float speed = 1f;
+    public int firingPeriod = 150;
+
+    Vector3 velocity;
+    Transform _transform;
     Vector3 _originalPosition;
     bool isGoingLeft = true;
     private float distFromStart;
@@ -37,47 +39,44 @@ public class enemyController : MonoBehaviour
     {
         distFromStart = transform.position.x - _originalPosition.x;
 
-        if (isGoingLeft)
-        {
+        if (isGoingLeft) {
             // If gone too far, switch direction
             if (distFromStart < -distance)
                 SwitchDirection();
 
             _transform.Translate(-velocity.x * Time.deltaTime, 0, 0);
         }
-        else
-        {
+        else {
             // If gone too far, switch direction
             if (distFromStart > distance)
                 SwitchDirection();
 
             _transform.Translate(velocity.x * Time.deltaTime, 0, 0);
         }
+
+        // Firing logic
         firingCounter++;
-        if (firingCounter > 75)
+        if (firingCounter > firingPeriod)
         {
             firingCounter = 0;
 
             //The Bullet instantiation happens here.
             GameObject Temporary_Bullet_Handler;
             Temporary_Bullet_Handler = Instantiate(Bullet, Bullet_Emitter.transform.position, Bullet_Emitter.transform.rotation) as GameObject;
-
-            //Sometimes bullets may appear rotated incorrectly due to the way its pivot was set from the original modeling package.
-            //This is EASILY corrected here, you might have to rotate it from a different axis and or angle based on your particular mesh.
-            //Temporary_Bullet_Handler.transform.Rotate(Vector3.left * 90);
+            Physics2D.IgnoreCollision(Temporary_Bullet_Handler.GetComponent<Collider2D>(), GetComponent<Collider2D>());
 
             //Retrieve the Rigidbody component from the instantiated Bullet and control it.
             Rigidbody2D Temporary_RigidBody;
             Temporary_RigidBody = Temporary_Bullet_Handler.GetComponent<Rigidbody2D>();
 
-            //Tell the bullet to be "pushed" forward by an amount set by Bullet_Forward_Force.
-            if(isGoingLeft)
-                Temporary_RigidBody.AddForce(Vector2.left * Bullet_Forward_Force);
-            else
-                Temporary_RigidBody.AddForce(Vector2.right * Bullet_Forward_Force);
+            Vector3 playerPos = GameObject.Find("Player").transform.position;
+            Vector3 bulletVec = playerPos - transform.position;
 
+            //Tell the bullet to be "pushed" forward by an amount set by Bullet_Forward_Force.
+            Temporary_RigidBody.AddForce(bulletVec * Bullet_Forward_Force);
+            
             //Basic Clean Up, set the Bullets to self destruct after 10 Seconds, I am being VERY generous here, normally 3 seconds is plenty.
-            Destroy(Temporary_Bullet_Handler, 5.0f);
+            Destroy(Temporary_Bullet_Handler, 3.0f);
         }
     }
     void SwitchDirection()
