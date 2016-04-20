@@ -119,7 +119,7 @@ public class PlayerControls : MonoBehaviour {
             }
         }
 
-		//the tutorial info box shows up when collide
+		// the tutorial info box shows up when collide
 		if (transform.position.x > infoBox.transform.position.x) {
 			dialogueBox.SetActive (true);
 		}
