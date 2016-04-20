@@ -2005,7 +2005,7 @@ MonoBehaviour:
   gravityPink: 2
   moveForceBlue: 250
   maxSpeedBlue: 4
-  jumpForceBlue: 200
+  jumpForceBlue: 250
   gravityBlue: 1
   groundCheck: {fileID: 0}
   groundCheckTop: {fileID: 0}

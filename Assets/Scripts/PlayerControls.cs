@@ -257,24 +257,12 @@ public class PlayerControls : MonoBehaviour {
             { // Cheating hardcoded bridge method
                 col.gameObject.GetComponent<Rigidbody2D>().mass = 1;
             }
-            //if (col.gameObject.name == "boulder") {
-            /*
-            if (col.gameObject.layer == 10 && checkpointNum < 2)
-            {
-                GameObject boulder = GameObject.Find("boulder");
-                boulder.transform.position = new Vector3(41f, -2f, 0f);
-                boulder.GetComponent<Rigidbody2D>().velocity = Vector3.zero;
-                boulder.GetComponent<Rigidbody2D>().angularVelocity = 0;
-                boulderTriggered = false;
-            }*/
         }
     }
 
 	void OnCollisionExit2D(Collision2D col) {
-		//Debug.Log("gO: "+col.gameObject.layer);
-		//Debug.Log("collider: " + col.collider.gameObject.layer);
 		if (col.transform.gameObject.name == "Kickable") {
 			kick = false;
 		}
-	}
+    }
 }
