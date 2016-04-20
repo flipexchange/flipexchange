@@ -13,8 +13,8 @@ public class PortalBehaviourScript : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 		sceneNames = new string[2];
-		sceneNames[0] = "Prototype";
-		sceneNames[1] = "JennyLevel";
+		sceneNames[0] = "DylanLevel";
+		sceneNames[1] = "SecondLevel";
 		statusText.text = "";
 		Debug.Log (sceneIndex);
 	}

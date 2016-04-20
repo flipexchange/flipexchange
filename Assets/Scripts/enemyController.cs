@@ -77,7 +77,7 @@ public class enemyController : MonoBehaviour
                 Temporary_RigidBody.AddForce(Vector2.right * Bullet_Forward_Force);
 
             //Basic Clean Up, set the Bullets to self destruct after 10 Seconds, I am being VERY generous here, normally 3 seconds is plenty.
-            Destroy(Temporary_Bullet_Handler, 10.0f);
+            Destroy(Temporary_Bullet_Handler, 5.0f);
         }
     }
     void SwitchDirection()
@@ -86,6 +86,5 @@ public class enemyController : MonoBehaviour
         Vector3 theScale = transform.localScale;
         theScale.x *= -1;
         transform.localScale = theScale;
-        //TODO: Change facing direction, animation, etc
     }
 }

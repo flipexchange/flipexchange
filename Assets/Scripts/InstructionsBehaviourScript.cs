@@ -15,7 +15,7 @@ public class InstructionsBehaviourScript : MonoBehaviour {
 		if(Input.GetButtonDown("Submit"))
 		{
 			Debug.Log ("Load portal scene");
-			SceneManager.LoadScene("portalScene", LoadSceneMode.Single);
+			SceneManager.LoadScene("DylanLevel", LoadSceneMode.Single);
 		}
 	}
 }
