@@ -2667,15 +2667,15 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 441732, guid: 9b9816cdc53c14645842e87f9b63ce51, type: 2}
       propertyPath: m_LocalPosition.y
-      value: -164.3
+      value: -164.5
       objectReference: {fileID: 0}
     - target: {fileID: 441732, guid: 9b9816cdc53c14645842e87f9b63ce51, type: 2}
       propertyPath: m_LocalPosition.x
-      value: -206.2
+      value: -126.6
       objectReference: {fileID: 0}
     - target: {fileID: 22378050, guid: 9b9816cdc53c14645842e87f9b63ce51, type: 2}
       propertyPath: m_RenderMode
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 22406130, guid: 9b9816cdc53c14645842e87f9b63ce51, type: 2}
       propertyPath: m_LocalScale.x

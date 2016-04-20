@@ -3043,15 +3043,15 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 441732, guid: 9b9816cdc53c14645842e87f9b63ce51, type: 2}
       propertyPath: m_LocalPosition.y
-      value: -281.3
+      value: -282.33
       objectReference: {fileID: 0}
     - target: {fileID: 441732, guid: 9b9816cdc53c14645842e87f9b63ce51, type: 2}
       propertyPath: m_LocalPosition.x
-      value: -291.3
+      value: -166.89
       objectReference: {fileID: 0}
     - target: {fileID: 22378050, guid: 9b9816cdc53c14645842e87f9b63ce51, type: 2}
       propertyPath: m_RenderMode
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 22406130, guid: 9b9816cdc53c14645842e87f9b63ce51, type: 2}
       propertyPath: m_LocalScale.x
@@ -3091,11 +3091,11 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 22493042, guid: 9b9816cdc53c14645842e87f9b63ce51, type: 2}
       propertyPath: m_AnchoredPosition.x
-      value: -40
+      value: 69
       objectReference: {fileID: 0}
     - target: {fileID: 22493042, guid: 9b9816cdc53c14645842e87f9b63ce51, type: 2}
       propertyPath: m_AnchoredPosition.y
-      value: -35
+      value: -87
       objectReference: {fileID: 0}
     - target: {fileID: 22378050, guid: 9b9816cdc53c14645842e87f9b63ce51, type: 2}
       propertyPath: m_Camera
@@ -3108,6 +3108,10 @@ Prefab:
     - target: {fileID: 11408094, guid: 9b9816cdc53c14645842e87f9b63ce51, type: 2}
       propertyPath: sceneIndex
       value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 11433554, guid: 9b9816cdc53c14645842e87f9b63ce51, type: 2}
+      propertyPath: m_Text
+      value: Loading next level...
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 9b9816cdc53c14645842e87f9b63ce51, type: 2}
