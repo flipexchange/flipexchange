@@ -9,16 +9,14 @@ EditorBuildSettings:
     path: Assets/Scenes/Cutscenes/introScene.unity
   - enabled: 1
     path: Assets/Scenes/Cutscenes/instructionScene.unity
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/Playground/portalScene.unity
   - enabled: 0
     path: Assets/Scenes/Cutscenes/cutScene.unity
-  - enabled: 1
-    path: Assets/Scenes/Cutscenes/cutscene2.unity
   - enabled: 0
-    path: Assets/Scenes/Prototype.unity
-  - enabled: 1
-    path: Assets/Scenes/JennyLevel.unity
+    path: Assets/Scenes/Playground/Prototype.unity
+  - enabled: 0
+    path: Assets/Scenes/Playground/JennyLevel.unity
   - enabled: 0
     path: Assets/Scenes/loadingNextLevel.unity
   - enabled: 0
@@ -26,6 +24,10 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/DylanLevel.unity
   - enabled: 1
+    path: Assets/Scenes/Cutscenes/cutscene1.unity
+  - enabled: 1
     path: Assets/Scenes/SecondLevel.unity
   - enabled: 1
     path: Assets/Scenes/ThirdLevel.unity
+  - enabled: 1
+    path: Assets/Scenes/Cutscenes/cutscene2.unity

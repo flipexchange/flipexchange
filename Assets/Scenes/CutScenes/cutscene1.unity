@@ -152,8 +152,8 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: See? You both have skills that can help each other. See if you can trade
-    items between your nations to beat this next level...
+  m_Text: See? You both have skills that can help each other. See if you can work
+    together to avoid the city guards...
 --- !u!222 &64431906
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -252,7 +252,8 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: And you can be pretty helpful too with all that rolling...
+  m_Text: 'You''re stronger than I thought you were. I bet you can push things over
+    too. '
 --- !u!222 &566605928
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -427,7 +428,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 805221925}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 00f82282c45824699bc6f6918deac270, type: 3}
+  m_Script: {fileID: 11500000, guid: 0eddf399187ea41a1aa228ccff9f2641, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &899170255
