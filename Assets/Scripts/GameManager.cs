@@ -7,7 +7,6 @@ public class GameManager : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 		Scene scene = SceneManager.GetActiveScene();
-		Debug.Log (scene.name);
 		sceneName = scene.name;
 	}
 
@@ -19,11 +18,14 @@ public class GameManager : MonoBehaviour {
 			Debug.Log (sceneName);
 			switch (sceneName)
 			{
+			case "MainMenu":
+				SceneManager.LoadScene("introScene", LoadSceneMode.Single);
+				break;
 			case "cutscene1":
 				SceneManager.LoadScene("SecondLevel", LoadSceneMode.Single);
 				break;
-			default:
-				SceneManager.LoadScene("introScene", LoadSceneMode.Single);
+			case "cutscene2":
+				SceneManager.LoadScene("MainMenu", LoadSceneMode.Single);
 				break;
 			}
 		}

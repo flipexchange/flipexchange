@@ -6,7 +6,7 @@ public class InstructionsBehaviourScript : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		Debug.Log ("This is the instructions scene");
+		
 	}
 	
 	// Update is called once per frame
