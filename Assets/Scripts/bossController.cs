@@ -38,7 +38,7 @@ public class bossController : MonoBehaviour {
         /* HEALTHBAR */
         healthbar.GetComponent<Renderer>().enabled = false;
         healthbarRed.GetComponent<Renderer>().enabled = false;
-        health = 3f;
+        health = 2f;
 
         GameObject player = GameObject.Find("Player");
         Physics2D.IgnoreCollision(player.GetComponent<Collider2D>(), GetComponent<Collider2D>());
@@ -101,11 +101,16 @@ public class bossController : MonoBehaviour {
         if (col.collider.gameObject.layer == 13)
         {
             health--;
-            if (health == 2) {
+            if (health == 1) {
                 healthbar.GetComponent<Renderer>().enabled = true;
                 healthbarRed.GetComponent<Renderer>().enabled = true;
             }
-            healthbar.transform.localScale = new Vector3(health / 3 * healthbar.transform.localScale.x, healthbar.transform.localScale.y, healthbar.transform.localScale.z);
+            if (health == 0) {
+                gameObject.SetActive(false);
+                healthbar.SetActive(false);
+                healthbarRed.SetActive(false);
+            }
+            healthbar.transform.localScale = new Vector3(health / 2 * healthbar.transform.localScale.x, healthbar.transform.localScale.y, healthbar.transform.localScale.z);
             Destroy(col.collider.gameObject);
         }
     }
