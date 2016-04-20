@@ -6,17 +6,18 @@ using UnityEngine.SceneManagement;
 public class PortalBehaviourScript : MonoBehaviour {
 
 	public int sceneIndex;
-	private int nextSceneIndex;
 	public Text statusText;
 	private string[] sceneNames;
 
 	// Use this for initialization
 	void Start () {
-		sceneNames = new string[2];
+		sceneNames = new string[5];
 		sceneNames[0] = "DylanLevel";
-		sceneNames[1] = "SecondLevel";
+		sceneNames[1] = "cutscene1";
+		sceneNames[2] = "SecondLevel";
+		sceneNames[3] = "ThirdLevel";
+		sceneNames[4] = "cutscene2";
 		statusText.text = "";
-		Debug.Log (sceneIndex);
 	}
 	
 	// Update is called once per frame
@@ -33,10 +34,8 @@ public class PortalBehaviourScript : MonoBehaviour {
 
 	IEnumerator LoadNextLevel()
 	{
-		yield return new WaitForSeconds(1.5f);
-		nextSceneIndex = sceneIndex + 1;
-		Debug.Log (nextSceneIndex);
-		SceneManager.LoadScene(sceneNames[nextSceneIndex], LoadSceneMode.Single);
+		yield return new WaitForSeconds(3f);
+		SceneManager.LoadScene(sceneNames[sceneIndex + 1], LoadSceneMode.Single);
 	}
 
 }
