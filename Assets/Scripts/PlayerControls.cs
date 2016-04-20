@@ -43,6 +43,10 @@ public class PlayerControls : MonoBehaviour {
     private bool currentSceneIsSecondLevel;
     private bool boulderTriggered = false;
 
+    // variable for level transition
+    private bool ended;
+    private int levelCounter;
+
 	// Use this for initialization
 	void Start () {
         // Set Deathbed's alpha to 0
@@ -70,6 +74,8 @@ public class PlayerControls : MonoBehaviour {
 		infoBox = GameObject.Find("Info");
 		dialogueBox = GameObject.Find ("DialogueBox");
 		dialogueBox.SetActive (false);
+
+        ended = false;
     }
 
     // Update is called once per frame
@@ -103,10 +109,19 @@ public class PlayerControls : MonoBehaviour {
             lastCheckpoint = GameObject.Find("checkpoint" + checkpointNum);
             checkpointNum++;
             if (GameObject.Find("checkpoint" + checkpointNum) != null)
+                // Set next checkpoint
                 nextCheckpoint = GameObject.Find("checkpoint" + checkpointNum);
             else {
+                // Jump to next level when there's no more checkpoint.
+                ended = true;   
+            }
+        }
+
+        if (ended) {
+            levelCounter++;
+            if (levelCounter > 100) {
                 int i = SceneManager.GetActiveScene().buildIndex;
-                SceneManager.LoadScene(i+1);
+                SceneManager.LoadScene(i + 1);
             }
         }
 
