@@ -37,7 +37,7 @@ public class PlayerControls : MonoBehaviour {
     private GameObject lastCheckpoint;
     private GameObject nextCheckpoint;
 	private GameObject infoBox;
-	private GameObject dialougeBox;
+	private GameObject dialogueBox;
 
     // variables for SecondLevel
     private bool currentSceneIsSecondLevel;
@@ -68,8 +68,8 @@ public class PlayerControls : MonoBehaviour {
         currentSceneIsSecondLevel = SceneManager.GetActiveScene().name=="SecondLevel";
 		//find the next info tutorial point
 		infoBox = GameObject.Find("Info");
-		dialougeBox = GameObject.Find ("DialougeBox");
-		dialougeBox.SetActive (false);
+		dialogueBox = GameObject.Find ("DialogueBox");
+		dialogueBox.SetActive (false);
     }
 
     // Update is called once per frame
@@ -116,7 +116,7 @@ public class PlayerControls : MonoBehaviour {
         }
 		//the tutorial info box shows up when collide
 		if (transform.position.x > infoBox.transform.position.x) {
-			dialougeBox.SetActive (true);
+			dialogueBox.SetActive (true);
 		}
     }
 
