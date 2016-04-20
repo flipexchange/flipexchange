@@ -80,7 +80,10 @@ public class PlayerControls : MonoBehaviour {
 
     // Update is called once per frame
     void Update()
-    {
+	{
+		if (Input.GetButtonDown("Quit"))
+			Application.Quit();
+		
 		grounded = Physics2D.Linecast(transform.position, groundCheck.position, 1 << LayerMask.NameToLayer("Ground"));
 		sloped = Physics2D.Linecast(transform.position, slopeCheck.position, 1 << LayerMask.NameToLayer("Slope")) || Physics2D.Linecast(transform.position, slopeCheckBack.position, 1 << LayerMask.NameToLayer("Slope"));
         /*
