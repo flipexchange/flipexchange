@@ -117,7 +117,7 @@ RectTransform:
   m_RootOrder: 2
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 98, y: 154}
+  m_AnchoredPosition: {x: 73, y: -160}
   m_SizeDelta: {x: 515, y: 205}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &64431905
@@ -152,8 +152,8 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Now that you've gotten to me, I will umerge you two! How does it feel to
-    be seperated?
+  m_Text: See? You both have skills that can help each other. See if you can trade
+    items between your nations to beat this next level...
 --- !u!222 &64431906
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -217,7 +217,7 @@ RectTransform:
   m_RootOrder: 1
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 91, y: -142}
+  m_AnchoredPosition: {x: 64, y: 25}
   m_SizeDelta: {x: 493, y: 143}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &566605927
@@ -252,7 +252,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 'Yeah, Iceworld isn''t so bad. I wouldn''t mind visiting again. '
+  m_Text: And you can be pretty helpful too with all that rolling...
 --- !u!222 &566605928
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -290,8 +290,8 @@ RectTransform:
   m_RootOrder: 4
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 194, y: -252}
-  m_SizeDelta: {x: 371, y: 38}
+  m_AnchoredPosition: {x: 268, y: -268}
+  m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &650915342
 MonoBehaviour:
@@ -325,7 +325,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: '[ press enter to play again ]'
+  m_Text: '[ press enter ]'
 --- !u!222 &650915343
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -522,7 +522,7 @@ RectTransform:
   m_RootOrder: 1
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -266, y: -115}
+  m_AnchoredPosition: {x: -272, y: 45}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1469878794
@@ -589,7 +589,7 @@ RectTransform:
   m_RootOrder: 2
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -265, y: 204}
+  m_AnchoredPosition: {x: -270, y: -122}
   m_SizeDelta: {x: 116.75, y: 125}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1528176545
@@ -703,7 +703,7 @@ RectTransform:
   m_RootOrder: 0
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -265, y: 40}
+  m_AnchoredPosition: {x: -277, y: 201}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1763424649
@@ -770,7 +770,7 @@ RectTransform:
   m_RootOrder: 0
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.78000003, y: 0.5}
-  m_AnchoredPosition: {x: 90, y: 17}
+  m_AnchoredPosition: {x: 69, y: 183}
   m_SizeDelta: {x: 500, y: 120}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1878669414
@@ -805,7 +805,9 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Hey! I'm glad we are seperated now, but I think I might actually miss you!
+  m_Text: 'I guess there are some things that you can do that I can''t...
+
+'
 --- !u!222 &1878669415
 CanvasRenderer:
   m_ObjectHideFlags: 0
