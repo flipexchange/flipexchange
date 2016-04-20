@@ -91,7 +91,7 @@ public class PlayerControls : MonoBehaviour {
         //sloped = sloped || Physics2D.Linecast(transform.position, groundCheckTop.position, 1 << LayerMask.NameToLayer("Slope")) || Physics2D.Linecast(transform.position, groundCheckLeft.position, 1 << LayerMask.NameToLayer("Slope")) || Physics2D.Linecast(transform.position, groundCheckRight.position, 1 << LayerMask.NameToLayer("Slope"));
 		if (transform.position.y < -10)
 			dead = true;
-		if (Input.GetButtonDown("Switch"))
+        if (Input.GetButtonDown("Switch"))
             swap = true;
         if (Input.GetButtonDown("Jump") && grounded)
             jump = true;
@@ -102,8 +102,12 @@ public class PlayerControls : MonoBehaviour {
         if (transform.position.x > nextCheckpoint.transform.position.x) {
             lastCheckpoint = GameObject.Find("checkpoint" + checkpointNum);
             checkpointNum++;
-            if(GameObject.Find("checkpoint" + checkpointNum) != null)
+            if (GameObject.Find("checkpoint" + checkpointNum) != null)
                 nextCheckpoint = GameObject.Find("checkpoint" + checkpointNum);
+            else {
+                int i = SceneManager.GetActiveScene().buildIndex;
+                SceneManager.LoadScene(i+1);
+            }
         }
 
         // SecondLevel Methods
@@ -114,7 +118,8 @@ public class PlayerControls : MonoBehaviour {
                 GameObject.Find("boulder").transform.position = new Vector3(39f,-2f,0f);
             }
         }
-		//the tutorial info box shows up when collide
+
+		// the tutorial info box shows up when collide
 		if (transform.position.x > infoBox.transform.position.x) {
 			dialogueBox.SetActive (true);
 		}
