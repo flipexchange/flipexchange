@@ -3026,11 +3026,11 @@ Prefab:
     m_Modifications:
     - target: {fileID: 486228, guid: 9b9816cdc53c14645842e87f9b63ce51, type: 2}
       propertyPath: m_LocalPosition.x
-      value: 284
+      value: 283.9
       objectReference: {fileID: 0}
     - target: {fileID: 486228, guid: 9b9816cdc53c14645842e87f9b63ce51, type: 2}
       propertyPath: m_LocalPosition.y
-      value: 276
+      value: 275.15
       objectReference: {fileID: 0}
     - target: {fileID: 486228, guid: 9b9816cdc53c14645842e87f9b63ce51, type: 2}
       propertyPath: m_LocalPosition.z

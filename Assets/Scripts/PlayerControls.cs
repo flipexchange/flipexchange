@@ -44,8 +44,8 @@ public class PlayerControls : MonoBehaviour {
     private bool boulderTriggered = false;
 
     // variable for level transition
-    private bool ended;
-    private int levelCounter;
+    //private bool ended;
+    //private int levelCounter;
 
 	// Use this for initialization
 	void Start () {
@@ -75,7 +75,7 @@ public class PlayerControls : MonoBehaviour {
 		dialogueBox = GameObject.Find ("DialogueBox");
 		dialogueBox.SetActive (false);
 
-        ended = false;
+        //ended = false;
     }
 
     // Update is called once per frame
@@ -86,13 +86,6 @@ public class PlayerControls : MonoBehaviour {
 		
 		grounded = Physics2D.Linecast(transform.position, groundCheck.position, 1 << LayerMask.NameToLayer("Ground"));
 		sloped = Physics2D.Linecast(transform.position, slopeCheck.position, 1 << LayerMask.NameToLayer("Slope")) || Physics2D.Linecast(transform.position, slopeCheckBack.position, 1 << LayerMask.NameToLayer("Slope"));
-        /*
-        bool deadTop = Physics2D.Linecast(transform.position, groundCheckTop.position, 1 << LayerMask.NameToLayer("Death"));
-        bool deadBot = Physics2D.Linecast(transform.position, groundCheck.position, 1 << LayerMask.NameToLayer("Death"));
-        bool deadLeft = Physics2D.Linecast(transform.position, groundCheckLeft.position, 1 << LayerMask.NameToLayer("Death"));
-        bool deadRight = Physics2D.Linecast(transform.position, groundCheckRight.position, 1 << LayerMask.NameToLayer("Death"));
-        dead = deadBot || deadLeft || deadRight || deadTop;
-        */
 
         tilted = Physics2D.Linecast(transform.position, groundCheckTop.position, 1 << LayerMask.NameToLayer("Ground"));
         tilted = tilted || Physics2D.Linecast(transform.position, groundCheckLeft.position, 1 << LayerMask.NameToLayer("Ground"));
@@ -114,19 +107,19 @@ public class PlayerControls : MonoBehaviour {
             if (GameObject.Find("checkpoint" + checkpointNum) != null)
                 // Set next checkpoint
                 nextCheckpoint = GameObject.Find("checkpoint" + checkpointNum);
-            else {
+            /*else {
                 // Jump to next level when there's no more checkpoint.
                 ended = true;   
-            }
+            }*/
         }
 
-        if (ended) {
+        /*if (ended) {
             levelCounter++;
             if (levelCounter > 100) {
                 int i = SceneManager.GetActiveScene().buildIndex;
                 SceneManager.LoadScene(i + 1);
             }
-        }
+        }*/
 
         // SecondLevel Methods
         if (currentSceneIsSecondLevel) { //These scripts are specific to SecondLevel
