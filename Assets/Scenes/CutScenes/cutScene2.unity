@@ -152,7 +152,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Now that you've gotten to me, I will umerge you two! How does it feel to
+  m_Text: Now that you've gotten to me, I will unmerge you two! How does it feel to
     be seperated?
 --- !u!222 &64431906
 CanvasRenderer:

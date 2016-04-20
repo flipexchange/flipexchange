@@ -152,8 +152,8 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: I'm tired of this war between the Iceland and Lavaland. I'm merging you
-    together so you have to work together!
+  m_Text: I'm tired of this war between Iceland and Lavaland. I'm merging you together
+    so you have to work together!
 --- !u!222 &64431906
 CanvasRenderer:
   m_ObjectHideFlags: 0
