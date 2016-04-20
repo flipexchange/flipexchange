@@ -42,7 +42,8 @@ public class bossController : MonoBehaviour {
         health = 2f;
 
         GameObject player = GameObject.Find("Player");
-        Physics2D.IgnoreCollision(player.GetComponent<Collider2D>(), GetComponent<Collider2D>());
+        Physics2D.IgnoreCollision(player.GetComponent<BoxCollider2D>(), GetComponent<Collider2D>());
+        Physics2D.IgnoreCollision(player.GetComponent<CircleCollider2D>(), GetComponent<Collider2D>());
     }
 
     void Update()
@@ -81,6 +82,7 @@ public class bossController : MonoBehaviour {
 
             Vector3 playerPos = GameObject.Find("Player").transform.position;
             Vector3 bulletVec = playerPos - transform.position;
+            bulletVec.Normalize();
 
             //Tell the bullet to be "pushed" forward by an amount set by Bullet_Forward_Force.
             Temporary_RigidBody.AddForce(bulletVec * Bullet_Forward_Force);
