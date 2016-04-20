@@ -6,33 +6,42 @@ public class bossController : MonoBehaviour {
     /*  PATROL LOGIC  */
     public float distance = 5f;
     public float speed = 1f;
-    public int firingPeriod = 150;
-
+    private float distFromStart;
     Vector3 velocity;
+    bool isGoingLeft = true;
     Transform _transform;
     Vector3 _originalPosition;
-    bool isGoingLeft = true;
-    private float distFromStart;
 
     /*  BULLET LOGIC  */
-    //Drag in the Bullet Emitter from the Component Inspector.
     public GameObject Bullet_Emitter;
-
-    //Drag in the Bullet Prefab from the Component Inspector.
     public GameObject Bullet;
-
-    //Enter the Speed of the Bullet from the Component Inspector.
     public float Bullet_Forward_Force;
-
+    public int firingPeriod = 150;
     private int firingCounter;
+
+    /* HEALTHBAR */
+    public GameObject healthbar;
+    public GameObject healthbarRed;
+    private float health;
 
     public void Start()
     {
+        /*  PATROL LOGIC  */
         _originalPosition = gameObject.transform.position;
         _transform = GetComponent<Transform>();
         velocity = new Vector3(speed, 0, 0);
         _transform.Translate(velocity.x * Time.deltaTime, 0, 0);
+
+        /*  BULLET LOGIC  */
         firingCounter = 0;
+
+        /* HEALTHBAR */
+        healthbar.GetComponent<Renderer>().enabled = false;
+        healthbarRed.GetComponent<Renderer>().enabled = false;
+        health = 3f;
+
+        GameObject player = GameObject.Find("Player");
+        Physics2D.IgnoreCollision(player.GetComponent<Collider2D>(), GetComponent<Collider2D>());
     }
 
     void Update()
@@ -85,5 +94,19 @@ public class bossController : MonoBehaviour {
         Vector3 theScale = transform.localScale;
         theScale.x *= -1;
         transform.localScale = theScale;
+    }
+
+    void OnCollisionEnter2D(Collision2D col)
+    {
+        if (col.collider.gameObject.layer == 13)
+        {
+            health--;
+            if (health == 2) {
+                healthbar.GetComponent<Renderer>().enabled = true;
+                healthbarRed.GetComponent<Renderer>().enabled = true;
+            }
+            healthbar.transform.localScale = new Vector3(health / 3 * healthbar.transform.localScale.x, healthbar.transform.localScale.y, healthbar.transform.localScale.z);
+            Destroy(col.collider.gameObject);
+        }
     }
 }
