@@ -1,7 +1,8 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class platformController : MonoBehaviour {
+public class platformController : MonoBehaviour
+{
     /*  PATROL LOGIC  */
     protected Vector3 velocity;
     public Transform _transform;
@@ -40,8 +41,35 @@ public class platformController : MonoBehaviour {
             _transform.Translate(velocity.x * Time.deltaTime, 0, 0);
         }
     }
+    /*void FixedUpdate() {
+        if (isGoingLeft)
+        {
+            // If gone too far, switch direction
+            if (distFromStart < -distance)
+                SwitchDirection();
+
+            GetComponent<Rigidbody2D>().MovePosition(transform.position - velocity * Time.fixedDeltaTime);
+        }
+        else
+        {
+            // If gone too far, switch direction
+            if (distFromStart > distance)
+                SwitchDirection();
+
+            GetComponent<Rigidbody2D>().MovePosition(transform.position + velocity * Time.fixedDeltaTime);
+        }
+    }*/
     void SwitchDirection()
     {
         isGoingLeft = !isGoingLeft;
+    }
+
+    void OnCollisionEnter2D(Collision2D col)
+    {
+        col.transform.parent = transform;
+    }
+    void OnCollisionExit2D(Collision2D col)
+    {
+        col.transform.parent = null;
     }
 }

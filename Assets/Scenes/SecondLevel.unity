@@ -2127,7 +2127,6 @@ GameObject:
   - 212: {fileID: 1066101251}
   - 61: {fileID: 1066101250}
   - 114: {fileID: 1066101253}
-  - 61: {fileID: 1066101254}
   m_Layer: 8
   m_Name: Moving Platform
   m_TagString: Untagged
@@ -2143,12 +2142,12 @@ BoxCollider2D:
   m_GameObject: {fileID: 1066101249}
   m_Enabled: 1
   m_Density: 1
-  m_Material: {fileID: 6200000, guid: 600d8c86be9d74566ac8f8f81a9e2289, type: 2}
+  m_Material: {fileID: 6200000, guid: 4c6729af233c0480b9f8a4e76fe71043, type: 2}
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 0.98, y: 1.02}
 --- !u!212 &1066101251
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -2205,20 +2204,6 @@ MonoBehaviour:
   _transform: {fileID: 0}
   distance: 4
   speed: 3
---- !u!61 &1066101254
-BoxCollider2D:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1066101249}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 6200000, guid: 600d8c86be9d74566ac8f8f81a9e2289, type: 2}
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_Offset: {x: 0, y: 0}
-  serializedVersion: 2
-  m_Size: {x: 1.02, y: 0.98}
 --- !u!1 &1193319428
 GameObject:
   m_ObjectHideFlags: 0
@@ -2333,11 +2318,11 @@ MonoBehaviour:
   jump: 0
   swap: 0
   moveForcePink: 500
-  maxSpeedPink: 4
+  maxSpeedPink: 5
   jumpForcePink: 400
   gravityPink: 2
   moveForceBlue: 250
-  maxSpeedBlue: 4
+  maxSpeedBlue: 5
   jumpForceBlue: 250
   gravityBlue: 1
   groundCheck: {fileID: 0}
