@@ -28,7 +28,7 @@ public class PlayerControls : MonoBehaviour {
 	private bool sloped = false;
 	private bool tilted = false;
     private bool dead = false;
-	private bool pink = true;
+	public bool pink = true;
 	private bool kick = false;
 	private GameObject kickee;
 
@@ -36,8 +36,6 @@ public class PlayerControls : MonoBehaviour {
     private int checkpointNum = 0; 
     private GameObject lastCheckpoint;
     private GameObject nextCheckpoint;
-	private GameObject infoBox;
-	private GameObject dialogueBox;
 
     // variables for SecondLevel
     private bool currentSceneIsSecondLevel;
@@ -70,11 +68,7 @@ public class PlayerControls : MonoBehaviour {
         // to iterate through the checkpoints: {checkpoint0, checkpoint1, ...}
         nextCheckpoint = GameObject.Find("checkpoint"+checkpointNum);
         currentSceneIsSecondLevel = SceneManager.GetActiveScene().name=="SecondLevel";
-		//find the next info tutorial point
-		infoBox = GameObject.Find("Info");
-		dialogueBox = GameObject.Find ("DialogueBox");
-		dialogueBox.SetActive (false);
-
+	
         //ended = false;
     }
 
@@ -129,11 +123,6 @@ public class PlayerControls : MonoBehaviour {
                 GameObject.Find("boulder").transform.position = new Vector3(39f,-2f,0f);
             }
         }
-
-		// the tutorial info box shows up when collide
-		if (transform.position.x > infoBox.transform.position.x) {
-			dialogueBox.SetActive (true);
-		}
     }
 
 	void FixedUpdate()
@@ -249,6 +238,7 @@ public class PlayerControls : MonoBehaviour {
 			kick = true;
 			kickee = col.transform.gameObject;
 		}
+
 
         // SecondLevel Methods
         if (currentSceneIsSecondLevel)
