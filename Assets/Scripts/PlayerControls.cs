@@ -31,6 +31,7 @@ public class PlayerControls : MonoBehaviour {
 	public bool pink = true;
 	private bool kick = false;
 	private GameObject kickee;
+	public bool twoWorlds = true;
 
     // variable to store lastCheckpoint object
     private int checkpointNum = 0; 
@@ -62,8 +63,12 @@ public class PlayerControls : MonoBehaviour {
 		slopeCheckBack = transform.Find ("slopeCheckBack");
 		var blueStuff = GameObject.FindGameObjectsWithTag("Blue");
 		foreach (var obj in blueStuff) {
-			Vector3 newPos = new Vector3(obj.transform.position.x, -obj.transform.position.y, obj.transform.position.z);
-			obj.transform.position = newPos;
+			if (twoWorlds) {
+				Vector3 newPos = new Vector3 (obj.transform.position.x, -obj.transform.position.y, obj.transform.position.z);
+				obj.transform.position = newPos;
+			} else {
+				SetAllCollidersStatus (obj, !pink);
+			}
 		}
         // to iterate through the checkpoints: {checkpoint0, checkpoint1, ...}
         nextCheckpoint = GameObject.Find("checkpoint"+checkpointNum);
@@ -194,21 +199,32 @@ public class PlayerControls : MonoBehaviour {
 			}
 			var pinkStuff = GameObject.FindGameObjectsWithTag("Pink");
 			foreach (var obj in pinkStuff) {
-				Vector3 newPos = new Vector3(obj.transform.position.x, -obj.transform.position.y, obj.transform.position.z);
+				if (twoWorlds) {
+					Vector3 newPos = new Vector3 (obj.transform.position.x, -obj.transform.position.y, obj.transform.position.z);
 
-				obj.transform.position = newPos;
-				obj.transform.Rotate(0, 0, 180);
-
+					obj.transform.position = newPos;
+					obj.transform.Rotate (0, 0, 180);
+				} else {
+					SetAllCollidersStatus (obj, pink);
+				}
 			}
 			var blueStuff = GameObject.FindGameObjectsWithTag("Blue");
 			foreach (var obj in blueStuff) {
-				Vector3 newPos = new Vector3(obj.transform.position.x, -obj.transform.position.y, obj.transform.position.z);
-				obj.transform.position = newPos;
-				obj.transform.Rotate(0, 0, 180);
+				if (twoWorlds) {
+					Vector3 newPos = new Vector3 (obj.transform.position.x, -obj.transform.position.y, obj.transform.position.z);
+					obj.transform.position = newPos;
+					obj.transform.Rotate (0, 0, 180);
+				} else {
+					SetAllCollidersStatus (obj, !pink);
+				}
 			}
-
-
 			swap = false;
+		}
+	}
+
+	public void SetAllCollidersStatus (GameObject obj, bool active) {
+		foreach(Collider2D c in obj.GetComponents<Collider2D> ()) {
+			c.enabled = active;
 		}
 	}
 
