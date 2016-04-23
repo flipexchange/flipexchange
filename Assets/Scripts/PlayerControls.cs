@@ -218,7 +218,7 @@ public class PlayerControls : MonoBehaviour {
 					obj.transform.Rotate (0, 0, 180);
 				} else {
 					SetAllCollidersStatus (obj, !pink);
-					if (obj.name == "SingleBackground" || obj.name == "SingleBackground") {
+					if (obj.name == "SingleBackground" || obj.name == "SingleBackground (1)") {
 						obj.transform.Rotate (0, 0, 180);
 					}
 				}
