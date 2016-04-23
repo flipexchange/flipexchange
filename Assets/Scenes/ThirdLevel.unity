@@ -2331,11 +2331,11 @@ MonoBehaviour:
   jump: 0
   swap: 0
   moveForcePink: 500
-  maxSpeedPink: 4
+  maxSpeedPink: 5
   jumpForcePink: 400
   gravityPink: 2
   moveForceBlue: 250
-  maxSpeedBlue: 4
+  maxSpeedBlue: 5
   jumpForceBlue: 200
   gravityBlue: 1
   groundCheck: {fileID: 0}

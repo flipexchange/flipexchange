@@ -261,7 +261,7 @@ public class PlayerControls : MonoBehaviour {
         { //These scripts are specific to SecondLevel
             if (col.gameObject.name == "bridge" && !pink)
             { // Cheating hardcoded bridge method
-                col.gameObject.GetComponent<Rigidbody2D>().mass = 1;
+                col.gameObject.GetComponent<Rigidbody2D>().mass = 10;
             }
         }
     }
