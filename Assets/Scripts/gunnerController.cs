@@ -13,7 +13,11 @@ public class gunnerController : MonoBehaviour {
     private int firingCounter;
     private bool isFiring;
 
+	private AudioSource source;
+	public AudioClip bulletAudio;
+
     void Start () {
+		source = GetComponent<AudioSource> ();
         isFiring = false;
         firingCounter = 0;
         lullCounter = 0;
@@ -30,6 +34,8 @@ public class gunnerController : MonoBehaviour {
             firingCounter++;
             if (firingCounter > FiringPeriod)
             {
+				source.clip = bulletAudio;
+				source.Play ();
                 firingCounter = 0;
                 //The Bullet instantiation happens here.
                 GameObject Temporary_Bullet_Handler;
