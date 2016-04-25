@@ -70,6 +70,7 @@ public class dialogBehaviour : MonoBehaviour {
 			//setting things in place
 			Vector3 newPos = new Vector3 (infoPositions [counter, X1], infoPositions [counter, Y1], infoBox.transform.position.z);
 			infoBox.transform.position = newPos;
+			this.GetComponent<SpriteRenderer> ().color = new Color (1.0f, 1.0f, 1.0f, 0.0f);
 		}
 
 
@@ -108,7 +109,7 @@ public class dialogBehaviour : MonoBehaviour {
 				source.clip = textAudio;
 				source.Play ();
 			} else {
-				this.GetComponent<SpriteRenderer> ().color = new Color (1.0f, 1.0f, 1.0f, 1.0f);
+				this.GetComponent<SpriteRenderer> ().color = new Color (1.0f, 1.0f, 1.0f, 0.0f);
 
 				counter++;
 
