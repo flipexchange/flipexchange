@@ -28,36 +28,50 @@ public class dialogBehaviour : MonoBehaviour {
 		player = GameObject.Find ("Player");
 		infoBox = GameObject.Find("Info");
 		showingQuote = false;
-		playerScript  = player.GetComponent<PlayerControls> ();
+		if (player != null) {
+			playerScript = player.GetComponent<PlayerControls> ();
 
-		dialogueBox = GameObject.Find ("DialogueBox");
-		circle = GameObject.Find ("DialogueBox/circle");
-		rect = GameObject.Find ("DialogueBox/rect");
-		dialogueText = GameObject.Find ("DialogueBox/Canvas/DialogueText").GetComponent<Text> ();
-		dialogueBox.SetActive (false);
-		X1 = 0;
-		X2 = 2;
-		Y1 = 1;
-		Y2 = 3;
-		//[x1,y1,x2,y2] where x1,y1 is initial position and x2,y2 is where it goes after it teleports
-		infoPositions = new float[,] { {-5,-6,5,-6},{ 9, -4, 17, -4 },{47.86f,-4,67,-4},{78,-2.89f,83,-2.89f},{100,-5,199,-5} };
+			dialogueBox = GameObject.Find ("DialogueBox");
+			circle = GameObject.Find ("DialogueBox/circle");
+			rect = GameObject.Find ("DialogueBox/rect");
+			dialogueText = GameObject.Find ("DialogueBox/Canvas/DialogueText").GetComponent<Text> ();
+			dialogueBox.SetActive (false);
+			X1 = 0;
+			X2 = 2;
+			Y1 = 1;
+			Y2 = 3;
+			//[x1,y1,x2,y2] where x1,y1 is initial position and x2,y2 is where it goes after it teleports
+			infoPositions = new float[,] {
+				{ -5, -6, 5, -6 },
+				{ 9, -4, 17, -4 },
+				{ 47.86f, -4, 67, -4 },
+				{ 78, -2.89f, 83, -2.89f },
+				 {
+					100,
+					-5,
+					199,
+					-5
+				}
+			};
 
-		rectQuotes = new string[5];
-		circleQuotes = new string[5];
-		rectQuotes [0] = "I bet I can get to the end of this world all on my own, why do we need to be merged?";
-		circleQuotes [0] = "You fire folk are so brash. You always rush things, I can't wait until we unmerge.";
+			rectQuotes = new string[5];
+			circleQuotes = new string[5];
+			rectQuotes [0] = "I bet I can get to the end of this world all on my own, why do we need to be merged?";
+			circleQuotes [0] = "You fire folk are so brash. You always rush things, I can't wait until we unmerge.";
 
-		circleQuotes [1] = "Even if you can jump and run faster than I can, that doesn't mean you can climb ramps as well as I can...";
-		rectQuotes [1] = "Ice Maiden, this ramp is too steep even for me! I can't seem to rush past it...but maybe you can?";
-		rectQuotes [2] = "What are those weird red bars? Why can't I get past them on my own?";
-		circleQuotes [2] = "Hm, so the red bars don't seem to block me, Let me take over for a little.";
-		rectQuotes [3] = "Man I wish I could jump high enough to reach that white portal...but we might need to switch off to make it.";
-		circleQuotes [3] = "Seems like there is no way for us to make it to the portal unless we switch off.";
+			circleQuotes [1] = "Even if you can jump and run faster than I can, that doesn't mean you can climb ramps as well as I can...";
+			rectQuotes [1] = "Ice Maiden, this ramp is too steep even for me! I can't seem to rush past it...but maybe you can?";
+			rectQuotes [2] = "What are those weird red bars? Why can't I get past them on my own?";
+			circleQuotes [2] = "Hm, so the red bars don't seem to block me, Let me take over for a little.";
+			rectQuotes [3] = "Man I wish I could jump high enough to reach that white portal...but we might need to switch off to make it.";
+			circleQuotes [3] = "Seems like there is no way for us to make it to the portal unless we switch off.";
 
 
-		//setting things in place
-		Vector3 newPos = new Vector3(infoPositions[counter,X1], infoPositions[counter,Y1], infoBox.transform.position.z);
-		infoBox.transform.position = newPos;
+			//setting things in place
+			Vector3 newPos = new Vector3 (infoPositions [counter, X1], infoPositions [counter, Y1], infoBox.transform.position.z);
+			infoBox.transform.position = newPos;
+		}
+
 
 	}
 	
