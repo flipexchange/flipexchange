@@ -42,6 +42,13 @@ public class PlayerControls : MonoBehaviour {
     private bool currentSceneIsSecondLevel;
     private bool boulderTriggered = false;
 
+	//for sounds
+	public AudioSource allAudio;
+	public AudioClip fireAudio;
+	public AudioClip iceAudio;
+	public AudioClip jumpAudio;
+	public AudioClip dieAudio;
+
     // variable for level transition
     //private bool ended;
     //private int levelCounter;
@@ -52,7 +59,7 @@ public class PlayerControls : MonoBehaviour {
         Color colorPicker = new Color(0.5f, 0.5f, 0.5f);
         colorPicker.a = 0;
         //GameObject.Find("Deathbed").GetComponent<Renderer>().material.SetColor("_Color", colorPicker);
-
+		allAudio = GetComponent<AudioSource>();
         rb2d = GetComponent<Rigidbody2D>();
 		sr = GetComponent<SpriteRenderer>();
 		groundCheck = transform.Find("groundCheck");
@@ -94,8 +101,11 @@ public class PlayerControls : MonoBehaviour {
 			dead = true;
         if (Input.GetButtonDown("Switch"))
             swap = true;
-        if (Input.GetButtonDown("Jump") && grounded)
-            jump = true;
+		if (Input.GetButtonDown ("Jump") && grounded) {
+			jump = true;
+			allAudio.clip = jumpAudio;
+			allAudio.Play ();
+		}
         if (kick && Input.GetButtonDown("Kick"))
             StartCoroutine(kickIt());
 
@@ -190,12 +200,16 @@ public class PlayerControls : MonoBehaviour {
 				box.enabled = true;
 				circle.enabled = false;
 				transform.localScale = new Vector3 (.2f,.2f,1);
+				allAudio.clip = fireAudio;
+				allAudio.Play ();
 			} else {
 				rb2d.gravityScale = gravityBlue;
 				sr.sprite = Resources.Load<Sprite>("circle");
 				box.enabled = false;
 				circle.enabled = true;
 				transform.localScale = new Vector3 (.25f,.25f,1);
+				allAudio.clip = iceAudio;
+				allAudio.Play ();
 			}
 			var pinkStuff = GameObject.FindGameObjectsWithTag("Pink");
 			foreach (var obj in pinkStuff) {
@@ -254,6 +268,8 @@ public class PlayerControls : MonoBehaviour {
     void OnCollisionEnter2D(Collision2D col) {
         if (col.gameObject.layer == 10) { //int value of 'Death' in layer manager(User Defined starts at 10)
             dead = true;
+			allAudio.clip = dieAudio;
+			allAudio.Play ();
         }
 		if (col.transform.gameObject.name == "Kickable") {
 			kick = true;

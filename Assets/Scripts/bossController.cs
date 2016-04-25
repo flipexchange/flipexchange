@@ -18,6 +18,8 @@ public class bossController : MonoBehaviour {
     public float Bullet_Forward_Force;
     public int firingPeriod = 150;
     private int firingCounter;
+	private AudioSource source;
+	public AudioClip bulletAudio;
 
     /* HEALTHBAR */
     public GameObject healthbar;
@@ -40,6 +42,9 @@ public class bossController : MonoBehaviour {
         healthbar.GetComponent<Renderer>().enabled = false;
         healthbarRed.GetComponent<Renderer>().enabled = false;
         health = 2f;
+
+		/*SOUND */
+		source = GetComponent<AudioSource> ();
 
         GameObject player = GameObject.Find("Player");
         Physics2D.IgnoreCollision(player.GetComponent<BoxCollider2D>(), GetComponent<Collider2D>());
@@ -69,6 +74,8 @@ public class bossController : MonoBehaviour {
         firingCounter++;
         if (firingCounter > firingPeriod)
         {
+			source.clip = bulletAudio;
+			source.Play ();
             firingCounter = 0;
 
             //The Bullet instantiation happens here.

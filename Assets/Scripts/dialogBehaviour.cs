@@ -19,8 +19,11 @@ public class dialogBehaviour : MonoBehaviour {
 	private int Y2;
 	private int counter;
 	private bool showingQuote;
+	private AudioSource source;
+	public AudioClip textAudio;
 	// Use this for initialization
 	void Start () {
+		source = GetComponent<AudioSource> ();
 		counter = 0;
 		player = GameObject.Find ("Player");
 		infoBox = GameObject.Find("Info");
@@ -88,6 +91,8 @@ public class dialogBehaviour : MonoBehaviour {
 				this.GetComponent<SpriteRenderer> ().color = new Color (1.0f, 1.0f, 1.0f, 0.0f);
 
 				showingQuote = true;
+				source.clip = textAudio;
+				source.Play ();
 			} else {
 				this.GetComponent<SpriteRenderer> ().color = new Color (1.0f, 1.0f, 1.0f, 1.0f);
 
@@ -97,6 +102,7 @@ public class dialogBehaviour : MonoBehaviour {
 				infoBox.transform.position = newPos;
 				dialogueBox.SetActive (false);
 				showingQuote = false;
+				source.Stop ();
 
 			}
 
