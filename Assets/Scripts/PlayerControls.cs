@@ -64,7 +64,7 @@ public class PlayerControls : MonoBehaviour {
 		var blueStuff = GameObject.FindGameObjectsWithTag("Blue");
 		foreach (var obj in blueStuff) {
 			if (twoWorlds) {
-				if (obj.name != "SingleBackground" && obj.name != "SingleBackground (1)") {
+				if (obj.name != "SingleBackground" && obj.name != "SingleBackground (1)" && obj.name != "BackgroundQuad" && obj.name != "BackgroundQuad (1)") {
 					Vector3 newPos = new Vector3 (obj.transform.position.x, -obj.transform.position.y, obj.transform.position.z);
 					obj.transform.position = newPos;
 					obj.transform.Rotate (0, 0, 180);
