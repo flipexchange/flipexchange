@@ -2410,7 +2410,7 @@ MonoBehaviour:
   slopeCheck: {fileID: 0}
   slopeCheckBack: {fileID: 0}
   pink: 1
-  twoWorlds: 1
+  flippingAnimation: 0
   allAudio: {fileID: 0}
   fireAudio: {fileID: 8300000, guid: fe3c9468362b14a098c8e0f4365281e0, type: 3}
   iceAudio: {fileID: 8300000, guid: fe3c9468362b14a098c8e0f4365281e0, type: 3}
@@ -3296,7 +3296,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 22378050, guid: 9b9816cdc53c14645842e87f9b63ce51, type: 2}
       propertyPath: m_RenderMode
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 22406130, guid: 9b9816cdc53c14645842e87f9b63ce51, type: 2}
       propertyPath: m_LocalScale.x
@@ -3357,6 +3357,10 @@ Prefab:
     - target: {fileID: 11433554, guid: 9b9816cdc53c14645842e87f9b63ce51, type: 2}
       propertyPath: m_Text
       value: Loading next level...
+      objectReference: {fileID: 0}
+    - target: {fileID: 22378050, guid: 9b9816cdc53c14645842e87f9b63ce51, type: 2}
+      propertyPath: m_PlaneDistance
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 9b9816cdc53c14645842e87f9b63ce51, type: 2}
