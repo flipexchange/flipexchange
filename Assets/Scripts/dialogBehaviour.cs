@@ -56,14 +56,14 @@ public class dialogBehaviour : MonoBehaviour {
 
 			rectQuotes = new string[5];
 			circleQuotes = new string[5];
-			rectQuotes [0] = "I bet I can get to the end of this world all on my own, why do we need to be merged?";
-			circleQuotes [0] = "You fire folk are so brash. You always rush things, I can't wait until we unmerge.";
+			rectQuotes [0] = "I bet I can get to the end of this world all on my own! Why do we need to be merged?";
+			circleQuotes [0] = "You fire folk are so brash. You always rush things; I can't wait until we unmerge.";
 
-			circleQuotes [1] = "Even if you can jump and run faster than I can, that doesn't mean you can climb ramps as well as I can...";
+			circleQuotes [1] = "Even if you can jump and run faster than me, that doesn't mean you can climb ramps as well as I can...";
 			rectQuotes [1] = "Ice Maiden, this ramp is too steep even for me! I can't seem to rush past it...but maybe you can?";
 			rectQuotes [2] = "What are those weird red bars? Why can't I get past them on my own?";
-			circleQuotes [2] = "Hm, so the red bars don't seem to block me, Let me take over for a little.";
-			rectQuotes [3] = "Man I wish I could jump high enough to reach that white portal...but we might need to switch off to make it.";
+			circleQuotes [2] = "Hm, the red bars don't seem to block me. Let me take over for a little while.";
+			rectQuotes [3] = "Man, I wish I could jump high enough to reach that white portal...but we might need to switch off to make it.";
 			circleQuotes [3] = "Seems like there is no way for us to make it to the portal unless we switch off.";
 
 
@@ -95,12 +95,16 @@ public class dialogBehaviour : MonoBehaviour {
 	}
 	void OnTriggerEnter2D(Collider2D coll)
 	{
+		var sign = 1;
+		if (!playerScript.pink && playerScript.flippingAnimation) {
+			sign = -1;
+		}
 		if (coll.transform.gameObject.name == "Player") {
 			if (showingQuote == false) {
 
 				dialogueBox.SetActive (true);
 				updateQuote ();
-				Vector3 newPos = new Vector3 (infoPositions [counter, X2], infoPositions [counter, Y2], infoBox.transform.position.z);
+				Vector3 newPos = new Vector3 (infoPositions [counter, X2], sign*infoPositions [counter, Y2], infoBox.transform.position.z);
 				infoBox.transform.position = newPos;
 				this.GetComponent<SpriteRenderer> ().color = new Color (1.0f, 1.0f, 1.0f, 0.0f);
 
@@ -112,7 +116,7 @@ public class dialogBehaviour : MonoBehaviour {
 
 				counter++;
 
-				Vector3 newPos = new Vector3 (infoPositions [counter, X1], infoPositions [counter, Y1], infoBox.transform.position.z);
+				Vector3 newPos = new Vector3 (infoPositions [counter, X1], sign*infoPositions [counter, Y1], infoBox.transform.position.z);
 				infoBox.transform.position = newPos;
 				dialogueBox.SetActive (false);
 				showingQuote = false;

@@ -31,7 +31,9 @@ public class PlayerControls : MonoBehaviour {
 	public bool pink = true;
 	private bool kick = false;
 	private GameObject kickee;
-	public bool twoWorlds = true;
+	private Transform mainCamera;
+	public bool flippingAnimation;
+	private bool swapping = false;
 
     // variable to store lastCheckpoint object
     private int checkpointNum = 0; 
@@ -62,6 +64,7 @@ public class PlayerControls : MonoBehaviour {
 		allAudio = GetComponent<AudioSource>();
         rb2d = GetComponent<Rigidbody2D>();
 		sr = GetComponent<SpriteRenderer>();
+		mainCamera = GameObject.FindGameObjectsWithTag("MainCamera")[0].transform;
 		groundCheck = transform.Find("groundCheck");
 		groundCheckTop = transform.Find("groundCheckTop");
 		groundCheckLeft = transform.Find("groundCheckLeft");
@@ -70,14 +73,18 @@ public class PlayerControls : MonoBehaviour {
 		slopeCheckBack = transform.Find ("slopeCheckBack");
 		var blueStuff = GameObject.FindGameObjectsWithTag("Blue");
 		foreach (var obj in blueStuff) {
-			if (twoWorlds) {
-				if (obj.name != "SingleBackground" && obj.name != "SingleBackground (1)" && obj.name != "BackgroundQuad" && obj.name != "BackgroundQuad (1)") {
-					Vector3 newPos = new Vector3 (obj.transform.position.x, -obj.transform.position.y, obj.transform.position.z);
-					obj.transform.position = newPos;
-					obj.transform.Rotate (0, 0, 180);
-				}
-			} else {
-				SetAllCollidersStatus (obj, !pink);
+			if (obj.name != "SingleBackground" && obj.name != "SingleBackground (1)" && obj.name != "BackgroundQuad" && obj.name != "BackgroundQuad (1)") {
+				Vector3 newPos = new Vector3 (obj.transform.position.x, -obj.transform.position.y, obj.transform.position.z);
+				obj.transform.position = newPos;
+				obj.transform.Rotate (0, 0, 180);
+			}
+		}
+		if (flippingAnimation) {
+			var allStuff = GameObject.FindGameObjectsWithTag ("Both");
+			foreach (GameObject obj in allStuff) {
+				Vector3 pos = new Vector3 (obj.transform.position.x, -obj.transform.position.y, obj.transform.position.z);
+				Quaternion rot = Quaternion.Euler (180, 0, 0);
+				Instantiate (obj, pos, rot);
 			}
 		}
         // to iterate through the checkpoints: {checkpoint0, checkpoint1, ...}
@@ -99,7 +106,7 @@ public class PlayerControls : MonoBehaviour {
         //sloped = sloped || Physics2D.Linecast(transform.position, groundCheckTop.position, 1 << LayerMask.NameToLayer("Slope")) || Physics2D.Linecast(transform.position, groundCheckLeft.position, 1 << LayerMask.NameToLayer("Slope")) || Physics2D.Linecast(transform.position, groundCheckRight.position, 1 << LayerMask.NameToLayer("Slope"));
 		if (transform.position.y < -10)
 			dead = true;
-        if (Input.GetButtonDown("Switch"))
+        if (Input.GetButtonDown("Switch") && !swapping)
             swap = true;
 		if (Input.GetButtonDown ("Jump") && grounded) {
 			jump = true;
@@ -145,10 +152,14 @@ public class PlayerControls : MonoBehaviour {
 		float moveForce = moveForcePink;
 		float maxSpeed = maxSpeedPink;
 		float jumpForce = jumpForcePink;
+		var sign = 1;
+		if (!pink && flippingAnimation) {
+			sign = -1;
+		}
 		if (!pink) {
-			moveForce = moveForceBlue;
+			moveForce = sign*moveForceBlue;
 			maxSpeed = maxSpeedBlue;
-			jumpForce = jumpForceBlue;
+			jumpForce = sign*jumpForceBlue;
 		}
 		if (sloped) {
 			if (pink) {
@@ -158,15 +169,22 @@ public class PlayerControls : MonoBehaviour {
 				moveForce /= 10;
 			}
 		}
-
+		if (swapping) {
+			moveForce = 0;
+			jumpForce = 0;
+			maxSpeed = 0;
+		}
 		if (tilted || !pink) {
-			if (rb2d.rotation != 0f) {
+			if (rb2d.rotation != 0f && (pink || !flippingAnimation)) {
 				rb2d.rotation = 0f;
+			}
+			if (rb2d.rotation != 180f && !pink && flippingAnimation) {
+				rb2d.rotation = 180f;
 			}
 		}
 
-        if (dead) {
-            rb2d.transform.position = lastCheckpoint.transform.position;
+		if (dead) {
+			rb2d.transform.position = new Vector3(lastCheckpoint.transform.position.x,sign*lastCheckpoint.transform.position.y,lastCheckpoint.transform.position.z);
             dead = false;
             if (currentSceneIsSecondLevel && checkpointNum < 2) {
                 GameObject boulder = GameObject.Find("boulder");
@@ -192,6 +210,10 @@ public class PlayerControls : MonoBehaviour {
 		}
 		if (swap) {
 			pink = !pink;
+			sign = 1;
+			if (!pink && flippingAnimation) {
+				sign = -1;
+			}
 			var box = GetComponent<BoxCollider2D>();
 			var circle = GetComponent<CircleCollider2D>();
 			if (pink) {
@@ -203,7 +225,7 @@ public class PlayerControls : MonoBehaviour {
 				allAudio.clip = fireAudio;
 				allAudio.Play ();
 			} else {
-				rb2d.gravityScale = gravityBlue;
+				rb2d.gravityScale = sign*gravityBlue;
 				sr.sprite = Resources.Load<Sprite>("circle");
 				box.enabled = false;
 				circle.enabled = true;
@@ -211,30 +233,31 @@ public class PlayerControls : MonoBehaviour {
 				allAudio.clip = iceAudio;
 				allAudio.Play ();
 			}
-			var pinkStuff = GameObject.FindGameObjectsWithTag("Pink");
-			foreach (var obj in pinkStuff) {
-				if (twoWorlds) {
+			if (flippingAnimation) {
+				rb2d.AddForce (new Vector2 (0f, 4 * jumpForce));
+				StartCoroutine (rotate ());
+				var pinkStuff = GameObject.FindGameObjectsWithTag ("OtherWorld");
+				foreach (var obj in pinkStuff) {
 					Vector3 newPos = new Vector3 (obj.transform.position.x, -obj.transform.position.y, obj.transform.position.z);
 
 					obj.transform.position = newPos;
 					obj.transform.Rotate (0, 0, 180);
-				} else {
-					SetAllCollidersStatus (obj, pink);
 				}
-			}
-			var blueStuff = GameObject.FindGameObjectsWithTag("Blue");
-			foreach (var obj in blueStuff) {
-				if (twoWorlds) {
-					if (obj.name != "SingleBackground" && obj.name != "SingleBackground (1)") {
+			} else {
+				var pinkStuff = GameObject.FindGameObjectsWithTag ("Pink");
+				foreach (var obj in pinkStuff) {
+					Vector3 newPos = new Vector3 (obj.transform.position.x, -obj.transform.position.y, obj.transform.position.z);
+
+					obj.transform.position = newPos;
+					obj.transform.Rotate (0, 0, 180);
+				}
+				var blueStuff = GameObject.FindGameObjectsWithTag ("Blue");
+				foreach (var obj in blueStuff) {
+					if (obj.name != "BackgroundQuad" && obj.name != "BackgroundQuad (1)") {
 						Vector3 newPos = new Vector3 (obj.transform.position.x, -obj.transform.position.y, obj.transform.position.z);
 						obj.transform.position = newPos;
 					}
 					obj.transform.Rotate (0, 0, 180);
-				} else {
-					SetAllCollidersStatus (obj, !pink);
-					if (obj.name == "SingleBackground" || obj.name == "SingleBackground (1)") {
-						obj.transform.Rotate (0, 0, 180);
-					}
 				}
 			}
 			swap = false;
@@ -245,6 +268,30 @@ public class PlayerControls : MonoBehaviour {
 		foreach(Collider2D c in obj.GetComponents<Collider2D> ()) {
 			c.enabled = active;
 		}
+	}
+
+	IEnumerator rotate() {
+		swapping = true;
+		var old = mainCamera.rotation.z;
+		if (old == 0) {
+			for (int x = 0; x<18; x++) {
+				mainCamera.rotation *= Quaternion.Euler(0, 0, 10);
+				transform.rotation *= Quaternion.Euler(0, 0, -10);
+				yield return new WaitForSeconds (0.003f);
+			}
+			mainCamera.rotation = Quaternion.Euler(0,0,180);
+			transform.rotation = Quaternion.Euler(0,0,0);
+		} else {
+			for (int x  = 0; x<18; x++) {
+				mainCamera.rotation *= Quaternion.Euler(0, 0, -10);
+				transform.rotation *= Quaternion.Euler(0, 0, 10);
+				yield return new WaitForSeconds (0.003f);
+			}
+			mainCamera.rotation = Quaternion.Euler(0,0,0);
+			transform.rotation = Quaternion.Euler(0,0,180);
+		}
+		transform.Rotate (0,0,180);
+		swapping = false;
 	}
 
 	IEnumerator kickIt() {
