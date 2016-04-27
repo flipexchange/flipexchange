@@ -227,7 +227,11 @@ public class PlayerControls : MonoBehaviour {
 				sr.sprite = Resources.Load<Sprite>("rectangle");
 				box.enabled = true;
 				circle.enabled = false;
-				transform.localScale = new Vector3 (.2f,.2f,1);
+				if (transform.parent == null) {
+					transform.localScale = new Vector3 (.2f,.2f,1);
+				} else {
+					transform.localScale = new Vector3 (.05f,.2f,1);
+				}
 				allAudio.clip = fireAudio;
 				allAudio.Play ();
 			} else {
@@ -235,7 +239,11 @@ public class PlayerControls : MonoBehaviour {
 				sr.sprite = Resources.Load<Sprite>("circle");
 				box.enabled = false;
 				circle.enabled = true;
-				transform.localScale = new Vector3 (.25f,.25f,1);
+				if (transform.parent == null) {
+					transform.localScale = new Vector3 (.25f,.25f,1);
+				} else {
+					transform.localScale = new Vector3 (.0625f,.25f,1);
+				}
 				allAudio.clip = iceAudio;
 				allAudio.Play ();
 			}
