@@ -1284,6 +1284,7 @@ MonoBehaviour:
   FiringPeriod: 20
   LullPeriod: 200
   Bullet_Forward_Force: 500
+  activated: 0
   bulletAudio: {fileID: 8300000, guid: 05e3c369c1cc84569b50252dedb4b798, type: 3}
 --- !u!61 &607296649
 BoxCollider2D:
