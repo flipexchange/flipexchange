@@ -43,9 +43,10 @@ public class PlayerControls : MonoBehaviour {
     // variables for SecondLevel
     private bool currentSceneIsSecondLevel;
     private bool boulderTriggered = false;
+    private bool gunnerStarted = false;
 
-	//for sounds
-	public AudioSource allAudio;
+    // for sounds
+    public AudioSource allAudio;
 	public AudioClip fireAudio;
 	public AudioClip iceAudio;
 	public AudioClip jumpAudio;
@@ -90,8 +91,7 @@ public class PlayerControls : MonoBehaviour {
         // to iterate through the checkpoints: {checkpoint0, checkpoint1, ...}
         nextCheckpoint = GameObject.Find("checkpoint"+checkpointNum);
         currentSceneIsSecondLevel = SceneManager.GetActiveScene().name=="SecondLevel";
-	
-        //ended = false;
+        //currentSceneIsThirdLevel = SceneManager.GetActiveScene().name == "ThirdLevel";
     }
 
     // Update is called once per frame
@@ -143,6 +143,12 @@ public class PlayerControls : MonoBehaviour {
             {
                 boulderTriggered = true;
                 GameObject.Find("boulder").transform.position = new Vector3(39f,-2f,0f);
+            }
+            if (transform.position.x > 65 && !gunnerStarted)
+            {
+                gunnerStarted = true;
+                GameObject.Find("gunner").GetComponent<gunnerController>().activated = true;
+                Debug.Log("HASDOOASMDKL");
             }
         }
     }
