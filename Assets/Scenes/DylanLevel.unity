@@ -2032,7 +2032,7 @@ MonoBehaviour:
   slopeCheck: {fileID: 0}
   slopeCheckBack: {fileID: 0}
   pink: 1
-  flippingAnimation: 1
+  flippingAnimation: 0
   allAudio: {fileID: 0}
   fireAudio: {fileID: 8300000, guid: fe3c9468362b14a098c8e0f4365281e0, type: 3}
   iceAudio: {fileID: 8300000, guid: fe3c9468362b14a098c8e0f4365281e0, type: 3}
