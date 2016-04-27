@@ -3336,11 +3336,11 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 22493042, guid: 9b9816cdc53c14645842e87f9b63ce51, type: 2}
       propertyPath: m_AnchoredPosition.x
-      value: 69
+      value: -39
       objectReference: {fileID: 0}
     - target: {fileID: 22493042, guid: 9b9816cdc53c14645842e87f9b63ce51, type: 2}
       propertyPath: m_AnchoredPosition.y
-      value: -87
+      value: -28
       objectReference: {fileID: 0}
     - target: {fileID: 22378050, guid: 9b9816cdc53c14645842e87f9b63ce51, type: 2}
       propertyPath: m_Camera
@@ -3361,6 +3361,15 @@ Prefab:
     - target: {fileID: 22378050, guid: 9b9816cdc53c14645842e87f9b63ce51, type: 2}
       propertyPath: m_PlaneDistance
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 11433554, guid: 9b9816cdc53c14645842e87f9b63ce51, type: 2}
+      propertyPath: m_FontData.m_Font
+      value: 
+      objectReference: {fileID: 12800000, guid: b7511d4acf1f743f8936172147451b3f,
+        type: 3}
+    - target: {fileID: 11433554, guid: 9b9816cdc53c14645842e87f9b63ce51, type: 2}
+      propertyPath: m_FontData.m_FontStyle
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 9b9816cdc53c14645842e87f9b63ce51, type: 2}
