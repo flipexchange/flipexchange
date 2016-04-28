@@ -74,7 +74,7 @@ public class PlayerControls : MonoBehaviour {
 		slopeCheckBack = transform.Find ("slopeCheckBack");
 		var blueStuff = GameObject.FindGameObjectsWithTag("Blue");
 		foreach (var obj in blueStuff) {
-			if (obj.name != "SingleBackground" && obj.name != "SingleBackground (1)" && obj.name != "BackgroundQuad" && obj.name != "BackgroundQuad (1)") {
+			if (obj.name != "BackgroundQuad (2)" && obj.name != "BackgroundQuad" && obj.name != "BackgroundQuad (1)") {
 				Vector3 newPos = new Vector3 (obj.transform.position.x, -obj.transform.position.y, obj.transform.position.z);
 				obj.transform.position = newPos;
 				obj.transform.Rotate (0, 0, 180);
@@ -227,7 +227,11 @@ public class PlayerControls : MonoBehaviour {
 				sr.sprite = Resources.Load<Sprite>("rectangle");
 				box.enabled = true;
 				circle.enabled = false;
-				transform.localScale = new Vector3 (.2f,.2f,1);
+				if (transform.parent == null) {
+					transform.localScale = new Vector3 (.2f,.2f,1);
+				} else {
+					transform.localScale = new Vector3 (.05f,.2f,1);
+				}
 				allAudio.clip = fireAudio;
 				allAudio.Play ();
 			} else {
@@ -235,7 +239,11 @@ public class PlayerControls : MonoBehaviour {
 				sr.sprite = Resources.Load<Sprite>("circle");
 				box.enabled = false;
 				circle.enabled = true;
-				transform.localScale = new Vector3 (.25f,.25f,1);
+				if (transform.parent == null) {
+					transform.localScale = new Vector3 (.25f,.25f,1);
+				} else {
+					transform.localScale = new Vector3 (.0625f,.25f,1);
+				}
 				allAudio.clip = iceAudio;
 				allAudio.Play ();
 			}
@@ -259,7 +267,7 @@ public class PlayerControls : MonoBehaviour {
 				}
 				var blueStuff = GameObject.FindGameObjectsWithTag ("Blue");
 				foreach (var obj in blueStuff) {
-					if (obj.name != "BackgroundQuad" && obj.name != "BackgroundQuad (1)") {
+					if (obj.name != "BackgroundQuad (2)" && obj.name != "BackgroundQuad" && obj.name != "BackgroundQuad (1)") {
 						Vector3 newPos = new Vector3 (obj.transform.position.x, -obj.transform.position.y, obj.transform.position.z);
 						obj.transform.position = newPos;
 					}
