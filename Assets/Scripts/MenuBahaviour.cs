@@ -6,6 +6,12 @@ using UnityEngine.UI;
 public class MenuBahaviour : MonoBehaviour {
 	private GameObject bg;
 	private GameObject bg2;
+	public float _x;
+	public float _y;
+	public float _buttonHeight;
+	public float _buttonWidth;
+	public GUIStyle customButton;
+
 	public void ClickPlay(){
 		SceneManager.LoadScene ("introScene", LoadSceneMode.Single);
 	}
@@ -31,7 +37,13 @@ public class MenuBahaviour : MonoBehaviour {
 		bg.transform.position = newPos;
 		Vector3 newPos2 = new Vector3(33.15f, bg2.transform.position.y, bg2.transform.position.z);
 		bg2.transform.position = newPos2;
-	}
+
+		// Set main menu position
+		_x = (Screen.height-2*_buttonHeight) / 2;
+		_y = (Screen.height-_buttonHeight) / 2 + 30;
+		_buttonHeight = 60;
+		_buttonWidth = 300;
+	}	
 	
 	// Update is called once per frame
 	void Update () {
@@ -47,4 +59,18 @@ public class MenuBahaviour : MonoBehaviour {
 			bg2.transform.position = newPos2;
 		}
 	} 
+
+	void OnGUI () {
+
+		// Make the first button. If it is pressed, Play Game will be executed
+		if(GUI.Button(new Rect(_x,_y,_buttonWidth,_buttonHeight), "Play Game", customButton)) {
+			ClickPlay ();
+		}
+
+		// Make the second button.
+		if(GUI.Button(new Rect(_x,_y+_buttonHeight+10,_buttonWidth,_buttonHeight), "Credits", customButton)) {
+			ClickCredits();
+		}
+
+	}
 }

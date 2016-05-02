@@ -15,18 +15,20 @@ public class GameManager : MonoBehaviour {
 
 		if(Input.GetButtonDown("Submit"))
 		{
-			Debug.Log (sceneName);
 			switch (sceneName)
 			{
-			case "MainMenu":
-				SceneManager.LoadScene("introScene", LoadSceneMode.Single);
-				break;
-			case "cutscene1":
-				SceneManager.LoadScene("SecondLevel", LoadSceneMode.Single);
-				break;
-			case "cutscene2":
-				SceneManager.LoadScene("MainMenu", LoadSceneMode.Single);
-				break;
+				case "MainMenu":
+					SceneManager.LoadScene("introScene", LoadSceneMode.Single);
+					break;
+				case "cutscene1":
+					SceneManager.LoadScene("SecondLevel", LoadSceneMode.Single);
+					break;
+				case "cutscene2":
+					SceneManager.LoadScene("MainMenu", LoadSceneMode.Single);
+					break;
+				case "Credits":
+					SceneManager.LoadScene("MainMenu", LoadSceneMode.Single);
+					break;
 			}
 		}
 	}
