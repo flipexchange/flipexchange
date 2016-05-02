@@ -38,6 +38,11 @@ public class bossController : MonoBehaviour {
         /*  BULLET LOGIC  */
         firingCounter = 0;
 
+        /*  ALPHA RENDERER  */
+        Color color = GetComponent<Renderer>().material.color;
+        color.a = 0.5f;
+        GetComponent<Renderer>().material.SetColor("_Color", color);
+
         /* HEALTHBAR */
         healthbar.GetComponent<Renderer>().enabled = false;
         healthbarRed.GetComponent<Renderer>().enabled = false;

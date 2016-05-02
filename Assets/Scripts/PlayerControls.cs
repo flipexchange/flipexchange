@@ -11,12 +11,12 @@ public class PlayerControls : MonoBehaviour {
 	[HideInInspector] public bool jump = false;
 	[HideInInspector] public bool swap = false;
 	public float moveForcePink = 500f;
-	public float maxSpeedPink = 4f;
-	public float jumpForcePink = 450f;
+	public float maxSpeedPink = 5f;
+	public float jumpForcePink = 400f;
 	public float gravityPink = 2f;
-	public float moveForceBlue = 200f;
+	public float moveForceBlue = 250f;
 	public float maxSpeedBlue = 3f;
-	public float jumpForceBlue = 200f;
+	public float jumpForceBlue = 250f;
 	public float gravityBlue = 1f;
 	public Transform groundCheck;
 	public Transform groundCheckTop;
@@ -225,27 +225,27 @@ public class PlayerControls : MonoBehaviour {
 				//GetComponent<Animation>().CrossFade("RedToBlue", 0.5f, PlayMode.StopAll);;
 				rb2d.gravityScale = gravityPink;
 				//StartCoroutine (blueToRed());
-				sr.sprite = Resources.Load<Sprite>("rectangle");
+				sr.sprite = Resources.Load<Sprite>("firem");
 				box.enabled = true;
 				circle.enabled = false;
 				if (transform.parent == null) {
-					transform.localScale = new Vector3 (.2f,.2f,1);
+					transform.localScale = new Vector3 (1.65f,1.65f,1);
 				} else {
-					transform.localScale = new Vector3 (.05f,.2f,1);
+					transform.localScale = new Vector3 (0.4125f,1.65f,1);
 				}
 				allAudio.clip = fireAudio;
 				allAudio.Play ();
 			} else {
 				//GetComponent<Animation>().CrossFade("BlueToRed", 0.5f, PlayMode.StopAll);
 				rb2d.gravityScale = sign*gravityBlue;
-				sr.sprite = Resources.Load<Sprite>("circle");
+				sr.sprite = Resources.Load<Sprite>("icem");
 				//StartCoroutine(redToBlue());
 				box.enabled = false;
 				circle.enabled = true;
 				if (transform.parent == null) {
-					transform.localScale = new Vector3 (.25f,.25f,1);
+					transform.localScale = new Vector3 (1.65f,1.65f,1);
 				} else {
-					transform.localScale = new Vector3 (.0625f,.25f,1);
+					transform.localScale = new Vector3 (0.4125f,1.65f,1);
 				}
 				allAudio.clip = iceAudio;
 				allAudio.Play ();
@@ -329,7 +329,7 @@ public class PlayerControls : MonoBehaviour {
 			sr.sprite = Resources.Load<Sprite>("switch/many-"+i);
 			yield return new WaitForSeconds (0.01f);
 		}
-		sr.sprite = Resources.Load<Sprite>("rectangle");
+		sr.sprite = Resources.Load<Sprite>("firem");
 	}
 
 	IEnumerator redToBlue() {
@@ -339,7 +339,7 @@ public class PlayerControls : MonoBehaviour {
 			sr.sprite = Resources.Load<Sprite>("switch/many-"+i);
 			yield return new WaitForSeconds (0.01f);
 		}
-		sr.sprite = Resources.Load<Sprite>("circle");
+		sr.sprite = Resources.Load<Sprite>("icem");
 	}
 
 	void OnCollisionStay2D(Collision2D col) {
