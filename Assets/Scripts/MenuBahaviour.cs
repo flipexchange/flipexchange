@@ -28,11 +28,19 @@ public class MenuBahaviour : MonoBehaviour {
 	void Start () {
 		bg = GameObject.Find ("BackgroundQuad");
 		bg2 = GameObject.Find ("BackgroundQuad2");
+
+		// Change the color of the button background to transparent
 		GameObject playBut = GameObject.Find ("PlayButton");
 		Image butAlpha = playBut.GetComponent<Image> ();
 		Color c = butAlpha.color;
-		c.a = 0.8f;
+		c.a = 0.1f;
 		butAlpha.color = c;
+
+		// On hover, change the color of the button background to white
+		ColorBlock cb = playBut.GetComponent<Button> ().colors;
+		cb.highlightedColor = new Color(1f, 1f, 1f, 1f);
+//		playBut.GetComponent<Button>.colors = cb;
+
 		Vector3 newPos = new Vector3(-16.46f, bg.transform.position.y, bg.transform.position.z);
 		bg.transform.position = newPos;
 		Vector3 newPos2 = new Vector3(33.15f, bg2.transform.position.y, bg2.transform.position.z);
