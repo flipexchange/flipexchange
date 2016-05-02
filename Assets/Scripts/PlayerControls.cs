@@ -148,7 +148,6 @@ public class PlayerControls : MonoBehaviour {
             {
                 gunnerStarted = true;
                 GameObject.Find("gunner").GetComponent<gunnerController>().activated = true;
-                Debug.Log("HASDOOASMDKL");
             }
         }
     }
