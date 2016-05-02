@@ -3189,6 +3189,10 @@ Prefab:
       propertyPath: m_TagString
       value: OtherWorld
       objectReference: {fileID: 0}
+    - target: {fileID: 11423590, guid: 47e50c32c40444d64b7cd3d42aafadb3, type: 2}
+      propertyPath: level
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 47e50c32c40444d64b7cd3d42aafadb3, type: 2}
   m_IsPrefabParent: 0
