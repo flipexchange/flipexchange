@@ -224,7 +224,7 @@ public class PlayerControls : MonoBehaviour {
 			var circle = GetComponent<CircleCollider2D>();
 			if (pink) {
 				rb2d.gravityScale = gravityPink;
-				sr.sprite = Resources.Load<Sprite>("rectangle");
+				sr.sprite = Resources.Load<Sprite>("firem");
 				box.enabled = true;
 				circle.enabled = false;
 				if (transform.parent == null) {
@@ -236,7 +236,7 @@ public class PlayerControls : MonoBehaviour {
 				allAudio.Play ();
 			} else {
 				rb2d.gravityScale = sign*gravityBlue;
-				sr.sprite = Resources.Load<Sprite>("circle");
+				sr.sprite = Resources.Load<Sprite>("icem");
 				box.enabled = false;
 				circle.enabled = true;
 				if (transform.parent == null) {
