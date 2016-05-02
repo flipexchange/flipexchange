@@ -23,6 +23,11 @@ public class gunnerController : MonoBehaviour {
         firingCounter = 0;
         lullCounter = 0;
         activated = false;
+
+        Color color = GetComponent<Renderer>().material.color;
+        color.a -= 0.5f;
+
+        GetComponent<Renderer>().material.SetColor("_Color", color);
     }
 	
 	void Update () {
