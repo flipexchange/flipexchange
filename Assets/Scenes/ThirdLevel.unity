@@ -3192,7 +3192,7 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Size: {x: 5, y: 5}
+  m_Size: {x: 0.64, y: 0.65}
 --- !u!50 &1193319430
 Rigidbody2D:
   serializedVersion: 2
@@ -3236,7 +3236,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingOrder: 1
-  m_Sprite: {fileID: 21300000, guid: 86fa6cad79ddb453083800bcad4483ed, type: 3}
+  m_Sprite: {fileID: 21300000, guid: c8169c23524534feca4b2956550e94ae, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -3248,7 +3248,7 @@ Transform:
   m_GameObject: {fileID: 1193319428}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -4, y: -8.5, z: 0}
-  m_LocalScale: {x: 0.2, y: 0.2, z: 1}
+  m_LocalScale: {x: 1.65, y: 1.65, z: 1}
   m_Children:
   - {fileID: 1933970877}
   - {fileID: 2028293832}
@@ -3306,7 +3306,7 @@ CircleCollider2D:
   m_UsedByEffector: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Radius: 3
+  m_Radius: 0.53
 --- !u!82 &1193319435
 AudioSource:
   m_ObjectHideFlags: 0
