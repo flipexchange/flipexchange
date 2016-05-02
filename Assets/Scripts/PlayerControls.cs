@@ -148,7 +148,6 @@ public class PlayerControls : MonoBehaviour {
             {
                 gunnerStarted = true;
                 GameObject.Find("gunner").GetComponent<gunnerController>().activated = true;
-                Debug.Log("HASDOOASMDKL");
             }
         }
     }
@@ -223,8 +222,11 @@ public class PlayerControls : MonoBehaviour {
 			var box = GetComponent<BoxCollider2D>();
 			var circle = GetComponent<CircleCollider2D>();
 			if (pink) {
+				//GetComponent<Animation>().CrossFade("RedToBlue", 0.5f, PlayMode.StopAll);;
 				rb2d.gravityScale = gravityPink;
+
 				sr.sprite = Resources.Load<Sprite>("firem");
+
 				box.enabled = true;
 				circle.enabled = false;
 				if (transform.parent == null) {
@@ -235,8 +237,11 @@ public class PlayerControls : MonoBehaviour {
 				allAudio.clip = fireAudio;
 				allAudio.Play ();
 			} else {
+				//GetComponent<Animation>().CrossFade("BlueToRed", 0.5f, PlayMode.StopAll);
 				rb2d.gravityScale = sign*gravityBlue;
+<
 				sr.sprite = Resources.Load<Sprite>("icem");
+
 				box.enabled = false;
 				circle.enabled = true;
 				if (transform.parent == null) {
@@ -317,6 +322,26 @@ public class PlayerControls : MonoBehaviour {
 		}
 		Vector3 mwa = new Vector3(kickee.transform.position.x, -old, kickee.transform.position.z);
 		kickee.transform.position = mwa;
+	}
+
+	IEnumerator blueToRed() {
+		var i = 1;
+		var end = 14;
+		while (i < end) {
+			sr.sprite = Resources.Load<Sprite>("switch/many-"+i);
+			yield return new WaitForSeconds (0.01f);
+		}
+		sr.sprite = Resources.Load<Sprite>("rectangle");
+	}
+
+	IEnumerator redToBlue() {
+		var i = 14;
+		var end = 22;
+		while (i < end) {
+			sr.sprite = Resources.Load<Sprite>("switch/many-"+i);
+			yield return new WaitForSeconds (0.01f);
+		}
+		sr.sprite = Resources.Load<Sprite>("circle");
 	}
 
 	void OnCollisionStay2D(Collision2D col) {

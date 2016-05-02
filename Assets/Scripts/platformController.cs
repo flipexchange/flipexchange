@@ -5,7 +5,7 @@ public class platformController : MonoBehaviour
 {
     /*  PATROL LOGIC  */
     protected Vector3 velocity;
-    public Transform _transform;
+    private Transform _transform;
     public float distance = 5f;
     public float speed = 1f;
     Vector3 _originalPosition;
@@ -66,10 +66,12 @@ public class platformController : MonoBehaviour
 
     void OnCollisionEnter2D(Collision2D col)
     {
+        Debug.Log("CHILD");
         col.transform.parent = transform;
     }
     void OnCollisionExit2D(Collision2D col)
     {
+        Debug.Log("ORPHAN");
         col.transform.parent = null;
     }
 }
