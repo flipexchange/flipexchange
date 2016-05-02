@@ -29,7 +29,11 @@ public class PortalBehaviourScript : MonoBehaviour {
 	{
 		Debug.Log ("Collision detected");
 		StartCoroutine("LoadNextLevel");
-		statusText.text = "Loading next level...";
+		if (sceneIndex == 3) {
+			statusText.text = "Loading end scene...";
+		} else {
+			statusText.text = "Loading next level...";
+		}
 	}
 
 	IEnumerator LoadNextLevel()

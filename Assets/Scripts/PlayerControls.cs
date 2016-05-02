@@ -99,7 +99,7 @@ public class PlayerControls : MonoBehaviour {
 	{
 		grounded = Physics2D.Linecast(transform.position, groundCheck.position, 1 << LayerMask.NameToLayer("Ground"));
 		sloped = Physics2D.Linecast(transform.position, slopeCheck.position, 1 << LayerMask.NameToLayer("Slope")) || Physics2D.Linecast(transform.position, slopeCheckBack.position, 1 << LayerMask.NameToLayer("Slope"));
-
+		sloped = sloped && !grounded;
         tilted = Physics2D.Linecast(transform.position, groundCheckTop.position, 1 << LayerMask.NameToLayer("Ground"));
         tilted = tilted || Physics2D.Linecast(transform.position, groundCheckLeft.position, 1 << LayerMask.NameToLayer("Ground"));
         tilted = tilted || Physics2D.Linecast(transform.position, groundCheckRight.position, 1 << LayerMask.NameToLayer("Ground"));
@@ -163,7 +163,7 @@ public class PlayerControls : MonoBehaviour {
 			sign = -1;
 		}
 		if (!pink) {
-			moveForce = sign*moveForceBlue;
+			moveForce = moveForceBlue;
 			maxSpeed = maxSpeedBlue;
 			jumpForce = sign*jumpForceBlue;
 		}
@@ -289,19 +289,19 @@ public class PlayerControls : MonoBehaviour {
 		var old = mainCamera.rotation.z;
 		if (old == 0) {
 			for (int x = 0; x<18; x++) {
-				mainCamera.rotation *= Quaternion.Euler(0, 0, 10);
+				//mainCamera.rotation *= Quaternion.Euler(0, 0, 10);
 				transform.rotation *= Quaternion.Euler(0, 0, -10);
 				yield return new WaitForSeconds (0.003f);
 			}
-			mainCamera.rotation = Quaternion.Euler(0,0,180);
+			//mainCamera.rotation = Quaternion.Euler(0,0,180);
 			transform.rotation = Quaternion.Euler(0,0,0);
 		} else {
 			for (int x  = 0; x<18; x++) {
-				mainCamera.rotation *= Quaternion.Euler(0, 0, -10);
+				//mainCamera.rotation *= Quaternion.Euler(0, 0, -10);
 				transform.rotation *= Quaternion.Euler(0, 0, 10);
 				yield return new WaitForSeconds (0.003f);
 			}
-			mainCamera.rotation = Quaternion.Euler(0,0,0);
+			//mainCamera.rotation = Quaternion.Euler(0,0,0);
 			transform.rotation = Quaternion.Euler(0,0,180);
 		}
 		transform.Rotate (0,0,180);
