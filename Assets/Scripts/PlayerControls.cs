@@ -14,9 +14,9 @@ public class PlayerControls : MonoBehaviour {
 	public float maxSpeedPink = 5f;
 	public float jumpForcePink = 400f;
 	public float gravityPink = 2f;
-	public float moveForceBlue = 200f;
-	public float maxSpeedBlue = 2f;
-	public float jumpForceBlue = 200f;
+	public float moveForceBlue = 250f;
+	public float maxSpeedBlue = 3f;
+	public float jumpForceBlue = 250f;
 	public float gravityBlue = 1f;
 	public Transform groundCheck;
 	public Transform groundCheckTop;
@@ -169,7 +169,7 @@ public class PlayerControls : MonoBehaviour {
 		if (sloped) {
 			if (pink) {
 				moveForce = 0f;
-				maxSpeed = .5f;
+				maxSpeed = 1.5f;
 			} else {
 				moveForce /= 10;
 			}
