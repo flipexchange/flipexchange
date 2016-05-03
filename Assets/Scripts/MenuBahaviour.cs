@@ -67,23 +67,24 @@ public class MenuBahaviour : MonoBehaviour {
 		}
 	} 
 
-	void OnGUI () {
-
-		// Make the first button. If it is pressed, Play Game will be executed
-		if(GUI.Button(new Rect(_x,_y,_buttonWidth,_buttonHeight), "Play Game", customButton)) {
-			ClickPlay ();
-		}
-
-		// Make the second button.
-		if(GUI.Button(new Rect(_x,_y+_buttonHeight+10,_buttonWidth,_buttonHeight), "Credits", customButton)) {
-			ClickCredits();
-		}
-
-		// Make the third button.
-		if(GUI.Button(new Rect(_x,_y+2*_buttonHeight+20,_buttonWidth,_buttonHeight), "Quit", customButton)) {
-			Application.Quit();
-		}
-	}
+//  Please don't remove this just yet... 
+//	void OnGUI () {
+//
+//		// Make the first button. If it is pressed, Play Game will be executed
+//		if(GUI.Button(new Rect(_x,_y,_buttonWidth,_buttonHeight), "Play Game", customButton)) {
+//			ClickPlay ();
+//		}
+//
+//		// Make the second button.
+//		if(GUI.Button(new Rect(_x,_y+_buttonHeight+10,_buttonWidth,_buttonHeight), "Credits", customButton)) {
+//			ClickCredits();
+//		}
+//
+//		// Make the third button.
+//		if(GUI.Button(new Rect(_x,_y+2*_buttonHeight+20,_buttonWidth,_buttonHeight), "Quit", customButton)) {
+//			Application.Quit();
+//		}
+//	}
 }
 
 
