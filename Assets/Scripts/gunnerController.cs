@@ -19,6 +19,7 @@ public class gunnerController : MonoBehaviour {
     private bool bobUp;
     private int bobCounter;
     private int bobState;
+    private Transform parentScalar;
 
 	private AudioSource source;
 	public AudioClip bulletAudio;
@@ -40,7 +41,7 @@ public class gunnerController : MonoBehaviour {
         bobCounter = 0;
 
         /*  SCALE  */
-        //transform.localScale += new Vector3(0f, 0.2f, 0f);
+        parentScalar = transform.parent;
 
         /*  ALPHA CODE  */
         Color color = GetComponent<Renderer>().material.color;
@@ -80,32 +81,30 @@ public class gunnerController : MonoBehaviour {
                     //Basic Clean Up, set the Bullets to self destruct after 10 Seconds, I am being VERY generous here, normally 3 seconds is plenty.
                     Destroy(Temporary_Bullet_Handler, 5.0f);
                 }
-            }
 
-            /*  Bob Logic  */
-            bobCounter++;
-            if (bobCounter > BobPeriod)
-            {
-                /*  Reset  */
-                bobCounter = 0;
-
-                if (bobUp)
+                /*  Bob Logic  */
+                bobCounter++;
+                if (bobCounter > BobPeriod)
                 {
-                    bobState++;
-                    transform.localScale += new Vector3(0f, 0.05f, 0f);
+                    /*  Reset  */
+                    bobCounter = 0;
+
+                    if (bobUp)
+                    {
+                        bobState++;
+                        parentScalar.localScale += new Vector3(0f, 0.025f, 0f);
+                    }
+                    else
+                    {
+                        bobState--;
+                        parentScalar.localScale -= new Vector3(0f, 0.025f, 0f);
+                    }
+                    if (bobState == 3 || bobState == 0)
+                    {
+                        bobUp = !bobUp;
+                    }
                 }
-                else
-                {
-                    bobState--;
-                    transform.localScale -= new Vector3(0f, 0.05f, 0f);
-                }
-                if (bobState == 3 || bobState == 0)
-                {
-                    bobUp = !bobUp;
-                }    
             }
-
-            
         }
     }
 }

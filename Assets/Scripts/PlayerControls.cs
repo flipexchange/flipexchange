@@ -44,6 +44,8 @@ public class PlayerControls : MonoBehaviour {
     private bool currentSceneIsSecondLevel;
     private bool boulderTriggered = false;
     private bool gunnerStarted = false;
+    GameObject gunner;
+    float gunnerX;
 
     // for sounds
     public AudioSource allAudio;
@@ -51,10 +53,6 @@ public class PlayerControls : MonoBehaviour {
 	public AudioClip iceAudio;
 	public AudioClip jumpAudio;
 	public AudioClip dieAudio;
-
-    // variable for level transition
-    //private bool ended;
-    //private int levelCounter;
 
 	// Use this for initialization
 	void Start () {
@@ -91,7 +89,10 @@ public class PlayerControls : MonoBehaviour {
         // to iterate through the checkpoints: {checkpoint0, checkpoint1, ...}
         nextCheckpoint = GameObject.Find("checkpoint"+checkpointNum);
         currentSceneIsSecondLevel = SceneManager.GetActiveScene().name=="SecondLevel";
-        //currentSceneIsThirdLevel = SceneManager.GetActiveScene().name == "ThirdLevel";
+        if (currentSceneIsSecondLevel) {
+            gunner = GameObject.Find("gunner");
+            gunnerX = 99999f;
+        }
     }
 
     // Update is called once per frame
@@ -144,10 +145,16 @@ public class PlayerControls : MonoBehaviour {
                 boulderTriggered = true;
                 GameObject.Find("boulder").transform.position = new Vector3(39f,-2f,0f);
             }
+            
             if (transform.position.x > 65 && !gunnerStarted)
             {
                 gunnerStarted = true;
-                GameObject.Find("gunner").GetComponent<gunnerController>().activated = true;
+                //GameObject.Find("gunner").GetComponent<gunnerController>().activated = true;
+                gunner.GetComponent<gunnerController>().activated = true;
+                gunnerX = gunner.transform.position.x;
+            }
+            if (transform.position.x > gunnerX) {
+                gunner.GetComponent<gunnerController>().activated = true;
             }
         }
     }
