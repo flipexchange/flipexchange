@@ -24,6 +24,10 @@ public class MenuBahaviour : MonoBehaviour {
 		SceneManager.LoadScene ("MainMenu", LoadSceneMode.Single);
 	}
 
+	public void ClickQuit(){
+		Application.Quit();
+	}
+
 	// Use this for initialization
 	void Start () {
 		bg = GameObject.Find ("BackgroundQuad");
@@ -35,23 +39,30 @@ public class MenuBahaviour : MonoBehaviour {
 		bg2.transform.position = newPos2;
 
 		// Set main menu position
-		_x = (Screen.height-2*_buttonHeight) / 2;
-		_y = (Screen.height-_buttonHeight) / 2 + 30;
+		_x = (Screen.height-2*_buttonHeight) / 2 +50;
+		_y = 30;
 		_buttonHeight = 60;
 		_buttonWidth = 300;
+
+		// Apply faster animation speed to all Buttons on Canvas
+		Button[] buttons = this.GetComponentsInChildren<Button>();
+		for (int i = 0; i < buttons.Length; i++)
+		{
+			buttons[i].GetComponent<Animator> ().speed = .5f;	
+		}
 	}	
-	
+
 	// Update is called once per frame
 	void Update () {
 		//Create a nice scrolling animation
-		Vector3 newPos = new Vector3(bg.transform.position.x-0.01f, bg.transform.position.y, bg.transform.position.z);
+		Vector3 newPos = new Vector3 (bg.transform.position.x - 0.01f, bg.transform.position.y, bg.transform.position.z);
 		bg.transform.position = newPos;
-		Vector3 newPos2 = new Vector3(bg2.transform.position.x-0.01f, bg2.transform.position.y, bg2.transform.position.z);
+		Vector3 newPos2 = new Vector3 (bg2.transform.position.x - 0.01f, bg2.transform.position.y, bg2.transform.position.z);
 		bg2.transform.position = newPos2;
 		if (bg2.transform.position.x <= -18.1) {
-			newPos = new Vector3(18.4f, bg.transform.position.y, bg.transform.position.z);
+			newPos = new Vector3 (18.4f, bg.transform.position.y, bg.transform.position.z);
 			bg.transform.position = newPos;
-			newPos2 = new Vector3(68.2f, bg2.transform.position.y, bg2.transform.position.z);
+			newPos2 = new Vector3 (68.2f, bg2.transform.position.y, bg2.transform.position.z);
 			bg2.transform.position = newPos2;
 		}
 	} 
@@ -74,3 +85,5 @@ public class MenuBahaviour : MonoBehaviour {
 		}
 	}
 }
+
+
