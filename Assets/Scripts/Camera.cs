@@ -11,7 +11,7 @@ public class Camera : MonoBehaviour {
 
 	void Update() {
 		var diff = target.position.x-transform.position.x;
-		transform.position = new Vector3(target.position.x,transform.position.y,transform.position.z);
+		transform.position = new Vector3(target.position.x+10,transform.position.y,transform.position.z);
 		if (move != null) {
 			move.transform.position = new Vector3 (move.transform.position.x + diff, move.transform.position.y, move.transform.position.z);
 		}
