@@ -14,11 +14,10 @@ public class gateController : MonoBehaviour {
 	void Update () {
 	
 	}
-
-	void OnTriggerEnter2D(Collider2D coll)
+		
+	void OnCollisionEnter2D(Collision2D coll)
 	{
-		if(coll.GetComponent<CircleCollider2D>().gameObject==Key){
-			
+		if(coll.gameObject==Key){			
 			Debug.Log ("Collision detected");
 			StartCoroutine("OpenGate");
 			Destroy(Key);

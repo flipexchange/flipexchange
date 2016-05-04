@@ -25,7 +25,9 @@ public class bossController : MonoBehaviour {
     public GameObject healthbar;
     public GameObject healthbarRed;
     private float health;
-    public GameObject wall; //wall disappears after boss dies
+
+	/* KEY */
+	public GameObject Key; 
 
     public void Start()
     {
@@ -48,12 +50,19 @@ public class bossController : MonoBehaviour {
         healthbarRed.GetComponent<Renderer>().enabled = false;
         health = 2f;
 
-		/*SOUND */
+		/* SOUND */
 		source = GetComponent<AudioSource> ();
 
+		//* IGNORE COLLISIONS */
         GameObject player = GameObject.Find("Player");
+		// Let player run through the Boss
         Physics2D.IgnoreCollision(player.GetComponent<BoxCollider2D>(), GetComponent<Collider2D>());
         Physics2D.IgnoreCollision(player.GetComponent<CircleCollider2D>(), GetComponent<Collider2D>());
+		// Let key exist on the Boss 
+		Physics2D.IgnoreCollision(Key.GetComponent<CircleCollider2D>(), GetComponent<Collider2D>());
+		// Ignore collisions between key and player 
+		Physics2D.IgnoreCollision(Key.GetComponent<CircleCollider2D>(), player.GetComponent<BoxCollider2D>());
+		Physics2D.IgnoreCollision(Key.GetComponent<CircleCollider2D>(), player.GetComponent<CircleCollider2D>());
     }
 
     void Update()
@@ -125,7 +134,8 @@ public class bossController : MonoBehaviour {
                 gameObject.SetActive(false);
                 healthbar.SetActive(false);
                 healthbarRed.SetActive(false);
-                wall.SetActive(false);
+				Key.transform.parent = null; // Remove the Key from the Boss Parent Object
+				Key.GetComponent<Rigidbody2D>().isKinematic=false;
             }
             healthbar.transform.localScale = new Vector3(health / 2 * healthbar.transform.localScale.x, healthbar.transform.localScale.y, healthbar.transform.localScale.z);
             Destroy(col.collider.gameObject);
