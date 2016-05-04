@@ -49,7 +49,7 @@ public class dialogBehaviour : MonoBehaviour {
 					{ -5, -6, 5, -6 },
 					{ 9, -4, 17, -4 },
 					{ 47.86f, -4, 67, -4 },
-					{ 78, -2.89f, 83, -2.89f }, {
+					{ 73, -5, 83, -2.89f }, {
 						100,
 						-5,
 						199,
@@ -63,7 +63,7 @@ public class dialogBehaviour : MonoBehaviour {
 
 				circleQuotes [1] = "Even if you can jump and run faster than me, that doesn't mean you can climb ramps as well as I can...";
 				rectQuotes [1] = "Ice Maiden, this ramp is too steep even for me! I can't seem to rush past it...but maybe you can?";
-				rectQuotes [2] = "What are those weird red bars? Why can't I get past them on my own?";
+				rectQuotes [2] = "Seems like I can't get past red bars on my own?";
 				circleQuotes [2] = "Hm, the red bars don't seem to block me. Let me take over for a little while.";
 				rectQuotes [3] = "Man, I wish I could jump high enough to reach that white portal...but we might need to switch off to make it.";
 				circleQuotes [3] = "Seems like there is no way for us to make it to the portal unless we switch off.";
