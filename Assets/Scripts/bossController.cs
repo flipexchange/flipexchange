@@ -113,14 +113,15 @@ public class bossController : MonoBehaviour {
 
     void OnCollisionEnter2D(Collision2D col)
     {
-        if (col.collider.gameObject.layer == 13)
+		// Check if layer is interacable 
+		if (col.collider.gameObject.layer == 13) 
         {
             health--;
             if (health == 1) {
                 healthbar.GetComponent<Renderer>().enabled = true;
                 healthbarRed.GetComponent<Renderer>().enabled = true;
             }
-            if (health == 0) {
+            if (health == 0) { 
                 gameObject.SetActive(false);
                 healthbar.SetActive(false);
                 healthbarRed.SetActive(false);
