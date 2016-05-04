@@ -38,6 +38,11 @@ public class bossController : MonoBehaviour {
         /*  BULLET LOGIC  */
         firingCounter = 0;
 
+        /*  ALPHA RENDERER  */
+        Color color = GetComponent<Renderer>().material.color;
+        color.a = 0.5f;
+        GetComponent<Renderer>().material.SetColor("_Color", color);
+
         /* HEALTHBAR */
         healthbar.GetComponent<Renderer>().enabled = false;
         healthbarRed.GetComponent<Renderer>().enabled = false;
@@ -95,7 +100,7 @@ public class bossController : MonoBehaviour {
             Temporary_RigidBody.AddForce(bulletVec * Bullet_Forward_Force);
             
             //Basic Clean Up, set the Bullets to self destruct after 10 Seconds, I am being VERY generous here, normally 3 seconds is plenty.
-            Destroy(Temporary_Bullet_Handler, 3.0f);
+            Destroy(Temporary_Bullet_Handler, 2.0f);
         }
     }
     void SwitchDirection()

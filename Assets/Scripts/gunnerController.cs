@@ -5,34 +5,54 @@ public class gunnerController : MonoBehaviour {
     /*  BULLET LOGIC  */
     public GameObject Bullet_Emitter;
     public GameObject Bullet;
-    public int FiringPeriod;
-    public int LullPeriod;
+    
     public float Bullet_Forward_Force;
     public bool activated;
 
+    public int FiringPeriod;
+    public int LullPeriod;
     private int lullCounter;
     private int firingCounter;
     private bool isFiring;
+
+    public int BobPeriod;
+    private bool bobUp;
+    private int bobCounter;
+    private int bobState;
+    private Transform parentScalar;
 
 	private AudioSource source;
 	public AudioClip bulletAudio;
 
     void Start () {
-		source = GetComponent<AudioSource> ();
+        /*  Audio Stuff  */
+        source = GetComponent<AudioSource> ();
+
+        activated = false;
+
+        /*  Firing Logic  */
         isFiring = false;
         firingCounter = 0;
         lullCounter = 0;
-        activated = false;
 
+        /*  Bob Logic  */
+        bobUp = true;
+        bobState = 0;
+        bobCounter = 0;
+
+        /*  SCALE  */
+        parentScalar = transform.parent;
+
+        /*  ALPHA CODE  */
         Color color = GetComponent<Renderer>().material.color;
-        color.a -= 0.5f;
-
+        color.a = 0.5f;
         GetComponent<Renderer>().material.SetColor("_Color", color);
     }
 	
 	void Update () {
         if (activated)
         {
+            /*  Firing Logic  */
             lullCounter++;
             if (lullCounter > LullPeriod)
             {
@@ -60,6 +80,29 @@ public class gunnerController : MonoBehaviour {
 
                     //Basic Clean Up, set the Bullets to self destruct after 10 Seconds, I am being VERY generous here, normally 3 seconds is plenty.
                     Destroy(Temporary_Bullet_Handler, 5.0f);
+                }
+
+                /*  Bob Logic  */
+                bobCounter++;
+                if (bobCounter > BobPeriod)
+                {
+                    /*  Reset  */
+                    bobCounter = 0;
+
+                    if (bobUp)
+                    {
+                        bobState++;
+                        parentScalar.localScale += new Vector3(0f, 0.025f, 0f);
+                    }
+                    else
+                    {
+                        bobState--;
+                        parentScalar.localScale -= new Vector3(0f, 0.025f, 0f);
+                    }
+                    if (bobState == 3 || bobState == 0)
+                    {
+                        bobUp = !bobUp;
+                    }
                 }
             }
         }

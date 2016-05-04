@@ -66,12 +66,10 @@ public class platformController : MonoBehaviour
 
     void OnCollisionEnter2D(Collision2D col)
     {
-        Debug.Log("CHILD");
         col.transform.parent = transform;
     }
     void OnCollisionExit2D(Collision2D col)
     {
-        Debug.Log("ORPHAN");
         col.transform.parent = null;
     }
 }

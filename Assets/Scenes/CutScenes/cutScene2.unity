@@ -290,7 +290,7 @@ RectTransform:
   m_RootOrder: 4
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 147, y: -253}
+  m_AnchoredPosition: {x: 197, y: -265}
   m_SizeDelta: {x: 422, y: 46}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &650915342
@@ -325,7 +325,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: '[ press enter to play again ]'
+  m_Text: Press Enter to Play Again
 --- !u!222 &650915343
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -685,6 +685,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   textAudio: {fileID: 0}
+  level: 0
 --- !u!1 &1763424647
 GameObject:
   m_ObjectHideFlags: 0
