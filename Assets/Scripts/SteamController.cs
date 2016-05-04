@@ -20,13 +20,13 @@ public class SteamController : MonoBehaviour {
 			EllipsoidParticleEmitter emitter = GetComponent<EllipsoidParticleEmitter> ();
 			emitter.ClearParticles ();
 			emitter.transform.position = new Vector3 (5.59f, -9, 0);
-			emitter.localVelocity = new Vector3 (0, 1.5f, 0);
+			emitter.worldVelocity = new Vector3 (0, 1.0f, 0);
 			switchStatus = 1;
 		} else if(playerScript.pink == false && switchStatus != 2){
 			EllipsoidParticleEmitter emitter = GetComponent<EllipsoidParticleEmitter> ();
 			emitter.ClearParticles ();
 			emitter.transform.position = new Vector3 (5.59f, 8, 0);
-			emitter.localVelocity = new Vector3 (0, -1.5f, 0);
+			emitter.worldVelocity = new Vector3 (0, -1.0f, 0);
 			switchStatus = 2;
 		}
 	}
