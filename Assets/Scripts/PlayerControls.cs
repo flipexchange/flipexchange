@@ -231,8 +231,8 @@ public class PlayerControls : MonoBehaviour {
 			if (pink) {
 				//GetComponent<Animation>().CrossFade("RedToBlue", 0.5f, PlayMode.StopAll);;
 				rb2d.gravityScale = gravityPink;
-				//StartCoroutine (blueToRed());
-				sr.sprite = Resources.Load<Sprite>("firem");
+				StartCoroutine (blueToRed());
+				//sr.sprite = Resources.Load<Sprite>("firem");
 				box.enabled = true;
 				circle.enabled = false;
 				if (transform.parent == null) {
@@ -246,8 +246,8 @@ public class PlayerControls : MonoBehaviour {
 				//GetComponent<Animation>().CrossFade("BlueToRed", 0.5f, PlayMode.StopAll);
 				rb2d.gravityScale = sign*gravityBlue;
 
-				sr.sprite = Resources.Load<Sprite>("icem");
-				//StartCoroutine(redToBlue());
+				//sr.sprite = Resources.Load<Sprite>("icem");
+				StartCoroutine(redToBlue());
 				box.enabled = false;
 				circle.enabled = true;
 				if (transform.parent == null) {
@@ -331,21 +331,17 @@ public class PlayerControls : MonoBehaviour {
 	}
 
 	IEnumerator blueToRed() {
-		var i = 1;
-		var end = 14;
-		while (i < end) {
-			sr.sprite = Resources.Load<Sprite>("switch/many-"+i);
-			yield return new WaitForSeconds (0.01f);
+		for (var i = 7; i<=13; i++) {
+			sr.sprite = Resources.Load<Sprite>("switch/Animation"+i);
+			yield return new WaitForSeconds (0.05f);
 		}
 		sr.sprite = Resources.Load<Sprite>("firem");
 	}
 
 	IEnumerator redToBlue() {
-		var i = 14;
-		var end = 22;
-		while (i < end) {
-			sr.sprite = Resources.Load<Sprite>("switch/many-"+i);
-			yield return new WaitForSeconds (0.01f);
+		for (var i = 1; i<=7; i++) {
+			sr.sprite = Resources.Load<Sprite>("switch/Animation"+i);
+			yield return new WaitForSeconds (0.05f);
 		}
 		sr.sprite = Resources.Load<Sprite>("icem");
 	}
