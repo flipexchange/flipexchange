@@ -34,6 +34,7 @@ public class PlayerControls : MonoBehaviour {
 	private Transform mainCamera;
 	public bool flippingAnimation;
 	private bool swapping = false;
+	private IEnumerator animating = null;
 
     // variable to store lastCheckpoint object
     private int checkpointNum = 0; 
@@ -54,6 +55,11 @@ public class PlayerControls : MonoBehaviour {
 	public AudioClip jumpAudio;
 	public AudioClip dieAudio;
 
+	// animation
+	private bool wasZero = true;
+	Sprite[] frames;
+	Sprite[] fireAnimation;
+
 	// Use this for initialization
 	void Start () {
         // Set Deathbed's alpha to 0
@@ -71,6 +77,8 @@ public class PlayerControls : MonoBehaviour {
 		slopeCheck = transform.Find ("slopeCheck");
 		slopeCheckBack = transform.Find ("slopeCheckBack");
 		var blueStuff = GameObject.FindGameObjectsWithTag("Blue");
+		frames = new Sprite[]{Resources.Load<Sprite>("firem"),Resources.Load<Sprite>("firemback"),Resources.Load<Sprite>("firemfwd")};
+		fireAnimation = new Sprite[]{Resources.Load<Sprite>("firem"),Resources.Load<Sprite>("firem"),Resources.Load<Sprite>("firemback"),Resources.Load<Sprite>("firem"),Resources.Load<Sprite>("firem"),Resources.Load<Sprite>("firemfwd")};
 		foreach (var obj in blueStuff) {
 			if (obj.name != "BackgroundQuad (2)" && obj.name != "BackgroundQuad" && obj.name != "BackgroundQuad (1)") {
 				Vector3 newPos = new Vector3 (obj.transform.position.x, -obj.transform.position.y, obj.transform.position.z);
@@ -171,7 +179,27 @@ public class PlayerControls : MonoBehaviour {
 		if (!pink) {
 			moveForce = moveForceBlue;
 			maxSpeed = maxSpeedBlue;
-			jumpForce = sign*jumpForceBlue;
+			jumpForce = sign * jumpForceBlue;
+		} else {
+			if (animating==null) {
+				if ((int)(Time.time*100) % 600 == 0) {
+					wasZero = false;
+					animating = fireFlick ();
+					StartCoroutine (animating);
+				}
+				else if (rb2d.velocity.x < -0.5) {
+					sr.sprite = frames [1];
+					wasZero = false;
+				} else if (rb2d.velocity.x > 0.5) {
+					sr.sprite = frames [2];
+					wasZero = true;
+				} else {
+					if (wasZero) {
+						sr.sprite = frames [0];
+					}
+					wasZero = true;
+				}
+			}
 		}
 		if (sloped) {
 			if (pink) {
@@ -219,6 +247,10 @@ public class PlayerControls : MonoBehaviour {
 		{
 			rb2d.AddForce(new Vector2(0f, jumpForce));
 			jump = false;
+			if (animating == null && pink) {
+				animating = jumpAnimation ();
+				StartCoroutine (animating);
+			}
 		}
 		if (swap) {
 			pink = !pink;
@@ -231,7 +263,11 @@ public class PlayerControls : MonoBehaviour {
 			if (pink) {
 				//GetComponent<Animation>().CrossFade("RedToBlue", 0.5f, PlayMode.StopAll);;
 				rb2d.gravityScale = gravityPink;
-				StartCoroutine (blueToRed());
+				if (animating!=null) {
+					StopCoroutine (animating);
+				}
+				animating = blueToRed();
+				StartCoroutine(animating);
 				//sr.sprite = Resources.Load<Sprite>("firem");
 				box.enabled = true;
 				circle.enabled = false;
@@ -247,7 +283,11 @@ public class PlayerControls : MonoBehaviour {
 				rb2d.gravityScale = sign*gravityBlue;
 
 				//sr.sprite = Resources.Load<Sprite>("icem");
-				StartCoroutine(redToBlue());
+				if (animating!=null) {
+					StopCoroutine (animating);
+				}
+				animating = redToBlue();
+				StartCoroutine(animating);
 				box.enabled = false;
 				circle.enabled = true;
 				if (transform.parent == null) {
@@ -319,6 +359,21 @@ public class PlayerControls : MonoBehaviour {
 		swapping = false;
 	}
 
+	IEnumerator fireFlick() {
+		for (var i = 0; i < fireAnimation.Length; i++) {
+			sr.sprite = fireAnimation[i];
+			yield return new WaitForSeconds (0.1f);
+		}
+		if (rb2d.velocity.x < 0) {
+			sr.sprite = frames [1];
+		} else if (rb2d.velocity.x > 0) {
+			sr.sprite = frames [2];
+		} else {
+			sr.sprite = frames [0];
+		}
+		animating = null;
+	}
+
 	IEnumerator kickIt() {
 		var old = kickee.transform.position.y;
 		while (kickee.transform.position.y<-old) {
@@ -331,19 +386,38 @@ public class PlayerControls : MonoBehaviour {
 	}
 
 	IEnumerator blueToRed() {
-		for (var i = 7; i<=13; i++) {
-			sr.sprite = Resources.Load<Sprite>("switch/Animation"+i);
-			yield return new WaitForSeconds (0.05f);
+		for (var i = 7; i < 10; i++) {
+			sr.sprite = Resources.Load<Sprite> ("switch/Animation" + i);
+			yield return new WaitForSeconds (0.015f);
 		}
-		sr.sprite = Resources.Load<Sprite>("firem");
+		for (var i = 10; i <= 13; i++) {
+			sr.sprite = Resources.Load<Sprite> ("switch/Animation" + i);
+			yield return new WaitForSeconds (0.005f);
+		}
+		sr.sprite = Resources.Load<Sprite> ("firem");
+		animating = null;
+	}
+
+	IEnumerator jumpAnimation() {
+		sr.sprite = Resources.Load<Sprite> ("firemjump");
+		for (int i = 0; i<7; i++) {
+				yield return new WaitForSeconds (0.05f);
+		}
+		sr.sprite = frames [0];
+		animating = null;
 	}
 
 	IEnumerator redToBlue() {
-		for (var i = 1; i<=7; i++) {
-			sr.sprite = Resources.Load<Sprite>("switch/Animation"+i);
-			yield return new WaitForSeconds (0.05f);
+		for (var i = 1; i < 4; i++) {
+			sr.sprite = Resources.Load<Sprite> ("switch/Animation" + i);
+			yield return new WaitForSeconds (0.015f);
 		}
-		sr.sprite = Resources.Load<Sprite>("icem");
+		for (var i = 4; i <= 7; i++) {
+			sr.sprite = Resources.Load<Sprite> ("switch/Animation" + i);
+			yield return new WaitForSeconds (0.005f);
+		}
+		sr.sprite = Resources.Load<Sprite> ("icem");
+		animating = null;
 	}
 
 	void OnCollisionStay2D(Collision2D col) {
