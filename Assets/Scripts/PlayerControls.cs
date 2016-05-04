@@ -239,7 +239,7 @@ public class PlayerControls : MonoBehaviour {
 			} else {
 				//GetComponent<Animation>().CrossFade("BlueToRed", 0.5f, PlayMode.StopAll);
 				rb2d.gravityScale = sign*gravityBlue;
-<
+
 				sr.sprite = Resources.Load<Sprite>("icem");
 
 				box.enabled = false;
