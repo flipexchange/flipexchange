@@ -47,6 +47,7 @@ public class PlayerControls : MonoBehaviour {
     private bool gunnerStarted = false;
     GameObject gunner;
     float gunnerX;
+    public Sprite surprised;
 
     // for sounds
     public AudioSource allAudio;
@@ -157,12 +158,12 @@ public class PlayerControls : MonoBehaviour {
             if (transform.position.x > 65 && !gunnerStarted)
             {
                 gunnerStarted = true;
-                //GameObject.Find("gunner").GetComponent<gunnerController>().activated = true;
                 gunner.GetComponent<gunnerController>().activated = true;
                 gunnerX = gunner.transform.position.x;
             }
-            if (transform.position.x > gunnerX) {
-                gunner.GetComponent<gunnerController>().activated = true;
+            if (transform.position.x > gunnerX+1) {
+                gunner.GetComponent<gunnerController>().activated = false;
+                gunner.GetComponent<SpriteRenderer>().sprite = surprised;
             }
         }
     }
