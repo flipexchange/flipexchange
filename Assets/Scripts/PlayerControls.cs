@@ -11,11 +11,11 @@ public class PlayerControls : MonoBehaviour {
 	[HideInInspector] public bool jump = false;
 	[HideInInspector] public bool swap = false;
 	public float moveForcePink = 500f;
-	public float maxSpeedPink = 5f;
+	public float maxSpeedPink = 4f;
 	public float jumpForcePink = 400f;
 	public float gravityPink = 2f;
 	public float moveForceBlue = 250f;
-	public float maxSpeedBlue = 3f;
+	public float maxSpeedBlue = 3.5f;
 	public float jumpForceBlue = 250f;
 	public float gravityBlue = 1f;
 	public Transform groundCheck;
@@ -85,6 +85,14 @@ public class PlayerControls : MonoBehaviour {
 				Vector3 newPos = new Vector3 (obj.transform.position.x, -obj.transform.position.y, obj.transform.position.z);
 				obj.transform.position = newPos;
 				obj.transform.Rotate (0, 0, 180);
+				Rigidbody2D rigidbody = obj.GetComponent<Rigidbody2D>();
+				if (rigidbody != null) {
+					if (!pink) {
+						rigidbody.gravityScale = 1;
+					} else {
+						rigidbody.gravityScale = 0;
+					}
+				}
 			}
 		}
 		if (flippingAnimation) {
@@ -96,8 +104,8 @@ public class PlayerControls : MonoBehaviour {
 			}
 		}
         // to iterate through the checkpoints: {checkpoint0, checkpoint1, ...}
-        nextCheckpoint = GameObject.Find("checkpoint"+checkpointNum);
-        currentSceneIsSecondLevel = SceneManager.GetActiveScene().name=="SecondLevel";
+		nextCheckpoint = GameObject.Find("checkpoint"+checkpointNum);
+		currentSceneIsSecondLevel = SceneManager.GetActiveScene().name=="SecondLevel";
         if (currentSceneIsSecondLevel) {
             gunner = GameObject.Find("gunner");
             gunnerX = 99999f;
@@ -255,6 +263,18 @@ public class PlayerControls : MonoBehaviour {
 		}
 		if (swap) {
 			pink = !pink;
+			// SecondLevel Methods
+			if (currentSceneIsSecondLevel)
+			{ //These scripts are specific to SecondLevel
+				GameObject col = GameObject.Find ("bridge");
+				if (pink) {
+					col.gameObject.GetComponent<Rigidbody2D>().mass = 1000000;
+				}
+				else
+				{ // Cheating hardcoded bridge method
+					col.gameObject.GetComponent<Rigidbody2D>().mass = 10;
+				}
+			}
 			sign = 1;
 			if (!pink && flippingAnimation) {
 				sign = -1;
@@ -316,6 +336,14 @@ public class PlayerControls : MonoBehaviour {
 
 					obj.transform.position = newPos;
 					obj.transform.Rotate (0, 0, 180);
+					Rigidbody2D rigidbody = obj.GetComponent<Rigidbody2D>();
+					if (rigidbody != null) {
+						if (pink) {
+							rigidbody.gravityScale = 1;
+						} else {
+							rigidbody.gravityScale = 0;
+						}
+					}
 				}
 				var blueStuff = GameObject.FindGameObjectsWithTag ("Blue");
 				foreach (var obj in blueStuff) {
@@ -324,6 +352,14 @@ public class PlayerControls : MonoBehaviour {
 						obj.transform.position = newPos;
 					}
 					obj.transform.Rotate (0, 0, 180);
+					Rigidbody2D rigidbody = obj.GetComponent<Rigidbody2D>();
+					if (rigidbody != null) {
+						if (!pink) {
+							rigidbody.gravityScale = 1;
+						} else {
+							rigidbody.gravityScale = 0;
+						}
+					}
 				}
 			}
 			swap = false;
@@ -439,15 +475,6 @@ public class PlayerControls : MonoBehaviour {
 			kickee = col.transform.gameObject;
 		}
 
-
-        // SecondLevel Methods
-        if (currentSceneIsSecondLevel)
-        { //These scripts are specific to SecondLevel
-            if (col.gameObject.name == "bridge" && !pink)
-            { // Cheating hardcoded bridge method
-                col.gameObject.GetComponent<Rigidbody2D>().mass = 10;
-            }
-        }
     }
 
 	void OnCollisionExit2D(Collision2D col) {
