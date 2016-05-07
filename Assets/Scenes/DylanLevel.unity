@@ -2049,7 +2049,7 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Size: {x: 0.99999994, y: 1}
+  m_Size: {x: 0.96, y: 1}
 --- !u!212 &560737002
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -2447,7 +2447,7 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Size: {x: 0.99999994, y: 1}
+  m_Size: {x: 0.96, y: 1}
 --- !u!212 &658616807
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -2577,7 +2577,7 @@ GameObject:
   - 61: {fileID: 749330167}
   - 61: {fileID: 749330170}
   m_Layer: 8
-  m_Name: Step1
+  m_Name: Step2
   m_TagString: Blue
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2596,7 +2596,7 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Size: {x: 1.74, y: 0.45}
+  m_Size: {x: 1.64, y: 0.45}
 --- !u!212 &749330168
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -2638,7 +2638,7 @@ Transform:
   m_LocalScale: {x: 2, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 14
+  m_RootOrder: 15
 --- !u!61 &749330170
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -2652,7 +2652,7 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Size: {x: 1.85, y: 0.39}
+  m_Size: {x: 1.75, y: 0.39}
 --- !u!1 &761272132
 GameObject:
   m_ObjectHideFlags: 0
@@ -2684,7 +2684,7 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 0.96, y: 1}
 --- !u!212 &761272134
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -3603,7 +3603,7 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 0.96, y: 1}
 --- !u!212 &1066101251
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -4473,7 +4473,7 @@ GameObject:
   - 61: {fileID: 1340449642}
   - 61: {fileID: 1340449645}
   m_Layer: 8
-  m_Name: Step2
+  m_Name: Step1
   m_TagString: Pink
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4492,7 +4492,7 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_Offset: {x: 0, y: -0.03736496}
   serializedVersion: 2
-  m_Size: {x: 1.74, y: 0.47527027}
+  m_Size: {x: 1.68, y: 0.47527027}
 --- !u!212 &1340449643
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -4534,7 +4534,7 @@ Transform:
   m_LocalScale: {x: 2, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 15
+  m_RootOrder: 14
 --- !u!61 &1340449645
 BoxCollider2D:
   m_ObjectHideFlags: 0

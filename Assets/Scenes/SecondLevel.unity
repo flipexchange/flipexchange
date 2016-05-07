@@ -381,7 +381,7 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Size: {x: 0.99999994, y: 1}
+  m_Size: {x: 0.96, y: 1}
 --- !u!212 &151705178
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -476,7 +476,7 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Size: {x: 0.98, y: 1.02}
+  m_Size: {x: 0.96, y: 1.02}
 --- !u!212 &164298469
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -532,7 +532,7 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 1, y: 0.96}
 --- !u!1 &197804187
 GameObject:
   m_ObjectHideFlags: 0
@@ -634,7 +634,7 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 0.96, y: 1}
 --- !u!212 &222367582
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -1092,7 +1092,7 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 0.96, y: 1}
 --- !u!212 &386444514
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -3865,7 +3865,7 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Size: {x: 1.7299999, y: 0.3570014}
+  m_Size: {x: 1.7, y: 0.3570014}
 --- !u!212 &1048391500
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -3921,8 +3921,8 @@ EdgeCollider2D:
   m_UsedByEffector: 0
   m_Offset: {x: 0, y: 0}
   m_Points:
-  - {x: -0.87, y: 0}
-  - {x: 0.87, y: 0}
+  - {x: -0.86464345, y: -0.17696552}
+  - {x: -0.8629222, y: 0.18174852}
 --- !u!4 &1051286644 stripped
 Transform:
   m_PrefabParentObject: {fileID: 421290, guid: bedcaf502f0c340888e0b36a1520d8ab, type: 2}
@@ -3986,7 +3986,7 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Size: {x: 0.98, y: 1.02}
+  m_Size: {x: 0.96, y: 1.02}
 --- !u!212 &1066101251
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -5329,7 +5329,7 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Size: {x: 0.99999994, y: 1}
+  m_Size: {x: 0.96, y: 1}
 --- !u!212 &1481257372
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -5819,9 +5819,9 @@ BoxCollider2D:
   m_Material: {fileID: 6200000, guid: 600d8c86be9d74566ac8f8f81a9e2289, type: 2}
   m_IsTrigger: 0
   m_UsedByEffector: 0
-  m_Offset: {x: 0, y: 0.00000047683716}
+  m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Size: {x: 1.76, y: 0.44}
+  m_Size: {x: 1.71, y: 0.42}
 --- !u!61 &1741790322
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -5833,9 +5833,9 @@ BoxCollider2D:
   m_Material: {fileID: 6200000, guid: 4c6729af233c0480b9f8a4e76fe71043, type: 2}
   m_IsTrigger: 0
   m_UsedByEffector: 0
-  m_Offset: {x: 0, y: 0.00000047683716}
+  m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Size: {x: 1.72, y: 0.45000005}
+  m_Size: {x: 1.64, y: 0.46}
 --- !u!212 &1741790323
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -6025,7 +6025,7 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Size: {x: 1.72, y: 0.5}
+  m_Size: {x: 1.64, y: 0.46}
 --- !u!212 &1799939977
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -6069,7 +6069,7 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Size: {x: 1.76, y: 0.44}
+  m_Size: {x: 1.71, y: 0.42}
 --- !u!1001 &1847052390
 Prefab:
   m_ObjectHideFlags: 0
@@ -6913,7 +6913,7 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 0.96, y: 1}
 --- !u!212 &2035266827
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -7060,7 +7060,7 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Size: {x: 0.99999994, y: 1}
+  m_Size: {x: 0.96, y: 1}
 --- !u!212 &2089374159
 SpriteRenderer:
   m_ObjectHideFlags: 0
