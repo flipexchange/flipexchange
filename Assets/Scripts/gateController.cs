@@ -27,7 +27,7 @@ public class gateController : MonoBehaviour {
 	IEnumerator OpenGate()
 	{
 		// Move the Gate object by y
-		var endPosition = gameObject.transform.position.y+2;
+		var endPosition = gameObject.transform.position.y+3;
 		while (gameObject.transform.position.y< endPosition) {
 			Vector3 newPosition = new Vector3(gameObject.transform.position.x, gameObject.transform.position.y+0.05f, gameObject.transform.position.z);
 			gameObject.transform.position = newPosition;
