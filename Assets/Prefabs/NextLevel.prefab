@@ -44,6 +44,7 @@ GameObject:
   - 212: {fileID: 21272404}
   - 114: {fileID: 11408094}
   - 61: {fileID: 6151076}
+  - 122: {fileID: 12251196}
   m_Layer: 0
   m_Name: Portal
   m_TagString: Untagged
@@ -121,6 +122,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sceneIndex: 0
   statusText: {fileID: 11433554}
+  amplitude: 0.15
+  speed: 2.5
 --- !u!114 &11420346
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -191,6 +194,17 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
+--- !u!122 &12251196
+Halo:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 117248}
+  m_Enabled: 1
+  m_Color:
+    serializedVersion: 2
+    rgba: 4288322202
+  m_Size: 1.25
 --- !u!212 &21272404
 SpriteRenderer:
   m_ObjectHideFlags: 1
