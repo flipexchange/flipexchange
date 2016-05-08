@@ -13,10 +13,10 @@ public class TextScroll : MonoBehaviour {
 
 
 	//Store all your text in this string array
-	string[] cutscene1Text = new string[]{"Long ago, there were two nations, Lavaland and Iceworld.","The two lands were separated and hated each other due to their massive differences.","  x  : Lavaland people never think before jumping into action! You guys are so reckless, it's ruining everything.", "  z  : Well you Iceworld people move so slowly, no wonder we don't like you guys! We would never work with you.", "  x  : I hate you!", "  x  : You guys are the worst, I never want to see you near our land!","  z  : Same here, you lame icicles!"};
-	string[] cutscene2Text = new string[]{"A long battle ensued.", "Both nations would not stand down.","Soon, only two remained."};
-	string[] cutscene3Text = new string[]{"Wizard: Enough!","Wizard: I'm merging you two so that Lavaland and Iceworld can work together for once!"};
-	string[] cutscene4Text = new string[]{"And so, Fire and Ice were merged."};
+	string[] cutscene1Text = new string[]{"In the beginning, there were two nations, Lavaland and Iceworld.","Due to their differences, the two lands constantly argued and fought.","  x:    Lavalanders are too quick to jump into action. Never considering the consequences before acting. Your recklessness ruins everything.", "  z:    You Iceworlders move so slowly. It's a miracle that anything gets done!", "  x:    Watch your tongue hotheds, or we'll freeze you where you stand.", "  z:    Your threats are feeble like embers. If it's fight is what you want, we'll bring you an inferno!"};
+	string[] cutscene2Text = new string[]{"A war erupted, with massive casualties on both sides.", "Two soldiers, one from Lavaland, and one from Iceworld continued to fight amongst the chaos."};
+	string[] cutscene3Text = new string[]{ "Wizard: Enough!", "Wizard: I'm merging you two so that Lavaland and Iceworld can work together for once!"};
+	string[] cutscene4Text = new string[]{"And so, the fire soldier and ice soldier were merged."};
 	string[][] allCutsceneText = new string[4][];
 	string[] goalText = new string[]{"Long ago, there were two nations, Lavaland and Iceworld.","The two lands were separated, and hated each other due to their massive differences.","  x  : Lavaland people never think before jumping into action! You guys are so reckless, it's ruining everything.", "  z  : Well you Iceworld people move so slowly, no wonder we don't like you guys! We would never work with you.", "  x  : I hate you!", "  x  : You guys are the worst, I never want to see you near our land!","  z  : Same here, you lame icicles!"};
 	int currentlyDisplayingText = 0;
