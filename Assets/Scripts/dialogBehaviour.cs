@@ -84,8 +84,8 @@ public class dialogBehaviour : MonoBehaviour {
                 */
             } else if (level == 2) {
 				infoPositions = new float[,] {
-					{ 1, -5, 8.5f, -5 },
-					{ 16, -6, 42, -6 },
+					{ -8, -5, 10, -5 },
+					{ 10, -6, 42, -6 },
 					{ 55, -6, 72, -6 },
 					{ 87, -6, 113, -6 }, {
 						150,
@@ -111,7 +111,7 @@ public class dialogBehaviour : MonoBehaviour {
 					{ 0.56f, -6.2f, 18.5f, -2 },
 					{ 34, -3.2f, 40, -0.55f },
 					{ 43, -0.55f, 45.72f, -2.1f },
-					{ 76, -6.43f, 79.9f, -6.4f }, {
+					{ 75, -8, 83, -8 }, {
 						150,
 						-5,
 						199,
