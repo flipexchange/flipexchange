@@ -13,12 +13,12 @@ public class TextScroll : MonoBehaviour {
 
 
 	//Store all your text in this string array
-	string[] cutscene1Text = new string[]{"Long ago, there were two nations,  LavaLand and IceWorld.","The two lands were separated, and did  not like each other due to their massive differences.","Ice: LavaLand people never think before jumping into action! You guys are so reckless, it's ruining everything.", "Lava: Well you IceWorld people move so slowly, no wonder we don't like you guys! We would never work with you.", "Lava:I hate you guys!", "Ice:You guys are the worst, I never want to see you guys near our land!","Lava: Same here, you lame icicles!"};
+	string[] cutscene1Text = new string[]{"Long ago, there were two nations, Lavaland and Iceworld.","The two lands were separated and hated each other due to their massive differences.","  x  : Lavaland people never think before jumping into action! You guys are so reckless, it's ruining everything.", "  z  : Well you Iceworld people move so slowly, no wonder we don't like you guys! We would never work with you.", "  x  : I hate you!", "  x  : You guys are the worst, I never want to see you near our land!","  z  : Same here, you lame icicles!"};
 	string[] cutscene2Text = new string[]{"A long battle ensued.", "Both nations would not stand down.","Soon, only two remained."};
-	string[] cutscene3Text = new string[]{"Wizard: Enough!","Wizard:I'm merging you two so that LavaLand and IceWorld can work together for once!"};
+	string[] cutscene3Text = new string[]{"Wizard: Enough!","Wizard: I'm merging you two so that Lavaland and Iceworld can work together for once!"};
 	string[] cutscene4Text = new string[]{"And so, Fire and Ice were merged."};
 	string[][] allCutsceneText = new string[4][];
-	string[] goalText = new string[]{"Long ago, there were two nations, LavaLand and IceWorld.","The two lands were separated, and did  not like each other due to their massive differences.","Ice:LavaLand people never think before jumping into action! You guys are so reckless, it's ruining everything.", "Lava:Well you IceWorld people move so slowly, no wonder we don't like you guys! We would never work with you.", "Lava:I hate you guys!", "Ice:You guys are the worst, I never want to see you guys near our land!","Lava:Same here, you lame icicles!"};
+	string[] goalText = new string[]{"Long ago, there were two nations, Lavaland and Iceworld.","The two lands were separated, and hated each other due to their massive differences.","  x  : Lavaland people never think before jumping into action! You guys are so reckless, it's ruining everything.", "  z  : Well you Iceworld people move so slowly, no wonder we don't like you guys! We would never work with you.", "  x  : I hate you!", "  x  : You guys are the worst, I never want to see you near our land!","  z  : Same here, you lame icicles!"};
 	int currentlyDisplayingText = 0;
 
 	public AudioClip textScrollAudio;
@@ -60,10 +60,10 @@ public class TextScroll : MonoBehaviour {
 
 			StartCoroutine(AnimateText());
 		}
-		if (goalText [currentlyDisplayingText] [0] == 'I') {
+		if (goalText [currentlyDisplayingText] [2] == 'x') {
 			fireIcon.SetActive (false);
 			iceIcon.SetActive (true);
-		} else if (goalText [currentlyDisplayingText] [0] == 'L') {
+		} else if (goalText [currentlyDisplayingText] [2] == 'z') {
 			iceIcon.SetActive (false);
 			fireIcon.SetActive (true);
 		} else {
