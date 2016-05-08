@@ -17,8 +17,13 @@ public class TextScroll : MonoBehaviour {
 	string[] cutscene2Text = new string[]{"A war erupted, with massive casualties on both sides.", "Two soldiers, one from Lavaland, and one from Iceworld continued to fight amongst the chaos."};
 	string[] cutscene3Text = new string[]{ "Wizard: Enough!", "Wizard: I'm merging you two so that Lavaland and Iceworld can work together for once!"};
 	string[] cutscene4Text = new string[]{"And so, the fire soldier and ice soldier were merged."};
-	string[][] allCutsceneText = new string[4][];
-	string[] goalText = new string[]{"Long ago, there were two nations, Lavaland and Iceworld.","The two lands were separated, and hated each other due to their massive differences.","  x  : Lavaland people never think before jumping into action! You guys are so reckless, it's ruining everything.", "  z  : Well you Iceworld people move so slowly, no wonder we don't like you guys! We would never work with you.", "  x  : I hate you!", "  x  : You guys are the worst, I never want to see you near our land!","  z  : Same here, you lame icicles!"};
+
+
+	string[][] allCutsceneText = new string[5][];
+	string[] goalText;
+
+	string[] cutscene5Text = new string[]{"     "};
+
 	int currentlyDisplayingText = 0;
 
 	public AudioClip textScrollAudio;
@@ -27,6 +32,7 @@ public class TextScroll : MonoBehaviour {
 	public AudioClip magicAudio;
 	private AudioSource ambientAudioSource;
 	void Awake () {
+		goalText = cutscene1Text;
 		textScrollAudioSource =AddAudio(textScrollAudio, true, false, 1.0f);
 		ambientAudioSource =AddAudio(ancientAudio, true, true, 1.0f);
 		StartCoroutine(AnimateText());
@@ -92,18 +98,21 @@ public class TextScroll : MonoBehaviour {
 	void Start () {
 		fireIcon = GameObject.Find ("Canvas/rect");
 		iceIcon = GameObject.Find ("Canvas/circle");
+		goalText = cutscene1Text;
 		allCutsceneText [0] = cutscene1Text;
 		allCutsceneText [1] = cutscene2Text;
 		allCutsceneText [2] = cutscene3Text;
 		allCutsceneText [3] = cutscene4Text;
+		allCutsceneText [4] = cutscene5Text;
+
 		goalText = allCutsceneText [0];
 		finishedType = false;
 		fireIcon.SetActive (false);
 		iceIcon.SetActive (false);
-		cutscenes = new Sprite[]{Resources.Load<Sprite>("cutscene2"),Resources.Load<Sprite>("cutscene3"),Resources.Load<Sprite>("cutscene4")};
+		cutscenes = new Sprite[]{Resources.Load<Sprite>("cutscene2"),Resources.Load<Sprite>("cutscene3"),Resources.Load<Sprite>("cutscene4"),Resources.Load<Sprite>("instructions")};
 		ambientAudioSource.Play ();
 	}
-	
+
 	// Update is called once per frame
 	void Update () {
 		if (Input.GetKeyDown (KeyCode.Return)) {
@@ -134,7 +143,7 @@ public class TextScroll : MonoBehaviour {
 		if (cutscenePos >= cutscenes.Length) {
 			fader.EndScene ();
 			//print ("dONE W CUTSCENES");
-			SceneManager.LoadScene ("instructionScene", LoadSceneMode.Single);
+			SceneManager.LoadScene ("DylanLevel", LoadSceneMode.Single);
 		} else {
 			SpriteRenderer showCutscene = GameObject.Find ("Cutscene").GetComponent<SpriteRenderer> ();
 			showCutscene.sprite = cutscenes[cutscenePos++];
