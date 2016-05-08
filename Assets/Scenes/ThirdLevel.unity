@@ -2816,11 +2816,11 @@ Prefab:
     m_Modifications:
     - target: {fileID: 421290, guid: bedcaf502f0c340888e0b36a1520d8ab, type: 2}
       propertyPath: m_LocalPosition.x
-      value: -0.12680104
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 421290, guid: bedcaf502f0c340888e0b36a1520d8ab, type: 2}
       propertyPath: m_LocalPosition.y
-      value: -1.7499957
+      value: -1.7
       objectReference: {fileID: 0}
     - target: {fileID: 421290, guid: bedcaf502f0c340888e0b36a1520d8ab, type: 2}
       propertyPath: m_LocalPosition.z
@@ -2844,7 +2844,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 421290, guid: bedcaf502f0c340888e0b36a1520d8ab, type: 2}
       propertyPath: m_RootOrder
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 21268686, guid: bedcaf502f0c340888e0b36a1520d8ab, type: 2}
       propertyPath: m_SortingLayerID
@@ -2868,23 +2868,23 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 11494208, guid: bedcaf502f0c340888e0b36a1520d8ab, type: 2}
       propertyPath: m_FontData.m_Alignment
-      value: 1
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 22483244, guid: bedcaf502f0c340888e0b36a1520d8ab, type: 2}
       propertyPath: m_AnchoredPosition.y
-      value: 26.5
+      value: 30
       objectReference: {fileID: 0}
     - target: {fileID: 22483244, guid: bedcaf502f0c340888e0b36a1520d8ab, type: 2}
       propertyPath: m_AnchoredPosition.x
-      value: 27
+      value: 45
       objectReference: {fileID: 0}
     - target: {fileID: 22483244, guid: bedcaf502f0c340888e0b36a1520d8ab, type: 2}
       propertyPath: m_SizeDelta.x
-      value: 413
+      value: 560
       objectReference: {fileID: 0}
     - target: {fileID: 11494208, guid: bedcaf502f0c340888e0b36a1520d8ab, type: 2}
       propertyPath: m_FontData.m_FontSize
-      value: 15
+      value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 11494208, guid: bedcaf502f0c340888e0b36a1520d8ab, type: 2}
       propertyPath: m_FontData.m_MinSize
@@ -2934,19 +2934,19 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 416202, guid: bedcaf502f0c340888e0b36a1520d8ab, type: 2}
       propertyPath: m_LocalPosition.y
-      value: 2.68
+      value: 2.75
       objectReference: {fileID: 0}
     - target: {fileID: 480672, guid: bedcaf502f0c340888e0b36a1520d8ab, type: 2}
       propertyPath: m_LocalPosition.y
-      value: 2.58
+      value: 2.6
       objectReference: {fileID: 0}
     - target: {fileID: 409226, guid: bedcaf502f0c340888e0b36a1520d8ab, type: 2}
       propertyPath: m_LocalPosition.y
-      value: 2.74
+      value: 2.75
       objectReference: {fileID: 0}
     - target: {fileID: 416202, guid: bedcaf502f0c340888e0b36a1520d8ab, type: 2}
       propertyPath: m_LocalPosition.x
-      value: -7.56
+      value: -9
       objectReference: {fileID: 0}
     - target: {fileID: 480672, guid: bedcaf502f0c340888e0b36a1520d8ab, type: 2}
       propertyPath: m_LocalPosition.x
@@ -2954,19 +2954,19 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 409226, guid: bedcaf502f0c340888e0b36a1520d8ab, type: 2}
       propertyPath: m_LocalPosition.x
-      value: -7.53
+      value: -9
       objectReference: {fileID: 0}
     - target: {fileID: 480672, guid: bedcaf502f0c340888e0b36a1520d8ab, type: 2}
       propertyPath: m_LocalScale.x
-      value: 1.5054505
+      value: 1.8
       objectReference: {fileID: 0}
     - target: {fileID: 480672, guid: bedcaf502f0c340888e0b36a1520d8ab, type: 2}
       propertyPath: m_LocalScale.y
-      value: 1.1675104
+      value: 1.2
       objectReference: {fileID: 0}
     - target: {fileID: 22483244, guid: bedcaf502f0c340888e0b36a1520d8ab, type: 2}
       propertyPath: m_SizeDelta.y
-      value: 53
+      value: 60
       objectReference: {fileID: 0}
     - target: {fileID: 11494208, guid: bedcaf502f0c340888e0b36a1520d8ab, type: 2}
       propertyPath: m_FontData.m_Font
@@ -3532,7 +3532,6 @@ MonoBehaviour:
   slopeCheck: {fileID: 0}
   slopeCheckBack: {fileID: 0}
   pink: 1
-  flippingAnimation: 0
   surprised: {fileID: 0}
   fireAudio: {fileID: 8300000, guid: b59565f15243d4451b76c8f03866e1e8, type: 3}
   iceAudio: {fileID: 8300000, guid: 0797aaaf563194b3290d6806f438aa09, type: 3}

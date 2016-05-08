@@ -55,15 +55,14 @@ public class dialogBehaviour : MonoBehaviour {
 					{ 50, -5, 57, -5 },
                     { 71, -5, 86, -5 },{
 						100,
-						-5,
+						-6,
 						199,
-						-5
+						-6
 					}
 				};
 
                 circleQuotes[0] = "I can't believe I'm trapped in a body with you...";
                 rectQuotes[0] = "When I find this wizard, I'm going to burn him alive!";
-                // Extra padding for text alignment
                 circleQuotes[1] = "I can climb that ramp. Give me a turn!\n(Press 'z' to swap characters)";
                 rectQuotes[1] = "This slidy thing must be a Iceworld invention.";
                 circleQuotes[2] = "I'm so nervous. We don't jump much in Iceworld...\n(Press 'spacebar' to jump)";
@@ -85,14 +84,14 @@ public class dialogBehaviour : MonoBehaviour {
                 */
             } else if (level == 2) {
 				infoPositions = new float[,] {
-					{ 1, -4.5f, 8.5f, -4 },
-					{ 16, -4.5f, 42, -0.26f },
-					{ 55, -0.43f, 72, 0 },
-					{ 87, -0.43f, 113, -6f }, {
+					{ 1, -5, 8.5f, -5 },
+					{ 16, -6, 42, -6 },
+					{ 55, -6, 72, -6 },
+					{ 87, -6, 113, -6 }, {
 						150,
-						-5,
+						-6,
 						199,
-						-5
+						-6
 					}
 				};
 
