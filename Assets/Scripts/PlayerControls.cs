@@ -50,11 +50,19 @@ public class PlayerControls : MonoBehaviour {
     public Sprite surprised;
 
     // for sounds
-    public AudioSource allAudio;
+    
 	public AudioClip fireAudio;
 	public AudioClip iceAudio;
 	public AudioClip jumpAudio;
 	public AudioClip dieAudio;
+	public AudioClip rollAudio;
+
+	private AudioSource fireAudioSource;
+	private AudioSource iceAudioSource;
+	private AudioSource jumpAudioSource;
+	private AudioSource dieAudioSource;
+	private AudioSource rollAudioSource;
+
 
 	// animation
 	private bool wasZero = true;
@@ -67,7 +75,9 @@ public class PlayerControls : MonoBehaviour {
         Color colorPicker = new Color(0.5f, 0.5f, 0.5f);
         colorPicker.a = 0;
         //GameObject.Find("Deathbed").GetComponent<Renderer>().material.SetColor("_Color", colorPicker);
-		allAudio = GetComponent<AudioSource>();
+		//allAudio = GetComponent<AudioSource>();
+
+
         rb2d = GetComponent<Rigidbody2D>();
 		sr = GetComponent<SpriteRenderer>();
 		mainCamera = GameObject.FindGameObjectsWithTag("MainCamera")[0].transform;
@@ -111,7 +121,29 @@ public class PlayerControls : MonoBehaviour {
             gunnerX = 99999f;
         }
     }
+	public AudioSource AddAudio (AudioClip clip, bool loop, bool playAwake, float vol) {
 
+		AudioSource newAudio = gameObject.AddComponent<AudioSource>();
+
+		newAudio.clip = clip;
+		newAudio.loop = loop;
+		newAudio.playOnAwake = playAwake;
+		newAudio.volume = vol;
+
+		return newAudio;
+
+	}
+
+	void Awake(){
+		fireAudioSource =AddAudio(fireAudio, false, false, 1.0f);
+		iceAudioSource =AddAudio(iceAudio, false, false, 1.0f);
+		jumpAudioSource =AddAudio(jumpAudio, false,false, 1.0f);
+		dieAudioSource =AddAudio(dieAudio, false,false, 0.5f);
+		rollAudioSource =AddAudio(rollAudio, false,false, 1.5f);
+
+
+
+	} 
     // Update is called once per frame
     void Update()
 	{
@@ -128,8 +160,7 @@ public class PlayerControls : MonoBehaviour {
             swap = true;
 		if (Input.GetButtonDown ("Jump") && grounded) {
 			jump = true;
-			allAudio.clip = jumpAudio;
-			allAudio.Play ();
+			jumpAudioSource.Play ();
 		}
         if (kick && Input.GetButtonDown("Kick"))
             StartCoroutine(kickIt());
@@ -217,7 +248,10 @@ public class PlayerControls : MonoBehaviour {
 				maxSpeed = 1.5f;
 			} else {
 				moveForce /= 10;
+				if(rollAudioSource.isPlaying == false)
+					rollAudioSource.Play ();
 			}
+
 		}
 		if (swapping) {
 			moveForce = 0;
@@ -231,6 +265,8 @@ public class PlayerControls : MonoBehaviour {
 			if (rb2d.rotation != 180f && !pink && flippingAnimation) {
 				rb2d.rotation = 180f;
 			}
+
+			
 		}
 
 		if (dead) {
@@ -298,8 +334,7 @@ public class PlayerControls : MonoBehaviour {
 				} else {
 					transform.localScale = new Vector3 (0.4125f,1.65f,1);
 				}
-				allAudio.clip = fireAudio;
-				allAudio.Play ();
+				fireAudioSource.Play ();
 			} else {
 				//GetComponent<Animation>().CrossFade("BlueToRed", 0.5f, PlayMode.StopAll);
 				rb2d.gravityScale = sign*gravityBlue;
@@ -317,8 +352,7 @@ public class PlayerControls : MonoBehaviour {
 				} else {
 					transform.localScale = new Vector3 (0.4125f,1.65f,1);
 				}
-				allAudio.clip = iceAudio;
-				allAudio.Play ();
+				iceAudioSource.Play ();
 			}
 			if (flippingAnimation) {
 				rb2d.AddForce (new Vector2 (0f, 4 * jumpForce));
@@ -468,8 +502,7 @@ public class PlayerControls : MonoBehaviour {
     void OnCollisionEnter2D(Collision2D col) {
         if (col.gameObject.layer == 10) { //int value of 'Death' in layer manager(User Defined starts at 10)
             dead = true;
-			allAudio.clip = dieAudio;
-			allAudio.Play ();
+			dieAudioSource.Play ();
         }
 		if (col.transform.gameObject.name == "Kickable") {
 			kick = true;
