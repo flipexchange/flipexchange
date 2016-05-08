@@ -49,7 +49,7 @@ public class dialogBehaviour : MonoBehaviour {
 			//[x1,y1,x2,y2] where x1,y1 is initial position and x2,y2 is where it goes after it teleports
 			if (level == 1) {
 				infoPositions = new float[,] {
-					{ -5, -6, 5, -6 },
+					{ -6, -6, 10, -6 },
 					{ 9, -4, 17, -4 },
 					{ 47.86f, -4, 67, -4 },
 					{ 73, -5, 83, -2.89f }, {
