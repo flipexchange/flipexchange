@@ -158,7 +158,7 @@ public class PlayerControls : MonoBehaviour {
 			dead = true;
         if (Input.GetButtonDown("Switch") && !swapping)
             swap = true;
-		if (Input.GetButtonDown ("Jump") && grounded) {
+		if (Input.GetButtonDown ("Jump") && grounded && Mathf.Abs(rb2d.velocity.y)<.02) {
 			jump = true;
 			jumpAudioSource.Play ();
 		}
