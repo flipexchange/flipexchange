@@ -303,7 +303,7 @@ public class PlayerControls : MonoBehaviour {
 			// SecondLevel Methods
 			if (currentSceneIsSecondLevel)
 			{ //These scripts are specific to SecondLevel
-				GameObject col = GameObject.Find ("bridge");
+				GameObject col = GameObject.Find("bridge");
 				if (pink) {
 					col.gameObject.GetComponent<Rigidbody2D>().mass = 1000000;
 				}
@@ -396,11 +396,16 @@ public class PlayerControls : MonoBehaviour {
 						}
 					}
 				}
-                if (pink) {
-                    GameObject.Find("bridge").GetComponent<Rigidbody2D>().gravityScale=0;
-                }
-                else {
-                    GameObject.Find("bridge").GetComponent<Rigidbody2D>().gravityScale = 1;
+                if (currentSceneIsSecondLevel)
+                {
+                    if (pink)
+                    {
+                        GameObject.Find("bridge").GetComponent<Rigidbody2D>().gravityScale = 0;
+                    }
+                    else
+                    {
+                        GameObject.Find("bridge").GetComponent<Rigidbody2D>().gravityScale = 1;
+                    }
                 }
             }
 			swap = false;
