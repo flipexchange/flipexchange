@@ -840,6 +840,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   textAudio: {fileID: 0}
+  text2Audio: {fileID: 0}
   level: 0
 --- !u!1 &1763424647
 GameObject:
@@ -1199,3 +1200,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   textBox: {fileID: 2126581922}
   textScrollAudio: {fileID: 8300000, guid: f59db2050753b47b8bf28feb6d8b23ee, type: 3}
+  ancientAudio: {fileID: 8300000, guid: 51782b7d10e4e4356b3d4bdc1b49ff01, type: 3}
+  magicAudio: {fileID: 8300000, guid: 4f02836e82b324729be9f88d7dea6f1c, type: 3}

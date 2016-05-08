@@ -19,8 +19,12 @@ public class TextScroll : MonoBehaviour {
 
 	public AudioClip textScrollAudio;
 	private AudioSource textScrollAudioSource;
+	public AudioClip ancientAudio;
+	public AudioClip magicAudio;
+	private AudioSource ambientAudioSource;
 	void Awake () {
 		textScrollAudioSource =AddAudio(textScrollAudio, true, false, 1.0f);
+		ambientAudioSource =AddAudio(ancientAudio, true, true, 1.0f);
 		StartCoroutine(AnimateText());
 
 
@@ -78,7 +82,7 @@ public class TextScroll : MonoBehaviour {
 		goalText = allCutsceneText [0];
 		finishedType = false;
 		cutscenes = new Sprite[]{Resources.Load<Sprite>("cutscene2"),Resources.Load<Sprite>("cutscene3"),Resources.Load<Sprite>("cutscene4")};
-
+		ambientAudioSource.Play ();
 	}
 	
 	// Update is called once per frame
@@ -115,6 +119,10 @@ public class TextScroll : MonoBehaviour {
 			SpriteRenderer showCutscene = GameObject.Find ("Cutscene").GetComponent<SpriteRenderer> ();
 			showCutscene.sprite = cutscenes[cutscenePos++];
 			goalText = allCutsceneText [cutscenePos];
+			if (cutscenePos == 2) {
+				ambientAudioSource.clip = magicAudio;
+				ambientAudioSource.Play ();
+			}
 		}
 	}
 }
