@@ -162,10 +162,6 @@ public class dialogBehaviour : MonoBehaviour {
 	}
 	void OnTriggerEnter2D(Collider2D coll)
 	{
-		var sign = 1;
-		if (!playerScript.pink && playerScript.flippingAnimation) {
-			sign = -1;
-		}
 		if (coll.transform.gameObject.name == "Player") {
 			if (showingQuote == false) {
 
@@ -175,7 +171,7 @@ public class dialogBehaviour : MonoBehaviour {
 					playedSound = 1;
 				else
 					playedSound = -1;
-				Vector3 newPos = new Vector3 (infoPositions [counter, X2], sign*infoPositions [counter, Y2], infoBox.transform.position.z);
+				Vector3 newPos = new Vector3 (infoPositions [counter, X2], infoPositions [counter, Y2], infoBox.transform.position.z);
 				infoBox.transform.position = newPos;
 				this.GetComponent<SpriteRenderer> ().color = new Color (1.0f, 1.0f, 1.0f, 0.0f);
 
@@ -186,7 +182,7 @@ public class dialogBehaviour : MonoBehaviour {
 
 				counter++;
 				playedSound = 0;
-				Vector3 newPos = new Vector3 (infoPositions [counter, X1], sign*infoPositions [counter, Y1], infoBox.transform.position.z);
+				Vector3 newPos = new Vector3 (infoPositions [counter, X1], infoPositions [counter, Y1], infoBox.transform.position.z);
 				infoBox.transform.position = newPos;
 				dialogueBox.SetActive (false);
 				showingQuote = false;

@@ -32,7 +32,6 @@ public class PlayerControls : MonoBehaviour {
 	private bool kick = false;
 	private GameObject kickee;
 	private Transform mainCamera;
-	public bool flippingAnimation;
 	private bool swapping = false;
 	private IEnumerator animating = null;
 
@@ -103,14 +102,6 @@ public class PlayerControls : MonoBehaviour {
 						rigidbody.gravityScale = 0;
 					}
 				}
-			}
-		}
-		if (flippingAnimation) {
-			var allStuff = GameObject.FindGameObjectsWithTag ("Both");
-			foreach (GameObject obj in allStuff) {
-				Vector3 pos = new Vector3 (obj.transform.position.x, -obj.transform.position.y, obj.transform.position.z);
-				Quaternion rot = Quaternion.Euler (180, 0, 0);
-				Instantiate (obj, pos, rot);
 			}
 		}
         // to iterate through the checkpoints: {checkpoint0, checkpoint1, ...}
@@ -213,14 +204,10 @@ public class PlayerControls : MonoBehaviour {
 		float moveForce = moveForcePink;
 		float maxSpeed = maxSpeedPink;
 		float jumpForce = jumpForcePink;
-		var sign = 1;
-		if (!pink && flippingAnimation) {
-			sign = -1;
-		}
 		if (!pink) {
 			moveForce = moveForceBlue;
 			maxSpeed = maxSpeedBlue;
-			jumpForce = sign * jumpForceBlue;
+			jumpForce = jumpForceBlue;
 		} else {
 			if (animating==null) {
 				if ((int)(Time.time*100) % 600 == 0) {
@@ -259,18 +246,13 @@ public class PlayerControls : MonoBehaviour {
 			maxSpeed = 0;
 		}
 		if (tilted || !pink) {
-			if (rb2d.rotation != 0f && (pink || !flippingAnimation)) {
+			if (rb2d.rotation != 0f) {
 				rb2d.rotation = 0f;
 			}
-			if (rb2d.rotation != 180f && !pink && flippingAnimation) {
-				rb2d.rotation = 180f;
-			}
-
-			
 		}
 
 		if (dead) {
-			rb2d.transform.position = new Vector3(lastCheckpoint.transform.position.x,sign*lastCheckpoint.transform.position.y,lastCheckpoint.transform.position.z);
+			rb2d.transform.position = new Vector3(lastCheckpoint.transform.position.x,lastCheckpoint.transform.position.y,lastCheckpoint.transform.position.z);
             dead = false;
             if (currentSceneIsSecondLevel && checkpointNum < 2) {
                 GameObject boulder = GameObject.Find("boulder");
@@ -312,10 +294,6 @@ public class PlayerControls : MonoBehaviour {
 					col.gameObject.GetComponent<Rigidbody2D>().mass = 10;
 				}
 			}
-			sign = 1;
-			if (!pink && flippingAnimation) {
-				sign = -1;
-			}
 			var box = GetComponent<BoxCollider2D>();
 			var circle = GetComponent<CircleCollider2D>();
 			if (pink) {
@@ -337,7 +315,7 @@ public class PlayerControls : MonoBehaviour {
 				fireAudioSource.Play ();
 			} else {
 				//GetComponent<Animation>().CrossFade("BlueToRed", 0.5f, PlayMode.StopAll);
-				rb2d.gravityScale = sign*gravityBlue;
+				rb2d.gravityScale = gravityBlue;
 
 				//sr.sprite = Resources.Load<Sprite>("icem");
 				if (animating!=null) {
@@ -354,58 +332,46 @@ public class PlayerControls : MonoBehaviour {
 				}
 				iceAudioSource.Play ();
 			}
-			if (flippingAnimation) {
-				rb2d.AddForce (new Vector2 (0f, 4 * jumpForce));
-				StartCoroutine (rotate ());
-				var pinkStuff = GameObject.FindGameObjectsWithTag ("OtherWorld");
-				foreach (var obj in pinkStuff) {
-					Vector3 newPos = new Vector3 (obj.transform.position.x, -obj.transform.position.y, obj.transform.position.z);
+			var pinkStuff = GameObject.FindGameObjectsWithTag ("Pink");
+			foreach (var obj in pinkStuff) {
+				Vector3 newPos = new Vector3 (obj.transform.position.x, -obj.transform.position.y, obj.transform.position.z);
 
-					obj.transform.position = newPos;
-					obj.transform.Rotate (0, 0, 180);
+				obj.transform.position = newPos;
+				obj.transform.Rotate (0, 0, 180);
+				Rigidbody2D rigidbody = obj.GetComponent<Rigidbody2D>();
+				if (rigidbody != null) {
+					if (pink) {
+						rigidbody.gravityScale = 1;
+					} else {
+						rigidbody.gravityScale = 0;
+					}
 				}
-			} else {
-				var pinkStuff = GameObject.FindGameObjectsWithTag ("Pink");
-				foreach (var obj in pinkStuff) {
+			}
+			var blueStuff = GameObject.FindGameObjectsWithTag ("Blue");
+			foreach (var obj in blueStuff) {
+				if (obj.name != "BackgroundQuad (2)" && obj.name != "BackgroundQuad" && obj.name != "BackgroundQuad (1)") {
 					Vector3 newPos = new Vector3 (obj.transform.position.x, -obj.transform.position.y, obj.transform.position.z);
-
 					obj.transform.position = newPos;
-					obj.transform.Rotate (0, 0, 180);
-					Rigidbody2D rigidbody = obj.GetComponent<Rigidbody2D>();
-					if (rigidbody != null) {
-						if (pink) {
-							rigidbody.gravityScale = 1;
-						} else {
-							rigidbody.gravityScale = 0;
-						}
+				}
+				obj.transform.Rotate (0, 0, 180);
+				Rigidbody2D rigidbody = obj.GetComponent<Rigidbody2D>();
+				if (rigidbody != null) {
+					if (!pink) {
+						rigidbody.gravityScale = 1;
+					} else {
+						rigidbody.gravityScale = 0;
 					}
 				}
-				var blueStuff = GameObject.FindGameObjectsWithTag ("Blue");
-				foreach (var obj in blueStuff) {
-					if (obj.name != "BackgroundQuad (2)" && obj.name != "BackgroundQuad" && obj.name != "BackgroundQuad (1)") {
-						Vector3 newPos = new Vector3 (obj.transform.position.x, -obj.transform.position.y, obj.transform.position.z);
-						obj.transform.position = newPos;
-					}
-					obj.transform.Rotate (0, 0, 180);
-					Rigidbody2D rigidbody = obj.GetComponent<Rigidbody2D>();
-					if (rigidbody != null) {
-						if (!pink) {
-							rigidbody.gravityScale = 1;
-						} else {
-							rigidbody.gravityScale = 0;
-						}
-					}
-				}
-                if (currentSceneIsSecondLevel)
+			}
+            if (currentSceneIsSecondLevel)
+            {
+                if (pink)
                 {
-                    if (pink)
-                    {
-                        GameObject.Find("bridge").GetComponent<Rigidbody2D>().gravityScale = 0;
-                    }
-                    else
-                    {
-                        GameObject.Find("bridge").GetComponent<Rigidbody2D>().gravityScale = 1;
-                    }
+                    GameObject.Find("bridge").GetComponent<Rigidbody2D>().gravityScale = 0;
+                }
+                else
+                {
+                    GameObject.Find("bridge").GetComponent<Rigidbody2D>().gravityScale = 1;
                 }
             }
 			swap = false;
