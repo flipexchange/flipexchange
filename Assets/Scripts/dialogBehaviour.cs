@@ -49,10 +49,11 @@ public class dialogBehaviour : MonoBehaviour {
 			//[x1,y1,x2,y2] where x1,y1 is initial position and x2,y2 is where it goes after it teleports
 			if (level == 1) {
 				infoPositions = new float[,] {
-					{ -6, -6, 10, -6 },
-					{ 9, -4, 17, -4 },
-					{ 47.86f, -4, 67, -4 },
-					{ 73, -5, 83, -2.89f }, {
+					{ -6, -6, 7, -6 },
+					{ 7, -6, 26, -5 },
+					{ 26, -5, 50, -5 },
+					{ 50, -5, 57, -5 },
+                    { 71, -5, 86, -5 },{
 						100,
 						-5,
 						199,
@@ -60,17 +61,29 @@ public class dialogBehaviour : MonoBehaviour {
 					}
 				};
 
+                circleQuotes[0] = "I can't believe I'm trapped in a body with you...";
+                rectQuotes[0] = "When I find this wizard, I'm going to burn him alive!";
+                // Extra padding for text alignment
+                circleQuotes[1] = "I can climb that ramp. Give me a turn!\n(Press 'z' to swap characters)";
+                rectQuotes[1] = "This slidy thing must be a Iceworld invention.";
+                circleQuotes[2] = "I'm so nervous. We don't jump much in Iceworld...\n(Press 'spacebar' to jump)";
+                rectQuotes[2] = "A chasm! Let me jump over it!\n(Press 'spacebar' to jump)";
+                circleQuotes[3] = "These red walls don't block me. I can pass them no problem.";
+                rectQuotes[3] = "But I can pass these blue walls no problem.";
+                circleQuotes[4] = "Try switching to me in midair!";
+                rectQuotes[4] = "I think we need to work together for this puzzle.";
 
+                /*
 				rectQuotes [0] = "I bet I can get to the end of this world all on my own! Why do we need to be merged?";
 				circleQuotes [0] = "You fire folk are so brash. You always rush things; I can't wait until we unmerge.";
-
 				circleQuotes [1] = "Even if you can jump and run faster than me, that doesn't mean you can climb ramps as well as I can...";
 				rectQuotes [1] = "Ice Maiden, this ramp is too steep even for me! I can't seem to rush past it...but maybe you can?";
 				rectQuotes [2] = "Seems like I can't get past red bars on my own?";
 				circleQuotes [2] = "Hm, the red bars don't seem to block me. Let me take over for a little while.";
 				rectQuotes [3] = "Man, I wish I could jump high enough to reach that white portal...but we might need to switch off to make it.";
 				circleQuotes [3] = "Seems like there is no way for us to make it to the portal unless we switch off.";
-			} else if (level == 2) {
+                */
+            } else if (level == 2) {
 				infoPositions = new float[,] {
 					{ 1, -4.5f, 8.5f, -4 },
 					{ 16, -4.5f, 42, -0.26f },
