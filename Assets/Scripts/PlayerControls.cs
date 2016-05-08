@@ -396,7 +396,13 @@ public class PlayerControls : MonoBehaviour {
 						}
 					}
 				}
-			}
+                if (pink) {
+                    GameObject.Find("bridge").GetComponent<Rigidbody2D>().gravityScale=0;
+                }
+                else {
+                    GameObject.Find("bridge").GetComponent<Rigidbody2D>().gravityScale = 1;
+                }
+            }
 			swap = false;
 		}
 	}
