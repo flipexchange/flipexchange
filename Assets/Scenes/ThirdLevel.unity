@@ -2265,6 +2265,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Key: {fileID: 1492066069}
   deathAudio: {fileID: 8300000, guid: 9401c3efecfd04b269bf02acc6b6e1f3, type: 3}
+  prebattleAudio: {fileID: 8300000, guid: 0e60f1fdd5b3541a291596d49962ac80, type: 3}
+  battleAudio: {fileID: 8300000, guid: 78366efed4b764fb4906b9102c530baf, type: 3}
 --- !u!68 &760287019
 EdgeCollider2D:
   m_ObjectHideFlags: 0
@@ -3647,7 +3649,7 @@ AudioSource:
   Pan2D: 0
   rolloffMode: 0
   BypassEffects: 0
-  BypassListenerEffects: 0
+  BypassListenerEffects: 1
   BypassReverbZones: 0
   rolloffCustomCurve:
     serializedVersion: 2
@@ -3707,11 +3709,11 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 0e60f1fdd5b3541a291596d49962ac80, type: 3}
-  m_PlayOnAwake: 1
+  m_audioClip: {fileID: 8300000, guid: 78366efed4b764fb4906b9102c530baf, type: 3}
+  m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
-  Loop: 1
+  Loop: 0
   Mute: 0
   Spatialize: 0
   Priority: 128
