@@ -1,104 +1,104 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &125794
+--- !u!1 &166286
 GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   serializedVersion: 4
   m_Component:
-  - 4: {fileID: 452892}
-  - 15: {fileID: 1541906}
-  - 12: {fileID: 1204318}
-  - 26: {fileID: 2672154}
-  - 114: {fileID: 11405568}
+  - 4: {fileID: 426634}
+  - 15: {fileID: 1595910}
+  - 12: {fileID: 1265694}
+  - 26: {fileID: 2668330}
+  - 114: {fileID: 11444954}
   m_Layer: 1
-  m_Name: Steam
+  m_Name: Steam_old
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &452892
+--- !u!4 &426634
 Transform:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 125794}
+  m_GameObject: {fileID: 166286}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -9, z: 1}
+  m_LocalPosition: {x: 5.5928903, y: -8, z: 1}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
---- !u!12 &1204318
+--- !u!12 &1265694
 ParticleAnimator:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 125794}
+  m_GameObject: {fileID: 166286}
   Does Animate Color?: 1
   colorAnimation[0]:
     serializedVersion: 2
-    rgba: 167772160
+    rgba: 16777215
   colorAnimation[1]:
     serializedVersion: 2
-    rgba: 3019898880
+    rgba: 1895825407
   colorAnimation[2]:
     serializedVersion: 2
-    rgba: 4278190080
+    rgba: 704643071
   colorAnimation[3]:
     serializedVersion: 2
-    rgba: 3019898880
+    rgba: 822083583
   colorAnimation[4]:
     serializedVersion: 2
-    rgba: 167772160
+    rgba: 16777215
   worldRotationAxis: {x: 0, y: 0, z: 0}
   localRotationAxis: {x: 0, y: 0, z: 0}
-  sizeGrow: 0.5
-  rndForce: {x: 0.5, y: 0, z: 0.5}
+  sizeGrow: 1
+  rndForce: {x: 0, y: 0, z: 0}
   force: {x: 0, y: 0, z: 0}
   damping: 1
   stopSimulation: 0
   autodestruct: 0
---- !u!15 &1541906
+--- !u!15 &1595910
 EllipsoidParticleEmitter:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 125794}
+  m_GameObject: {fileID: 166286}
   serializedVersion: 2
   m_Enabled: 1
   m_Emit: 1
-  minSize: 0.05
-  maxSize: 0.1
+  minSize: 1
+  maxSize: 2
   minEnergy: 3
-  maxEnergy: 5
-  minEmission: 90
+  maxEnergy: 3
+  minEmission: 100
   maxEmission: 100
-  worldVelocity: {x: 0, y: 1, z: 0}
-  localVelocity: {x: 0, y: 0, z: 0}
-  rndVelocity: {x: 1, y: 0.5, z: 0.1}
+  worldVelocity: {x: 0, y: 0, z: 0}
+  localVelocity: {x: 0, y: 1.5, z: 0}
+  rndVelocity: {x: 0.2, y: 0.5, z: 0.2}
   emitterVelocityScale: 0.05
   tangentVelocity: {x: 0, y: 0, z: 0}
   angularVelocity: 0
   rndAngularVelocity: 0
-  rndRotation: 1
+  rndRotation: 0
   Simulate in Worldspace?: 1
   m_OneShot: 0
-  m_Ellipsoid: {x: 99, y: 0.1, z: 10}
+  m_Ellipsoid: {x: 99, y: 0, z: 25}
   m_MinEmitterRange: 0
---- !u!26 &2672154
+--- !u!26 &2668330
 ParticleRenderer:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 125794}
+  m_GameObject: {fileID: 166286}
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_Materials:
-  - {fileID: 2100000, guid: 65fbe791bb29a8c46a411fc648e18cf7, type: 2}
+  - {fileID: 2100000, guid: d22e69c56dc26e84eaef654a80a7fdbe, type: 2}
   m_SubsetIndices: 
   m_StaticBatchRoot: {fileID: 0}
   m_UseLightProbes: 0
@@ -116,20 +116,20 @@ ParticleRenderer:
   m_SortingOrder: 0
   serializedVersion: 2
   m_CameraVelocityScale: 0
-  m_StretchParticles: 5
-  m_LengthScale: 1.5
+  m_StretchParticles: 2
+  m_LengthScale: 2
   m_VelocityScale: 0
-  m_MaxParticleSize: 0.15
+  m_MaxParticleSize: 5
   UV Animation:
-    x Tile: 1
-    y Tile: 1
+    x Tile: 9
+    y Tile: 4
     cycles: 1
---- !u!114 &11405568
+--- !u!114 &11444954
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 125794}
+  m_GameObject: {fileID: 166286}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 9ee1afd3486ef47c387fc3c086b92160, type: 3}
@@ -144,5 +144,5 @@ Prefab:
     m_Modifications: []
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
-  m_RootGameObject: {fileID: 125794}
+  m_RootGameObject: {fileID: 166286}
   m_IsPrefabParent: 1

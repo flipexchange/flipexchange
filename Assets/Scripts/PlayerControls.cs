@@ -37,7 +37,7 @@ public class PlayerControls : MonoBehaviour {
 	private IEnumerator animating = null;
 
     // variable to store lastCheckpoint object
-    private int checkpointNum = 0; 
+    private int checkpointNum = -1; 
     private GameObject lastCheckpoint;
     private GameObject nextCheckpoint;
 
@@ -138,9 +138,10 @@ public class PlayerControls : MonoBehaviour {
         if (transform.position.x > nextCheckpoint.transform.position.x) {
             lastCheckpoint = GameObject.Find("checkpoint" + checkpointNum);
             checkpointNum++;
-            if (GameObject.Find("checkpoint" + checkpointNum) != null)
-                // Set next checkpoint
-                nextCheckpoint = GameObject.Find("checkpoint" + checkpointNum);
+			if (GameObject.Find ("checkpoint" + checkpointNum) != null) {
+				// Set next checkpoint
+				nextCheckpoint = GameObject.Find ("checkpoint" + checkpointNum);
+			} 
             /*else {
                 // Jump to next level when there's no more checkpoint.
                 ended = true;   
