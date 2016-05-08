@@ -63,7 +63,7 @@ public class TextScroll : MonoBehaviour {
 		if (goalText [currentlyDisplayingText] [2] == 'x') {
 			fireIcon.SetActive (false);
 			iceIcon.SetActive (true);
-		} else if (goalText [currentlyDisplayingText] [2] == 'z') {
+		} else if (goalText [currentlyDisplayingText] [2] == 'z' && goalText [currentlyDisplayingText] [0] != 'W') {
 			iceIcon.SetActive (false);
 			fireIcon.SetActive (true);
 		} else {
