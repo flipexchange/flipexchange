@@ -158,7 +158,7 @@ public class PlayerControls : MonoBehaviour {
 			dead = true;
         if (Input.GetButtonDown("Switch") && !swapping)
             swap = true;
-		if (Input.GetButtonDown ("Jump") && grounded) {
+		if (Input.GetButtonDown ("Jump") && grounded && Mathf.Abs(rb2d.velocity.y)<.02) {
 			jump = true;
 			jumpAudioSource.Play ();
 		}
@@ -303,7 +303,7 @@ public class PlayerControls : MonoBehaviour {
 			// SecondLevel Methods
 			if (currentSceneIsSecondLevel)
 			{ //These scripts are specific to SecondLevel
-				GameObject col = GameObject.Find ("bridge");
+				GameObject col = GameObject.Find("bridge");
 				if (pink) {
 					col.gameObject.GetComponent<Rigidbody2D>().mass = 1000000;
 				}
@@ -396,7 +396,18 @@ public class PlayerControls : MonoBehaviour {
 						}
 					}
 				}
-			}
+                if (currentSceneIsSecondLevel)
+                {
+                    if (pink)
+                    {
+                        GameObject.Find("bridge").GetComponent<Rigidbody2D>().gravityScale = 0;
+                    }
+                    else
+                    {
+                        GameObject.Find("bridge").GetComponent<Rigidbody2D>().gravityScale = 1;
+                    }
+                }
+            }
 			swap = false;
 		}
 	}

@@ -8,13 +8,17 @@ public class TextScroll : MonoBehaviour {
 	private bool finishedType;
 	Sprite[] cutscenes;
 	private int cutscenePos = 0;
+	private GameObject fireIcon;
+	private GameObject iceIcon;
+
+
 	//Store all your text in this string array
-	string[] cutscene1Text = new string[]{"Long ago, there were two nations, Lavaland and Iceland.","The two lands were separated, and did  not like each other due to their massive differences.","Ice:Lavaland people never think before jumping into action! You guys are so reckless, it's ruining everything.", "Lava:Well you Iceland people move so slowly, no wonder we don't like you guys! We would never work with you.", "Lava:I hate you guys!", "Ice:You guys are the worst, I never want to see you guys near our land!","Lava:Same here, you lame icicles!"};
+	string[] cutscene1Text = new string[]{"Long ago, there were two nations,  LavaLand and IceWorld.","The two lands were separated, and did  not like each other due to their massive differences.","Ice: LavaLand people never think before jumping into action! You guys are so reckless, it's ruining everything.", "Lava: Well you IceWorld people move so slowly, no wonder we don't like you guys! We would never work with you.", "Lava:I hate you guys!", "Ice:You guys are the worst, I never want to see you guys near our land!","Lava: Same here, you lame icicles!"};
 	string[] cutscene2Text = new string[]{"A long battle ensued.", "Both nations would not stand down.","Soon, only two remained."};
-	string[] cutscene3Text = new string[]{"Wizard: Enough!","Wizard:I'm merging you two so that LavaLand and IceLand can work together for once!"};
+	string[] cutscene3Text = new string[]{"Wizard: Enough!","Wizard:I'm merging you two so that LavaLand and IceWorld can work together for once!"};
 	string[] cutscene4Text = new string[]{"And so, Fire and Ice were merged."};
 	string[][] allCutsceneText = new string[4][];
-	string[] goalText = new string[]{"Long ago, there were two nations, Lavaland and Iceland.","The two lands were separated, and did  not like each other due to their massive differences.","Ice:Lavaland people never think before jumping into action! You guys are so reckless, it's ruining everything.", "Lava:Well you Iceland people move so slowly, no wonder we don't like you guys! We would never work with you.", "Lava:I hate you guys!", "Ice:You guys are the worst, I never want to see you guys near our land!","Lava:Same here, you lame icicles!"};
+	string[] goalText = new string[]{"Long ago, there were two nations, LavaLand and IceWorld.","The two lands were separated, and did  not like each other due to their massive differences.","Ice:LavaLand people never think before jumping into action! You guys are so reckless, it's ruining everything.", "Lava:Well you IceWorld people move so slowly, no wonder we don't like you guys! We would never work with you.", "Lava:I hate you guys!", "Ice:You guys are the worst, I never want to see you guys near our land!","Lava:Same here, you lame icicles!"};
 	int currentlyDisplayingText = 0;
 
 	public AudioClip textScrollAudio;
@@ -46,6 +50,7 @@ public class TextScroll : MonoBehaviour {
 	public void SkipToNextText(){
 		textScrollAudioSource.Stop ();
 		StopAllCoroutines();
+
 		//If we've reached the end of the array, do anything you want. I just restart the example text
 		if (currentlyDisplayingText >= goalText.Length -1) {
 			showNewCutscene ();
@@ -54,6 +59,16 @@ public class TextScroll : MonoBehaviour {
 			currentlyDisplayingText++;
 
 			StartCoroutine(AnimateText());
+		}
+		if (goalText [currentlyDisplayingText] [0] == 'I') {
+			fireIcon.SetActive (false);
+			iceIcon.SetActive (true);
+		} else if (goalText [currentlyDisplayingText] [0] == 'L') {
+			iceIcon.SetActive (false);
+			fireIcon.SetActive (true);
+		} else {
+			iceIcon.SetActive (false);
+			fireIcon.SetActive (false);
 		}
 
 	}
@@ -75,12 +90,16 @@ public class TextScroll : MonoBehaviour {
 	}
 	// Use this for initialization
 	void Start () {
+		fireIcon = GameObject.Find ("Canvas/rect");
+		iceIcon = GameObject.Find ("Canvas/circle");
 		allCutsceneText [0] = cutscene1Text;
 		allCutsceneText [1] = cutscene2Text;
 		allCutsceneText [2] = cutscene3Text;
 		allCutsceneText [3] = cutscene4Text;
 		goalText = allCutsceneText [0];
 		finishedType = false;
+		fireIcon.SetActive (false);
+		iceIcon.SetActive (false);
 		cutscenes = new Sprite[]{Resources.Load<Sprite>("cutscene2"),Resources.Load<Sprite>("cutscene3"),Resources.Load<Sprite>("cutscene4")};
 		ambientAudioSource.Play ();
 	}
@@ -108,20 +127,25 @@ public class TextScroll : MonoBehaviour {
 	{
 		currentlyDisplayingText = 0;
 
-		print (goalText [0]);
+		//print (goalText [0]);
 
 		SceneFadeInOut fader = GameObject.Find ("screenFader").GetComponent<SceneFadeInOut> ();
-		fader.EndScene ();
+
 		if (cutscenePos >= cutscenes.Length) {
-			print ("dONE W CUTSCENES");
+			fader.EndScene ();
+			//print ("dONE W CUTSCENES");
 			SceneManager.LoadScene ("instructionScene", LoadSceneMode.Single);
 		} else {
 			SpriteRenderer showCutscene = GameObject.Find ("Cutscene").GetComponent<SpriteRenderer> ();
 			showCutscene.sprite = cutscenes[cutscenePos++];
 			goalText = allCutsceneText [cutscenePos];
+
 			if (cutscenePos == 2) {
 				ambientAudioSource.clip = magicAudio;
 				ambientAudioSource.Play ();
+				fader.EndSceneFast ();
+			} else {
+				fader.EndScene ();
 			}
 		}
 	}
