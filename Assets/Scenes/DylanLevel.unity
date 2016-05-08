@@ -3651,6 +3651,10 @@ Prefab:
       propertyPath: level
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 11423590, guid: 47e50c32c40444d64b7cd3d42aafadb3, type: 2}
+      propertyPath: text2Audio
+      value: 
+      objectReference: {fileID: 8300000, guid: e5da9e13012c742348354d2af65f946a, type: 3}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 47e50c32c40444d64b7cd3d42aafadb3, type: 2}
   m_IsPrefabParent: 0

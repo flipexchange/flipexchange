@@ -21,11 +21,14 @@ public class dialogBehaviour : MonoBehaviour {
 	private bool showingQuote;
 	private AudioSource source;
 	public AudioClip textAudio;
+	public AudioClip text2Audio;
 	public int level;
+	private int playedSound;
 	// Use this for initialization
 	void Start () {
 		source = GetComponent<AudioSource> ();
 		counter = 0;
+		playedSound = 0;
 		player = GameObject.Find ("Player");
 		infoBox = GameObject.Find("Info");
 		showingQuote = false;
@@ -137,11 +140,25 @@ public class dialogBehaviour : MonoBehaviour {
 			dialogueText.text = circleQuotes [counter];
 			circle.SetActive (true);
 			rect.SetActive (false);
+			if (playedSound ==-1 || playedSound == 2) {
+				source.clip = text2Audio;
+				source.Play ();
+				playedSound--;
+				
+
+			}
 		} else {
 			dialogueText.text = rectQuotes [counter];
 			rect.SetActive (true);
 			circle.SetActive (false);
+			if (playedSound == 1 || playedSound == -2) {
+				source.clip = textAudio;
+				source.Play ();
+
+				playedSound++;
+			}
 		}
+
 	}
 	void OnTriggerEnter2D(Collider2D coll)
 	{
@@ -154,18 +171,21 @@ public class dialogBehaviour : MonoBehaviour {
 
 				dialogueBox.SetActive (true);
 				updateQuote ();
+				if (!playerScript.pink)
+					playedSound = 1;
+				else
+					playedSound = -1;
 				Vector3 newPos = new Vector3 (infoPositions [counter, X2], sign*infoPositions [counter, Y2], infoBox.transform.position.z);
 				infoBox.transform.position = newPos;
 				this.GetComponent<SpriteRenderer> ().color = new Color (1.0f, 1.0f, 1.0f, 0.0f);
 
 				showingQuote = true;
-				source.clip = textAudio;
-				source.Play ();
+
 			} else {
 				this.GetComponent<SpriteRenderer> ().color = new Color (1.0f, 1.0f, 1.0f, 0.0f);
 
 				counter++;
-
+				playedSound = 0;
 				Vector3 newPos = new Vector3 (infoPositions [counter, X1], sign*infoPositions [counter, Y1], infoBox.transform.position.z);
 				infoBox.transform.position = newPos;
 				dialogueBox.SetActive (false);
