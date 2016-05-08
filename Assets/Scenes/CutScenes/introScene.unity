@@ -1198,3 +1198,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   textBox: {fileID: 2126581922}
+  textScrollAudio: {fileID: 8300000, guid: f59db2050753b47b8bf28feb6d8b23ee, type: 3}

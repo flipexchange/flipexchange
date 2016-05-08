@@ -4377,7 +4377,7 @@ MonoBehaviour:
   fireAudio: {fileID: 8300000, guid: b59565f15243d4451b76c8f03866e1e8, type: 3}
   iceAudio: {fileID: 8300000, guid: 0797aaaf563194b3290d6806f438aa09, type: 3}
   jumpAudio: {fileID: 8300000, guid: 3a3d05fc8b66749b18618a26b9a988de, type: 3}
-  dieAudio: {fileID: 8300000, guid: 67de3030b88ad4c608acc0e0a9986fbc, type: 3}
+  dieAudio: {fileID: 8300000, guid: 860789fc0a5a84b8985e9972f6afde28, type: 3}
   rollAudio: {fileID: 8300000, guid: d06883bc5fb9d4fad95b8cbc3599819e, type: 3}
 --- !u!58 &1193319434
 CircleCollider2D:

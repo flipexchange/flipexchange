@@ -18,8 +18,11 @@ public class bossController : MonoBehaviour {
     public float Bullet_Forward_Force;
     public int firingPeriod = 150;
     private int firingCounter;
-	private AudioSource source;
+	private AudioSource bulletAudioSource;
 	public AudioClip bulletAudio;
+	private AudioSource hitAudioSource;
+	public AudioClip hitAudio;
+	private gateController gate;
 
     /* HEALTHBAR */
     public GameObject healthbar;
@@ -28,7 +31,26 @@ public class bossController : MonoBehaviour {
 
 	/* KEY */
 	public GameObject Key; 
+	public AudioSource AddAudio (AudioClip clip, bool loop, bool playAwake, float vol) {
 
+		AudioSource newAudio = gameObject.AddComponent<AudioSource>();
+
+		newAudio.clip = clip;
+		newAudio.loop = loop;
+		newAudio.playOnAwake = playAwake;
+		newAudio.volume = vol;
+
+		return newAudio;
+
+	}
+
+	void Awake(){
+		bulletAudioSource =AddAudio(bulletAudio, false, false, 1.0f);
+		hitAudioSource =AddAudio(hitAudio, false, false, 1.0f);
+
+
+
+	} 
     public void Start()
     {
         /*  PATROL LOGIC  */
@@ -51,7 +73,8 @@ public class bossController : MonoBehaviour {
         health = 2f;
 
 		/* SOUND */
-		source = GetComponent<AudioSource> ();
+		//source = GetComponent<AudioSource> ();
+		gate = GameObject.Find("Gate").GetComponent<gateController>();
 
 		//* IGNORE COLLISIONS */
         GameObject player = GameObject.Find("Player");
@@ -88,8 +111,7 @@ public class bossController : MonoBehaviour {
         firingCounter++;
         if (firingCounter > firingPeriod)
         {
-			source.clip = bulletAudio;
-			source.Play ();
+			bulletAudioSource.Play ();
             firingCounter = 0;
 
             //The Bullet instantiation happens here.
@@ -127,10 +149,12 @@ public class bossController : MonoBehaviour {
         {
             health--;
             if (health == 1) {
+				hitAudioSource.Play ();
                 healthbar.GetComponent<Renderer>().enabled = true;
                 healthbarRed.GetComponent<Renderer>().enabled = true;
             }
             if (health == 0) { 
+				gate.bossDeath ();
                 gameObject.SetActive(false);
                 healthbar.SetActive(false);
                 healthbarRed.SetActive(false);

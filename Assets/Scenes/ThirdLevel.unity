@@ -1342,6 +1342,7 @@ MonoBehaviour:
   Bullet_Forward_Force: 400
   firingPeriod: 250
   bulletAudio: {fileID: 8300000, guid: 05e3c369c1cc84569b50252dedb4b798, type: 3}
+  hitAudio: {fileID: 8300000, guid: cc4a52449f72a407980eba0bb40f8afb, type: 3}
   healthbar: {fileID: 1681122125}
   healthbarRed: {fileID: 138905795}
   Key: {fileID: 1492066069}
@@ -2187,6 +2188,7 @@ GameObject:
   - 114: {fileID: 760287018}
   - 68: {fileID: 760287020}
   - 68: {fileID: 760287019}
+  - 82: {fileID: 760287021}
   m_Layer: 0
   m_Name: Gate
   m_TagString: Untagged
@@ -2262,6 +2264,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Key: {fileID: 1492066069}
+  deathAudio: {fileID: 8300000, guid: 9401c3efecfd04b269bf02acc6b6e1f3, type: 3}
 --- !u!68 &760287019
 EdgeCollider2D:
   m_ObjectHideFlags: 0
@@ -2292,6 +2295,80 @@ EdgeCollider2D:
   m_Points:
   - {x: -0.59749603, y: 0.8745971}
   - {x: -0.5974884, y: -1.0161538}
+--- !u!82 &760287021
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 760287014}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 0}
+  m_PlayOnAwake: 1
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    - time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
 --- !u!1 &761272132
 GameObject:
   m_ObjectHideFlags: 0
@@ -3531,7 +3608,7 @@ MonoBehaviour:
   fireAudio: {fileID: 8300000, guid: b59565f15243d4451b76c8f03866e1e8, type: 3}
   iceAudio: {fileID: 8300000, guid: 0797aaaf563194b3290d6806f438aa09, type: 3}
   jumpAudio: {fileID: 8300000, guid: 3a3d05fc8b66749b18618a26b9a988de, type: 3}
-  dieAudio: {fileID: 8300000, guid: 67de3030b88ad4c608acc0e0a9986fbc, type: 3}
+  dieAudio: {fileID: 8300000, guid: 860789fc0a5a84b8985e9972f6afde28, type: 3}
   rollAudio: {fileID: 8300000, guid: d06883bc5fb9d4fad95b8cbc3599819e, type: 3}
 --- !u!58 &1193319434
 CircleCollider2D:

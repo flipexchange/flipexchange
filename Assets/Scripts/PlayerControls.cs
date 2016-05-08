@@ -138,7 +138,7 @@ public class PlayerControls : MonoBehaviour {
 		fireAudioSource =AddAudio(fireAudio, false, false, 1.0f);
 		iceAudioSource =AddAudio(iceAudio, false, false, 1.0f);
 		jumpAudioSource =AddAudio(jumpAudio, false,false, 1.0f);
-		dieAudioSource =AddAudio(dieAudio, false,false, 0.5f);
+		dieAudioSource =AddAudio(dieAudio, false,false, 1.0f);
 		rollAudioSource =AddAudio(rollAudio, false,false, 1.5f);
 
 

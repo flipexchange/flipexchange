@@ -16,11 +16,31 @@ public class TextScroll : MonoBehaviour {
 	string[][] allCutsceneText = new string[4][];
 	string[] goalText = new string[]{"Long ago, there were two nations, Lavaland and Iceland.","The two lands were separated, and did  not like each other due to their massive differences.","Ice:Lavaland people never think before jumping into action! You guys are so reckless, it's ruining everything.", "Lava:Well you Iceland people move so slowly, no wonder we don't like you guys! We would never work with you.", "Lava:I hate you guys!", "Ice:You guys are the worst, I never want to see you guys near our land!","Lava:Same here, you lame icicles!"};
 	int currentlyDisplayingText = 0;
+
+	public AudioClip textScrollAudio;
+	private AudioSource textScrollAudioSource;
 	void Awake () {
+		textScrollAudioSource =AddAudio(textScrollAudio, true, false, 1.0f);
 		StartCoroutine(AnimateText());
+
+
 	}
+	public AudioSource AddAudio (AudioClip clip, bool loop, bool playAwake, float vol) {
+
+		AudioSource newAudio = gameObject.AddComponent<AudioSource>();
+
+		newAudio.clip = clip;
+		newAudio.loop = loop;
+		newAudio.playOnAwake = playAwake;
+		newAudio.volume = vol;
+
+		return newAudio;
+
+	}
+
 	//This is a function for a button you press to skip to the next text
 	public void SkipToNextText(){
+		textScrollAudioSource.Stop ();
 		StopAllCoroutines();
 		//If we've reached the end of the array, do anything you want. I just restart the example text
 		if (currentlyDisplayingText >= goalText.Length -1) {
@@ -36,12 +56,17 @@ public class TextScroll : MonoBehaviour {
 	//Note that the speed you want the typewriter effect to be going at is the yield waitforseconds (in my case it's 1 letter for every      0.03 seconds, replace this with a public float if you want to experiment with speed in from the editor)
 	IEnumerator AnimateText(){
 		finishedType = false;
-		print (goalText [0]);
+
+
 		for (int i = 0; i < (goalText[currentlyDisplayingText].Length+1); i++)
 		{
+			if (i == 3) {
+				textScrollAudioSource.Play ();
+			}
 			textBox.text = goalText[currentlyDisplayingText].Substring(0, i);
 			yield return new WaitForSeconds(.05f);
 		}
+		textScrollAudioSource.Stop ();
 		finishedType = true;
 	}
 	// Use this for initialization
@@ -61,7 +86,9 @@ public class TextScroll : MonoBehaviour {
 		if (Input.GetKeyDown (KeyCode.Return)) {
 			if (finishedType) {
 				SkipToNextText ();
+				textScrollAudioSource.Stop ();
 			} else {
+				textScrollAudioSource.Stop ();
 				StopAllCoroutines ();
 				if (currentlyDisplayingText >= goalText.Length) {
 					showNewCutscene ();
@@ -77,8 +104,8 @@ public class TextScroll : MonoBehaviour {
 	{
 		currentlyDisplayingText = 0;
 
-
 		print (goalText [0]);
+
 		SceneFadeInOut fader = GameObject.Find ("screenFader").GetComponent<SceneFadeInOut> ();
 		fader.EndScene ();
 		if (cutscenePos >= cutscenes.Length) {

@@ -4,8 +4,14 @@ using System.Collections;
 public class gateController : MonoBehaviour {
 
 	public GameObject Key;
+	private AudioSource deathAudioSource;
+	public AudioClip deathAudio;
 
 	// Use this for initialization
+	void Awake(){
+		deathAudioSource = GetComponent<AudioSource> ();
+		deathAudioSource.clip = deathAudio;
+	} 
 	void Start () {
 		
 	}
@@ -14,7 +20,10 @@ public class gateController : MonoBehaviour {
 	void Update () {
 	
 	}
-		
+	public void bossDeath()
+	{
+		deathAudioSource.Play ();
+	}
 	void OnCollisionEnter2D(Collision2D coll)
 	{
 		if(coll.gameObject==Key){			
