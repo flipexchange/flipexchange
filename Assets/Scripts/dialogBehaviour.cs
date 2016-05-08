@@ -44,8 +44,8 @@ public class dialogBehaviour : MonoBehaviour {
 			X2 = 2;
 			Y1 = 1;
 			Y2 = 3;
-			rectQuotes = new string[5];
-			circleQuotes = new string[5];
+			rectQuotes = new string[6];
+			circleQuotes = new string[6];
 			//[x1,y1,x2,y2] where x1,y1 is initial position and x2,y2 is where it goes after it teleports
 			if (level == 1) {
 				infoPositions = new float[,] {
@@ -84,10 +84,12 @@ public class dialogBehaviour : MonoBehaviour {
                 */
             } else if (level == 2) {
 				infoPositions = new float[,] {
-					{ -8, -5, 10, -5 },
-					{ 10, -6, 42, -6 },
-					{ 55, -6, 72, -6 },
-					{ 87, -6, 113, -6 }, {
+					{ -8, -5, 1, -5 },
+					{ 1, -5, 12, -5 },
+					{ 12, -5, 40, -5 },
+					{ 40, -6, 73, -6 },
+                    { 73, -2, 116, -2 },
+                    { 116, -2, 125, -2 },{
 						150,
 						-6,
 						199,
@@ -95,18 +97,29 @@ public class dialogBehaviour : MonoBehaviour {
 					}
 				};
 
-
+                circleQuotes[0] = "It looks like we're getting deeper into the city.";
+                rectQuotes[0] = "Good! I can't stand another agonizing moment with you.";
+                circleQuotes[1] = "You don't have the mass to push it down. Let me try.";
+                rectQuotes[1] = "Only proves how fat you are...";
+                circleQuotes[2] = "Something's coming. We should hide in this crystal cave.";
+                rectQuotes[2] = "Do you hear something rumbling like a volcano?";
+                circleQuotes[3] = "We need to stay calm and collected for these puzzles.";
+                rectQuotes[3] = "Puzzles are all about speed and skill.";
+                circleQuotes[4] = "Chill, it looks like we can progress with patience.";
+                rectQuotes[4] = "I hear gunshots. Someone is trying to extinguish us!";
+                circleQuotes[5] = "We really showed him!";
+                rectQuotes[5] = "We did it!";
+                /*
 				rectQuotes [0] = "What's this rectangular thing and why can't I push it over myself?";
 				circleQuotes [0] = "You're way too light to get that over. We ice folk are much more competent at this type of thing.";
-
 				circleQuotes [1] = "Pay attention! That rock's going to kill us if we don't find a way to switch off and avoid it.";
 				rectQuotes [1] = "I don't think I can jump high enough to get over that rock...but I can still try?";
 				rectQuotes [2] = "We might have gotten past that rock but just sayin', I did most of the work there.";
 				circleQuotes [2] = "I definitely helped us get under that platform so I'd say that I did more of the work there...";
 				rectQuotes [3] = "Eek seems like someone's not happy about us being here together, let's try to somehow hide from the bullets?";
 				circleQuotes [3] = "That guy really doesn't want the Fire and Ice nations to merge. But we have to get past him.";
-
-			} else  {
+                */
+            } else  {
 				infoPositions = new float[,] {
 					{ 0.56f, -6.2f, 18.5f, -2 },
 					{ 34, -3.2f, 40, -0.55f },
