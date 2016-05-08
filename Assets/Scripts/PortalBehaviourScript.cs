@@ -24,7 +24,7 @@ public class PortalBehaviourScript : MonoBehaviour {
 		sceneNames[3] = "ThirdLevel";
 		sceneNames[4] = "cutscene2";
 		statusText.text = "";
-		tempVal = transform.position.y-.5f;
+		tempVal = transform.position.y;
 		tempPos.x = transform.position.x;
 	}
 	
