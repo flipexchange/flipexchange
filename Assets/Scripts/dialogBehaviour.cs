@@ -88,8 +88,8 @@ public class dialogBehaviour : MonoBehaviour {
 					{ 1, -5, 12, -5 },
 					{ 12, -5, 40, -5 },
 					{ 40, -6, 73, -6 },
-                    { 73, -2, 116, -2 },
-                    { 116, -2, 125, -2 },{
+                    { 73, -2, 116, -7 },
+                    { 116, -7, 125, -7 },{
 						150,
 						-6,
 						199,
@@ -137,8 +137,8 @@ public class dialogBehaviour : MonoBehaviour {
                 circleQuotes[0] = "Against all odds, we've arrived at the city center!";
                 rectQuotes[0] = "Against what odds? We're blazing through the levels!";
                 circleQuotes[1] = "There's a city guard blocking our exit.";
-                rectQuotes[1] = "There's someone in our way. We're ready for action!";
-                circleQuotes[2] = "We need to get above him and roll boulders onto his head.";
+                rectQuotes[1] = "There's someone in our way. Let's get fired up!";
+                circleQuotes[2] = "Get above him, then roll fire and ice boulders onto him.";
                 rectQuotes[2] = "We need to take the key from him.";
                 /*
                 circleQuotes[3] = "This rock will hurt him!";
@@ -146,7 +146,7 @@ public class dialogBehaviour : MonoBehaviour {
                 circleQuotes[4] = "This will slow him down.";
                 rectQuotes[4] = "Burn!";
                 */
-                circleQuotes[3] = "That was quite the journey. I don't know if  I could've done it without you.";
+                circleQuotes[3] = "That was quite the journey! I could've done it without you.";
                 rectQuotes[3] = "We did it! You're not so bad, blue.";
                 /*
 				rectQuotes [0] = "Is this the end? I've think I've gotten the hang of this by now.";
