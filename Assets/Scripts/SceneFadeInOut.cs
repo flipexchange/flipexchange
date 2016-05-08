@@ -31,7 +31,11 @@ public class SceneFadeInOut : MonoBehaviour
 		// Lerp the colour of the texture between itself and transparent.
 		guiTexture.color = Color.Lerp(guiTexture.color, Color.clear, 0.03f);
 	}
-
+	void FadeToClearFast ()
+	{
+		// Lerp the colour of the texture between itself and transparent.
+		guiTexture.color = Color.Lerp(guiTexture.color, Color.clear, 0.01f);
+	}
 
 	void FadeToBlack ()
 	{
@@ -75,5 +79,16 @@ public class SceneFadeInOut : MonoBehaviour
 		//if(guiTexture.color.a >= 0.95f)
 			// ... reload the level.
 			//Application.LoadLevel(0);
+	}
+	public void EndSceneFast ()
+	{
+		// Make sure the texture is enabled.
+		guiTexture.enabled = true;
+		guiTexture = GetComponent<GUITexture>();
+		guiTexture.pixelInset = new Rect(0f, 0f, Screen.width, Screen.height);
+		guiTexture.color = new Color(1.0f, 1.0f, 1.0f, 0.8f);
+		sceneStarting = true;
+		FadeToClearFast ();
+
 	}
 }
