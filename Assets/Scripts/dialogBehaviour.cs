@@ -44,8 +44,8 @@ public class dialogBehaviour : MonoBehaviour {
 			X2 = 2;
 			Y1 = 1;
 			Y2 = 3;
-			rectQuotes = new string[5];
-			circleQuotes = new string[5];
+			rectQuotes = new string[6];
+			circleQuotes = new string[6];
 			//[x1,y1,x2,y2] where x1,y1 is initial position and x2,y2 is where it goes after it teleports
 			if (level == 1) {
 				infoPositions = new float[,] {
@@ -53,7 +53,7 @@ public class dialogBehaviour : MonoBehaviour {
 					{ 7, -6, 26, -5 },
 					{ 26, -5, 50, -5 },
 					{ 50, -5, 57, -5 },
-                    { 71, -5, 86, -5 },{
+                    { 71, -5, 90, -4 },{
 						100,
 						-6,
 						199,
@@ -65,7 +65,7 @@ public class dialogBehaviour : MonoBehaviour {
                 rectQuotes[0] = "When I find this wizard, I'm going to burn him alive!";
                 circleQuotes[1] = "I can climb that ramp. Give me a turn!\n(Press 'z' to swap characters)";
                 rectQuotes[1] = "This slidy thing must be a Iceworld invention.";
-                circleQuotes[2] = "I'm so nervous. We don't jump much in Iceworld...\n(Press 'spacebar' to jump)";
+                circleQuotes[2] = "I'm so nervous. I don't jump much in Iceworld...\n(Press 'spacebar' to jump)";
                 rectQuotes[2] = "A chasm! Let me jump over it!\n(Press 'spacebar' to jump)";
                 circleQuotes[3] = "These red walls don't block me. I can pass them no problem.";
                 rectQuotes[3] = "But I can pass these blue walls no problem.";
@@ -84,10 +84,12 @@ public class dialogBehaviour : MonoBehaviour {
                 */
             } else if (level == 2) {
 				infoPositions = new float[,] {
-					{ -8, -5, 10, -5 },
-					{ 10, -6, 42, -6 },
-					{ 55, -6, 72, -6 },
-					{ 87, -6, 113, -6 }, {
+					{ -8, -5, 1, -5 },
+					{ 1, -5, 12, -5 },
+					{ 12, -5, 40, -5 },
+					{ 40, -6, 73, -6 },
+                    { 73, -2, 116, -7 },
+                    { 116, -7, 125, -7 },{
 						150,
 						-6,
 						199,
@@ -95,23 +97,36 @@ public class dialogBehaviour : MonoBehaviour {
 					}
 				};
 
-
+                circleQuotes[0] = "Looks like I'm getting deeper into the city.";
+                rectQuotes[0] = "Good! I can't stand another agonizing moment with you.";
+                circleQuotes[1] = "You don't have the mass to push it down. Let me try.";
+                rectQuotes[1] = "Only proves how fat you are...";
+                circleQuotes[2] = "Something's coming. We should hide in this crystal cave.";
+                rectQuotes[2] = "Something's rumbling like a volcano. Think fast!";
+                circleQuotes[3] = "We need to stay calm and collected for these puzzles.";
+                rectQuotes[3] = "Puzzles are all about speed and skill.";
+                circleQuotes[4] = "Chill, it looks like we can progress with patience.";
+                rectQuotes[4] = "I hear gunshots. Someone is trying to extinguish us!";
+                circleQuotes[5] = "We really showed him!";
+                rectQuotes[5] = "We did it!";
+                /*
 				rectQuotes [0] = "What's this rectangular thing and why can't I push it over myself?";
 				circleQuotes [0] = "You're way too light to get that over. We ice folk are much more competent at this type of thing.";
-
 				circleQuotes [1] = "Pay attention! That rock's going to kill us if we don't find a way to switch off and avoid it.";
 				rectQuotes [1] = "I don't think I can jump high enough to get over that rock...but I can still try?";
 				rectQuotes [2] = "We might have gotten past that rock but just sayin', I did most of the work there.";
 				circleQuotes [2] = "I definitely helped us get under that platform so I'd say that I did more of the work there...";
 				rectQuotes [3] = "Eek seems like someone's not happy about us being here together, let's try to somehow hide from the bullets?";
 				circleQuotes [3] = "That guy really doesn't want the Fire and Ice nations to merge. But we have to get past him.";
-
-			} else  {
+                */
+            } else  {
 				infoPositions = new float[,] {
-					{ 0.56f, -6.2f, 18.5f, -2 },
-					{ 34, -3.2f, 40, -0.55f },
-					{ 43, -0.55f, 45.72f, -2.1f },
-					{ 75, -8, 83, -8 }, {
+					{ -10, -8, 15, -4 },
+					{ 15, -4, 24, -8 },
+					{ 33, -8, 76, -8 },
+					/*{ 40, -2, 44, -2 },
+                    { 57, -2, 53, -2 },*/
+                    { 76, -8, 83, -8 },{
 						150,
 						-5,
 						199,
@@ -119,25 +134,36 @@ public class dialogBehaviour : MonoBehaviour {
 					}
 				};
 
-
+                circleQuotes[0] = "Against all odds, we've arrived at the city center!";
+                rectQuotes[0] = "Against what odds? We're blazing through the levels!";
+                circleQuotes[1] = "There's a city guard blocking our exit.";
+                rectQuotes[1] = "There's someone in our way. Let's get fired up!";
+                circleQuotes[2] = "Get above him, then roll fire and ice boulders onto him.";
+                rectQuotes[2] = "We need to take the key from him.";
+                /*
+                circleQuotes[3] = "This rock will hurt him!";
+                rectQuotes[3] = "Let's roast this fellow!";
+                circleQuotes[4] = "This will slow him down.";
+                rectQuotes[4] = "Burn!";
+                */
+                circleQuotes[3] = "That was quite the journey! I could've done it without you.";
+                rectQuotes[3] = "We did it! You're not so bad, blue.";
+                /*
 				rectQuotes [0] = "Is this the end? I've think I've gotten the hang of this by now.";
 				circleQuotes [0] = "Come on. Let's not slack off now. There's still one last obstacle for us.";
-
 				circleQuotes [1] = "There's no way for us to beat this monster unless we find a way to push those rocks on his head.";
 				rectQuotes [1] = "Jeez this guy won't stop shooting bullets, I think we might be able to jump above him if we switch off?";
 				rectQuotes [2] = "Time to put an end to this guy.";
 				circleQuotes [2] = "This rock will probably hurt him and slow him down.";
 				rectQuotes [3] = "So we did it. I can't believe we really did it. You aren't half bad.";
 				circleQuotes [3] = "That was quite the journey. Truthfully, I don't know if  I could've done it without you.";
-
-			}
+                */
+            }
 			//setting things in place
 			Vector3 newPos = new Vector3 (infoPositions [counter, X1], infoPositions [counter, Y1], infoBox.transform.position.z);
 			infoBox.transform.position = newPos;
 			this.GetComponent<SpriteRenderer> ().color = new Color (1.0f, 1.0f, 1.0f, 0.0f);
 		}
-
-
 	}
 	
 	// Update is called once per frame
