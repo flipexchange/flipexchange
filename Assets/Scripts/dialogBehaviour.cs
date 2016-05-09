@@ -63,13 +63,13 @@ public class dialogBehaviour : MonoBehaviour {
 
                 circleQuotes[0] = "I can't believe I'm trapped in a body with you...";
                 rectQuotes[0] = "When I find this wizard, I'm going to burn him alive!";
-				circleQuotes[1] = "I can climb that ramp. Give me a turn!\n <color=#24ACE2>(Press 'z' to swap characters)</color>";
+				circleQuotes[1] = "I can climb that ramp. Give me a turn!\n<color=#24ACE2>(Press 'z' to swap characters)</color>";
                 rectQuotes[1] = "This slidy thing must be a Iceworld invention.";
-				circleQuotes[2] = "I'm so nervous. I don't jump much in Iceworld... <color=#24ACE2>\n(Press 'spacebar' to jump)</color>";
-				rectQuotes[2] = "A chasm! Let me jump over it! <color=#ff0000ff>\n(Press 'spacebar' to jump)</color>";
+				circleQuotes[2] = "I'm so nervous. I don't jump much in Iceworld...\n<color=#24ACE2>(Press 'spacebar' to jump)</color>";
+				rectQuotes[2] = "A chasm! Let me jump over it!\n<color=#ff0000ff>(Press 'spacebar' to jump)</color>";
                 circleQuotes[3] = "These red walls don't block me. I can pass them no problem.";
                 rectQuotes[3] = "But I can pass through these blue walls no problem.";
-				circleQuotes[4] = "I know what to do! Try  <color=#24ACE2>switching</color> to me in midair!";
+				circleQuotes[4] = "I know what to do! Try <color=#24ACE2>switching</color> to me in midair!";
                 rectQuotes[4] = "Snowball! We need to work together for this puzzle.";
 
                 /*
@@ -86,7 +86,7 @@ public class dialogBehaviour : MonoBehaviour {
 				infoPositions = new float[,] {
 					{ -8, -5, 2, -5 },
 					{ 2, -5, 12, -5 },
-					{ 12, -5, 40, -5 },
+					{ 12, -5, 32, -5 },
 					{ 40, -6, 73, -6 },
                     { 73, -2, 116, -7 },
                     { 116, -7, 125, -7 },{
