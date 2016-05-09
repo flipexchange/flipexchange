@@ -14,6 +14,7 @@ public class PortalBehaviourScript : MonoBehaviour {
 	public float speed;                  //Set in Inspector 
 	private float tempVal;
 	private Vector3 tempPos;
+	private bool playedSound;
 
 	// Use this for initialization
 	void Start () {
@@ -26,6 +27,7 @@ public class PortalBehaviourScript : MonoBehaviour {
 		statusText.text = "";
 		tempVal = transform.position.y;
 		tempPos.x = transform.position.x;
+		playedSound = false;
 	}
 	
 	// Update is called once per frame
@@ -39,6 +41,11 @@ public class PortalBehaviourScript : MonoBehaviour {
 	{
 		Debug.Log ("Collision detected");
 		StartCoroutine("LoadNextLevel");
+		if (!playedSound) {
+			AudioSource audio = GetComponent<AudioSource> ();
+			audio.Play ();
+			playedSound = true;
+		}
 		if (sceneIndex == 3) {
 			statusText.text = "Loading end scene...";
 		} else {
@@ -49,6 +56,7 @@ public class PortalBehaviourScript : MonoBehaviour {
 	IEnumerator LoadNextLevel()
 	{
 		yield return new WaitForSeconds(3f);
+
 		SceneManager.LoadScene(sceneNames[sceneIndex + 1], LoadSceneMode.Single);
 	}
 
