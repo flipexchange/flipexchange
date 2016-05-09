@@ -63,13 +63,13 @@ public class dialogBehaviour : MonoBehaviour {
 
                 circleQuotes[0] = "I can't believe I'm trapped in a body with you...";
                 rectQuotes[0] = "When I find this wizard, I'm going to burn him alive!";
-                circleQuotes[1] = "I can climb that ramp. Give me a turn!\n(Press 'z' to swap characters)";
+				circleQuotes[1] = "I can climb that ramp. Give me a turn!\n<b> <color=#24ACE2>(Press 'z' to swap characters)</color></b>";
                 rectQuotes[1] = "This slidy thing must be a Iceworld invention.";
-                circleQuotes[2] = "I'm so nervous. I don't jump much in Iceworld...\n(Press 'spacebar' to jump)";
-                rectQuotes[2] = "A chasm! Let me jump over it!\n(Press 'spacebar' to jump)";
+				circleQuotes[2] = "I'm so nervous. I don't jump much in Iceworld...<b> <color=#24ACE2>\n(Press 'spacebar' to jump)</color></b>";
+				rectQuotes[2] = "A chasm! Let me jump over it!<b> <color=#ff0000ff>\n(Press 'spacebar' to jump)</color></b>";
                 circleQuotes[3] = "These red walls don't block me. I can pass them no problem.";
                 rectQuotes[3] = "But I can pass through these blue walls no problem.";
-                circleQuotes[4] = "I know what to do! Try switching to me in midair!";
+				circleQuotes[4] = "I know what to do! Try <b> <color=#24ACE2>switching</color></b> to me in midair!";
                 rectQuotes[4] = "Snowball! We need to work together for this puzzle.";
 
                 /*
@@ -101,11 +101,11 @@ public class dialogBehaviour : MonoBehaviour {
                 rectQuotes[0] = "Good! I can't stand another agonizing moment with you.";
                 circleQuotes[1] = "You don't have the mass to push it down. Let me try.";
                 rectQuotes[1] = "Only proves how fat you are...";
-                circleQuotes[2] = "Something's coming. We should hide in this crystal cave.";
+				circleQuotes[2] = "Something's coming. We should <b> <color=#24ACE2>hide</color></b> in this crystal cave.";
                 rectQuotes[2] = "Something's rumbling like a volcano. Think fast!";
                 circleQuotes[3] = "We need to stay calm and collected for these puzzles.";
                 rectQuotes[3] = "Puzzles are all about speed and skill.";
-                circleQuotes[4] = "Gunshots? Chill out red, look out for openings to progress.";
+				circleQuotes[4] = "Gunshots? Chill out red, <b> <color=#24ACE2>look for openings</color></b> to progress.";
                 rectQuotes[4] = "I hear gunshots. Someone is trying to extinguish us!";
                 circleQuotes[5] = "We really showed him!";
                 rectQuotes[5] = "We did it!";
@@ -138,7 +138,7 @@ public class dialogBehaviour : MonoBehaviour {
                 rectQuotes[0] = "Against what odds? We're blazing through the levels!";
                 circleQuotes[1] = "There's a city guard blocking our exit.";
                 rectQuotes[1] = "There's someone in our way. Let's get fired up!";
-                circleQuotes[2] = "Get above him, then roll fire and ice boulders onto him.";
+				circleQuotes[2] = "<b> <color=#24ACE2>Get above</color></b> him, then <b> <color=#24ACE2>roll</color></b> fire and ice boulders onto him.";
                 rectQuotes[2] = "We need to take the key from him.";
                 /*
                 circleQuotes[3] = "This rock will hurt him!";
