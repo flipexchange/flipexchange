@@ -105,7 +105,7 @@ public class dialogBehaviour : MonoBehaviour {
                 rectQuotes[2] = "Something's rumbling like a volcano. Think fast!";
                 circleQuotes[3] = "We need to stay calm and collected for these puzzles.";
                 rectQuotes[3] = "Puzzles are all about speed and skill.";
-                circleQuotes[4] = "Gunshots? Chill out red, watch for openings when we can progress.";
+                circleQuotes[4] = "Gunshots? Chill out red, look out for openings to progress.";
                 rectQuotes[4] = "I hear gunshots. Someone is trying to extinguish us!";
                 circleQuotes[5] = "We really showed him!";
                 rectQuotes[5] = "We did it!";
