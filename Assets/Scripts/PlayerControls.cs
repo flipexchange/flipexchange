@@ -545,8 +545,30 @@ public class PlayerControls : MonoBehaviour {
 		if (pink) {
 			sr.sprite = Resources.Load<Sprite> ("firemjump");
 		}
-		for (int i = 0; i<5; i++) {
-			yield return new WaitForSeconds (0.05f);
+		for (int i = 0; i<25; i++) {
+			if (!pink) {
+				if (rb2d.velocity.x < -0.5) {
+					if (rb2d.velocity.x < -maxSpeedBlue + 2f) {
+						sr.sprite = blueFrames [0];
+					} else {
+						sr.sprite = blueFrames [1];
+					}
+					wasZero = false;
+				} else if (rb2d.velocity.x > 0.5) {
+					if (rb2d.velocity.x > maxSpeedBlue - 2f) {
+						sr.sprite = blueFrames [4];
+					} else {
+						sr.sprite = blueFrames [3];
+					}
+					wasZero = true;
+				} else {
+					if (wasZero) {
+						sr.sprite = blueFrames [2];
+					}
+					wasZero = true;
+				}
+			}
+			yield return new WaitForSeconds (0.01f);
 		}
 		if (pink) {
 			sr.sprite = Resources.Load<Sprite> ("firemjumpdown");
@@ -554,7 +576,29 @@ public class PlayerControls : MonoBehaviour {
 			GetComponent<CircleCollider2D> ().radius = 0.48f;
 		}
 		while (!grounded) {
-			yield return new WaitForSeconds (0.05f);
+			if (!pink) {
+				if (rb2d.velocity.x < -0.5) {
+					if (rb2d.velocity.x < -maxSpeedBlue + 2f) {
+						sr.sprite = blueFrames [0];
+					} else {
+						sr.sprite = blueFrames [1];
+					}
+					wasZero = false;
+				} else if (rb2d.velocity.x > 0.5) {
+					if (rb2d.velocity.x > maxSpeedBlue - 2f) {
+						sr.sprite = blueFrames [4];
+					} else {
+						sr.sprite = blueFrames [3];
+					}
+					wasZero = true;
+				} else {
+					if (wasZero) {
+						sr.sprite = blueFrames [2];
+					}
+					wasZero = true;
+				}
+			}
+			yield return new WaitForSeconds (0.01f);
 		}
 		if (!pink) {
 			for (int i = 0; i<3; i++) {
