@@ -10,6 +10,10 @@ public class GameManager : MonoBehaviour {
 		sceneName = scene.name;
 	}
 
+	public void ClickMenu(){
+		SceneManager.LoadScene ("MainMenu", LoadSceneMode.Single);
+	}
+
 	// Update is called once per frame
 	void Update () {
 

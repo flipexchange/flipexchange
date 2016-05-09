@@ -19,11 +19,7 @@ public class MenuBahaviour : MonoBehaviour {
 	public void ClickCredits(){
 		SceneManager.LoadScene ("Credits", LoadSceneMode.Single);
 	}
-
-	public void ClickMenu(){
-		SceneManager.LoadScene ("MainMenu", LoadSceneMode.Single);
-	}
-
+		
 	public void ClickQuit(){
 		Application.Quit();
 	}
