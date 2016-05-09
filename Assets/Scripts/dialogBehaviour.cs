@@ -68,9 +68,9 @@ public class dialogBehaviour : MonoBehaviour {
                 circleQuotes[2] = "I'm so nervous. I don't jump much in Iceworld...\n(Press 'spacebar' to jump)";
                 rectQuotes[2] = "A chasm! Let me jump over it!\n(Press 'spacebar' to jump)";
                 circleQuotes[3] = "These red walls don't block me. I can pass them no problem.";
-                rectQuotes[3] = "But I can pass these blue walls no problem.";
-                circleQuotes[4] = "Try switching to me in midair!";
-                rectQuotes[4] = "I think we need to work together for this puzzle.";
+                rectQuotes[3] = "But I can pass through these blue walls no problem.";
+                circleQuotes[4] = "I know what to do! Try switching to me in midair!";
+                rectQuotes[4] = "Snowball! We need to work together for this puzzle.";
 
                 /*
 				rectQuotes [0] = "I bet I can get to the end of this world all on my own! Why do we need to be merged?";
@@ -84,8 +84,8 @@ public class dialogBehaviour : MonoBehaviour {
                 */
             } else if (level == 2) {
 				infoPositions = new float[,] {
-					{ -8, -5, 1, -5 },
-					{ 1, -5, 12, -5 },
+					{ -8, -5, 2, -5 },
+					{ 2, -5, 12, -5 },
 					{ 12, -5, 40, -5 },
 					{ 40, -6, 73, -6 },
                     { 73, -2, 116, -7 },
@@ -105,7 +105,7 @@ public class dialogBehaviour : MonoBehaviour {
                 rectQuotes[2] = "Something's rumbling like a volcano. Think fast!";
                 circleQuotes[3] = "We need to stay calm and collected for these puzzles.";
                 rectQuotes[3] = "Puzzles are all about speed and skill.";
-                circleQuotes[4] = "Chill, it looks like we can progress with patience.";
+                circleQuotes[4] = "Gunshots? Chill out red, watch for openings when we can progress.";
                 rectQuotes[4] = "I hear gunshots. Someone is trying to extinguish us!";
                 circleQuotes[5] = "We really showed him!";
                 rectQuotes[5] = "We did it!";

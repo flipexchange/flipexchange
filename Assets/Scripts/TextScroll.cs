@@ -13,7 +13,7 @@ public class TextScroll : MonoBehaviour {
 
 
 	//Store all your text in this string array
-	string[] cutscene1Text = new string[]{"In the beginning, there were two nations, Lavaland and Iceworld.","Due to their differences, the two lands constantly argued and fought.","  x:    Lavalanders are too quick to jump into action. Never considering the consequences before acting. Your recklessness ruins everything.", "  z:    You Iceworlders move so slowly. It's a miracle that anything gets done!", "  x:    Watch your tongue hotheds, or we'll freeze you where you stand.", "  z:    Your threats are feeble like embers. If it's fight is what you want, we'll bring you an inferno!"};
+	string[] cutscene1Text = new string[]{"In the beginning, there were two nations, Lavaland and Iceworld.","Due to their differences, the two lands constantly argued and fought.","  x:    You Lavalanders are always jumping to action. Never considering the consequences before acting. Your recklessness ruins everything.", "  z:    You Iceworlders are slow and lazy. It's a miracle that anything gets done at all! We don't need you in our society.", "  x:    Watch your tongue hotheds, or we'll freeze you where you stand.", "  z:    Your threats are feeble like embers. If it's a fight you want, we'll bring you an inferno!"};
 	string[] cutscene2Text = new string[]{"A war erupted, with massive casualties on both sides.", "Two soldiers, one from Lavaland, and one from Iceworld continued to fight amongst the chaos."};
 	string[] cutscene3Text = new string[]{ "Wizard: Enough!", "Wizard: I'm merging you two so that Lavaland and Iceworld can work together for once!"};
 	string[] cutscene4Text = new string[]{"And so, the fire soldier and ice soldier were merged."};
