@@ -34,6 +34,7 @@ public class PlayerControls : MonoBehaviour {
 	private Transform mainCamera;
 	private bool swapping = false;
 	private IEnumerator animating = null;
+	private bool interruptable = false;
 
     // variable to store lastCheckpoint object
     private int checkpointNum = -1; 
@@ -68,7 +69,9 @@ public class PlayerControls : MonoBehaviour {
 	Sprite[] pinkFrames;
 	Sprite[] blueFrames;
 	Sprite[] fireAnimation;
-	Sprite[] iceAnimation;
+	Sprite[] iceAnimationStill;
+	Sprite[] iceAnimationFwd;
+	Sprite[] iceAnimationBwd;
 
 	// Use this for initialization
 	void Start () {
@@ -89,13 +92,23 @@ public class PlayerControls : MonoBehaviour {
 		slopeCheck = transform.Find ("slopeCheck");
 		slopeCheckBack = transform.Find ("slopeCheckBack");
 		var blueStuff = GameObject.FindGameObjectsWithTag("Blue");
-		pinkFrames = new Sprite[]{Resources.Load<Sprite>("firem"),Resources.Load<Sprite>("firemback"),Resources.Load<Sprite>("firemfwd")};
+		pinkFrames = new Sprite[5];
+		for (int i = 1; i <= 5; i++) {
+			pinkFrames.SetValue(Resources.Load<Sprite> ("firem" + i),i-1);
+		}
 		blueFrames = new Sprite[5];
 		for (int i = 1; i <= 5; i++) {
 			blueFrames.SetValue(Resources.Load<Sprite> ("icem" + i),i-1);
 		}
-		fireAnimation = new Sprite[]{Resources.Load<Sprite>("firem"),Resources.Load<Sprite>("firem"),Resources.Load<Sprite>("firemback"),Resources.Load<Sprite>("firem"),Resources.Load<Sprite>("firem"),Resources.Load<Sprite>("firemfwd")};
-		iceAnimation = new Sprite[]{blueFrames[2],blueFrames[2],blueFrames[1],blueFrames[0],blueFrames[1],blueFrames[2],blueFrames[2],blueFrames[3],blueFrames[4],blueFrames[3] };
+		fireAnimation = new Sprite[]{Resources.Load<Sprite>("firem3"),Resources.Load<Sprite>("firem3"),Resources.Load<Sprite>("firem2"),Resources.Load<Sprite>("firem1"),Resources.Load<Sprite>("firem2"),Resources.Load<Sprite>("firem3"),Resources.Load<Sprite>("firem4"),Resources.Load<Sprite>("firem5"),Resources.Load<Sprite>("firem4"),Resources.Load<Sprite>("firem3")};
+		iceAnimationStill = new Sprite[7];
+		iceAnimationFwd = new Sprite[7];
+		iceAnimationBwd = new Sprite[7];
+		for (int i = 1; i <= 7; i++) {
+			iceAnimationStill.SetValue (Resources.Load<Sprite> ("shine/stillshine-" + i), i - 1);
+			iceAnimationFwd.SetValue (Resources.Load<Sprite> ("shine/fwdshine-" + i), i - 1);
+			iceAnimationBwd.SetValue (Resources.Load<Sprite> ("shine/bwdshine-" + i), i - 1);
+		}
 		foreach (var obj in blueStuff) {
 			if (obj.name != "BackgroundQuad (2)" && obj.name != "BackgroundQuad" && obj.name != "BackgroundQuad (1)") {
 				Vector3 newPos = new Vector3 (obj.transform.position.x, -obj.transform.position.y, obj.transform.position.z);
@@ -217,44 +230,55 @@ public class PlayerControls : MonoBehaviour {
 			jumpForce = jumpForceBlue;
 		}
 		if (animating==null) {
-			if (pink && (int)(Time.time*100) % 600 == 0) {
+			if ((int)(Time.time*100) % 600 == 0) {
+				if (pink) {
+					if (wasZero) {
+						animating = fireFlick ();
+					}
+				} else {
+					animating = iceFlick ();
+				}
+				if (!pink || wasZero) {
+					StartCoroutine (animating);
+				}
 				wasZero = false;
-				animating = fireFlick ();
-				StartCoroutine (animating);
 			}
 			else if (rb2d.velocity.x < -0.5) {
 				if (pink) {
-					sr.sprite = pinkFrames [1];
+					if (rb2d.velocity.x < -maxSpeed+2.5f) {
+						sr.sprite = pinkFrames [0];
+					} else {
+						sr.sprite = pinkFrames [1];
+					}
 				} else {
 					if (rb2d.velocity.x < -maxSpeed+2f) {
-						sr.sprite = blueFrames [4];
+						sr.sprite = blueFrames [0];
 					} else {
-						sr.sprite = blueFrames [3];
+						sr.sprite = blueFrames [1];
 					}
 				}
 				wasZero = false;
 			} else if (rb2d.velocity.x > 0.5) {
 				if (pink) {
-					sr.sprite = pinkFrames [2];
+					if (rb2d.velocity.x > maxSpeed-2.5f) {
+						sr.sprite = pinkFrames [4];
+					} else {
+						sr.sprite = pinkFrames [3];
+					}
 				} else {
 					if (rb2d.velocity.x > maxSpeed-2f) {
-						sr.sprite = blueFrames [0];
+						sr.sprite = blueFrames [4];
 					} else {
-						sr.sprite = blueFrames [1];
+						sr.sprite = blueFrames [3];
 					}
 				}
 				wasZero = true;
 			} else {
 				if (wasZero) {
 					if (pink) {
-						sr.sprite = pinkFrames [0];
+						sr.sprite = pinkFrames [2];
 					} else {
 						sr.sprite = blueFrames [2];
-						if ((int)(Time.time*100) % 600 == 0) {
-							wasZero = false;
-							animating = iceFlick ();
-							StartCoroutine (animating);
-						}
 					}
 				}
 				wasZero = true;
@@ -306,7 +330,11 @@ public class PlayerControls : MonoBehaviour {
 		{
 			rb2d.AddForce(new Vector2(0f, jumpForce));
 			jump = false;
-			if (animating == null && pink) {
+			if (animating == null) {
+				animating = jumpAnimation ();
+				StartCoroutine (animating);
+			} else if (animating != null && interruptable) {
+				StopCoroutine (animating);
 				animating = jumpAnimation ();
 				StartCoroutine (animating);
 			}
@@ -440,38 +468,51 @@ public class PlayerControls : MonoBehaviour {
 	}
 
 	IEnumerator fireFlick() {
+		interruptable = true;
 		for (var i = 0; i < fireAnimation.Length; i++) {
 			sr.sprite = fireAnimation[i];
 			yield return new WaitForSeconds (0.1f);
 		}
-		if (rb2d.velocity.x < 0) {
-			sr.sprite = pinkFrames [1];
-		} else if (rb2d.velocity.x > 0) {
-			sr.sprite = pinkFrames [2];
-		} else {
-			sr.sprite = pinkFrames [0];
+		if (rb2d.velocity.x < -0.5) {
+			if (rb2d.velocity.x < -maxSpeedPink+2.5f) {
+				sr.sprite = pinkFrames [0];
+			} else {
+				sr.sprite = pinkFrames [1];
+			}
+		} else if (rb2d.velocity.x > 0.5) {
+			if (rb2d.velocity.x > maxSpeedPink-2.5f) {
+				sr.sprite = pinkFrames [4];
+			} else {
+				sr.sprite = pinkFrames [3];
+			}
 		}
 		animating = null;
+		interruptable = false;
 	}
 
 	IEnumerator iceFlick() {
-		for (var i = 0; i < iceAnimation.Length; i++) {
-			sr.sprite = iceAnimation[i];
-			yield return new WaitForSeconds (0.1f);
+		for (var i = 0; i < iceAnimationStill.Length; i++) {
+			if (rb2d.velocity.x < -0.5) {
+				sr.sprite = iceAnimationBwd [i];
+			} else if (rb2d.velocity.x > 0.5) {
+				sr.sprite = iceAnimationFwd [i];
+			} else {
+				sr.sprite = iceAnimationStill [i];
+			}
+			yield return new WaitForSeconds (0.015f);
 		}
 		if (rb2d.velocity.x < -0.5) {
 			if (rb2d.velocity.x < -maxSpeedBlue+2f) {
-				sr.sprite = blueFrames [4];
-			} else {
-				sr.sprite = blueFrames [3];
-			}
-		} else if (rb2d.velocity.x > 0.5) {
-			if (rb2d.velocity.x > maxSpeedBlue-2f) {
 				sr.sprite = blueFrames [0];
 			} else {
 				sr.sprite = blueFrames [1];
 			}
-			wasZero = true;
+		} else if (rb2d.velocity.x > 0.5) {
+			if (rb2d.velocity.x > maxSpeedBlue-2f) {
+				sr.sprite = blueFrames [4];
+			} else {
+				sr.sprite = blueFrames [3];
+			}
 		}
 		animating = null;
 	}
@@ -501,11 +542,29 @@ public class PlayerControls : MonoBehaviour {
 	}
 
 	IEnumerator jumpAnimation() {
-		sr.sprite = Resources.Load<Sprite> ("firemjump");
-		for (int i = 0; i<7; i++) {
-				yield return new WaitForSeconds (0.05f);
+		if (pink) {
+			sr.sprite = Resources.Load<Sprite> ("firemjump");
 		}
-		sr.sprite = pinkFrames [0];
+		for (int i = 0; i<5; i++) {
+			yield return new WaitForSeconds (0.05f);
+		}
+		if (pink) {
+			sr.sprite = Resources.Load<Sprite> ("firemjumpdown");
+		} else {
+			GetComponent<CircleCollider2D> ().radius = 0.48f;
+		}
+		while (!grounded) {
+			yield return new WaitForSeconds (0.05f);
+		}
+		if (!pink) {
+			for (int i = 0; i<3; i++) {
+				yield return new WaitForSeconds (0.05f);
+			}
+			for (int i = 0; i<5; i++) {
+				GetComponent<CircleCollider2D> ().radius = 0.48f+((float)i)/100;
+				yield return new WaitForSeconds (0.001f);
+			}
+		}
 		animating = null;
 	}
 
