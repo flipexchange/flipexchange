@@ -14,9 +14,7 @@ public class SteamController : MonoBehaviour {
 		if (player != null) {
 			playerScript = player.GetComponent<PlayerControls> ();
 		}
-		Renderer renderer = GetComponent<Renderer>();
-		Shader shader2 = Shader.Find("Particles/Multiply (Double)");
-		renderer.material.shader = shader2;
+	
 	}
 
 	// Update is called once per frame
