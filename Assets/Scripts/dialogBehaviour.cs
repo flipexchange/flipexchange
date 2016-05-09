@@ -61,8 +61,8 @@ public class dialogBehaviour : MonoBehaviour {
 					}
 				};
 
-                circleQuotes[0] = "I can't believe I'm trapped in a body with you...";
-                rectQuotes[0] = "When I find this wizard, I'm going to burn him alive!";
+				circleQuotes[0] = "I can't believe I'm trapped in a body with you...\n<color=#24ACE2><size=16>(PRESS 'ARROW KEYS' TO MOVE LEFT AND RIGHT)</size></color>";
+				rectQuotes[0] = "When I find this wizard, I'm going to burn him alive!\n<color=#ff0000ff><size=16>(PRESS 'ARROW KEYS' TO MOVE LEFT AND RIGHT)</size></color>";
                 circleQuotes[1] = "A ramp! I can climb that. Give me a turn!\n<color=#24ACE2><size=16>(PRESS 'Z' TO SWAP CHARACTERS)</size></color>"; //Press 'z' to swap characters
                 //circleQuotes[1] = "I can climb that ramp. Give me a turn!\n<color=#24ACE2>(Press 'z' to swap characters)</color>"; 
                 rectQuotes[1] = "This slidy thing must be a Iceworld invention.";
@@ -71,7 +71,7 @@ public class dialogBehaviour : MonoBehaviour {
                 circleQuotes[3] = "These red walls don't block me. I can pass through them no problem.";
                 rectQuotes[3] = "But I can pass through these blue walls no problem.";
 				circleQuotes[4] = "I know what to do! Try <color=#24ACE2>switching</color> to me in midair!";
-                rectQuotes[4] = "Snowball! We need to work together for this puzzle.";
+                rectQuotes[4] = "Snowball! We have to work together for this puzzle.";
 
                 /*
 				rectQuotes [0] = "I bet I can get to the end of this world all on my own! Why do we need to be merged?";
@@ -99,14 +99,14 @@ public class dialogBehaviour : MonoBehaviour {
 				};
 
                 circleQuotes[0] = "Looks like I'm getting deeper into the city.";
-                rectQuotes[0] = "Good! I can't stand another agonizing moment with you.";
+                rectQuotes[0] = "Good! One step closer to never having to see you again.";
                 circleQuotes[1] = "You don't have the mass to push it down. Let me try.";
                 rectQuotes[1] = "Only proves how fat you are...";
-				circleQuotes[2] = "Something's coming. We should <color=#24ACE2>hide</color> in this crystal cave.";
+				circleQuotes[2] = "Something's coming. We should find somewhere to <color=#24ACE2>hide</color>.";
                 rectQuotes[2] = "Something's rumbling like a volcano. Think fast!";
                 circleQuotes[3] = "We need to stay calm and collected for these puzzles.";
                 rectQuotes[3] = "Puzzles are all about speed and skill.";
-				circleQuotes[4] = "Gunshots? Chill out red, <color=#24ACE2>look for openings</color> to progress.";
+				circleQuotes[4] = "Gunshots? Chill out, Red, <color=#24ACE2>look for openings</color> to progress.";
                 rectQuotes[4] = "I hear gunshots. Someone is trying to extinguish us!";
                 circleQuotes[5] = "We really showed him!";
                 rectQuotes[5] = "We did it!";
@@ -140,15 +140,15 @@ public class dialogBehaviour : MonoBehaviour {
                 circleQuotes[1] = "There's a city guard blocking our exit.";
                 rectQuotes[1] = "There's someone in our way. Let's get fired up!";
 				circleQuotes[2] = "<color=#24ACE2>Get above</color> him, then <color=#24ACE2>roll</color> fire and ice boulders onto him.";
-                rectQuotes[2] = "We need to take the key from him.";
+				rectQuotes[2] = "We need to take the <color=#ff0000ff>key</color> from him.";
                 /*
                 circleQuotes[3] = "This rock will hurt him!";
                 rectQuotes[3] = "Let's roast this fellow!";
                 circleQuotes[4] = "This will slow him down.";
                 rectQuotes[4] = "Burn!";
                 */
-                circleQuotes[3] = "That was quite the journey! I could've done it without you.";
-                rectQuotes[3] = "We did it! You're not so bad, blue.";
+                circleQuotes[3] = "That was quite the journey! I couldn't have done it alone.";
+                rectQuotes[3] = "We did it! You're not so bad, Blue.";
                 /*
 				rectQuotes [0] = "Is this the end? I've think I've gotten the hang of this by now.";
 				circleQuotes [0] = "Come on. Let's not slack off now. There's still one last obstacle for us.";

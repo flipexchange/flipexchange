@@ -13,10 +13,10 @@ public class TextScroll3 : MonoBehaviour {
 
 
 	//Store all your text in this string array
-	string[] cutscene1Text = new string[]{"Wizard : So you've reached the end. Congratulations on a successful journey.","  x:    I knew we could do it.", "  z:    Well, it was tough, but I know we blazed through all of it!", "  x:    Hey Red, thanks for having my back when I wasn't fast enough to pass those puzzles.", "  z:    Same to you, blue! You really saved us with those slope climbing skills.", "Wizard: You guys are more sentimental about this than I thought! Well, I'm going to unmerge you both now."};
+	string[] cutscene1Text = new string[]{"Wizard : So you've reached the end. Congratulations on a successful journey.","  x:    I knew we could do it.", "  z:    Well, it was tough, but those puzzles were no match for us!", "  x:    Hey Red, thanks for having my back when I wasn't fast enough to pass those guards.", "  z:    Same to you, Blue! You really saved us with those slope climbing skills.", "Wizard: You guys are more sentimental about this than I expected! Well, I'm going to unmerge you both now."};
 	string[] cutscene2Text = new string[]{"And so, the fire soldier and ice soldier were unmerged."};
-	string[] cutscene3Text = new string[]{"  x:    Wow, we're really separated.","  z:    Haha, would it be bad to say that I missed being merged?","  x:    The feeling's mutual. I'm not going to lie, I'll miss working with you."};
-	string[] cutscene4Text = new string[]{"And so, Fireland and Iceworld finally recoinciled.","THE END"};
+	string[] cutscene3Text = new string[]{"  x:    Wow, we're really separated.","  z:    Haha, would it be bad to say that I miss being merged?","  x:    The feeling's mutual. I'm not going to lie, I'll miss working with you."};
+	string[] cutscene4Text = new string[]{"And so, Lavaland and Iceworld finally reconciled.","THE END"};
 
 
 	string[][] allCutsceneText = new string[4][];
