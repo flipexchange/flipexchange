@@ -2566,7 +2566,8 @@ GameObject:
   - 4: {fileID: 761272135}
   - 212: {fileID: 761272134}
   - 61: {fileID: 761272133}
-  - 61: {fileID: 761272136}
+  - 68: {fileID: 761272137}
+  - 68: {fileID: 761272136}
   m_Layer: 8
   m_Name: Island2.1
   m_TagString: Untagged
@@ -2630,8 +2631,8 @@ Transform:
   m_Children: []
   m_Father: {fileID: 2035266828}
   m_RootOrder: 0
---- !u!61 &761272136
-BoxCollider2D:
+--- !u!68 &761272136
+EdgeCollider2D:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
@@ -2642,8 +2643,24 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_Offset: {x: 0, y: 0}
-  serializedVersion: 2
-  m_Size: {x: 1.02, y: 0.95}
+  m_Points:
+  - {x: 0.5000769, y: 0.5039146}
+  - {x: 0.5000006, y: -0.5136051}
+--- !u!68 &761272137
+EdgeCollider2D:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 761272132}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 6200000, guid: 600d8c86be9d74566ac8f8f81a9e2289, type: 2}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_Offset: {x: 0, y: 0}
+  m_Points:
+  - {x: -0.49999943, y: -0.5039146}
+  - {x: -0.50007576, y: 0.5039146}
 --- !u!1 &775955376
 GameObject:
   m_ObjectHideFlags: 0
