@@ -13,7 +13,7 @@ public class TextScroll2 : MonoBehaviour {
 
 
 	//Store all your text in this string array
-	string[] cutscene1Text = new string[]{"Wizard: Being merged isn't that bad, wasn't it?","  x:    Hrm. It's still a pain to be forced to switch off all the time.", "  z:    Well it's not like I like letting you do all the work either!"};
+	string[] cutscene1Text = new string[]{"Wizard: Being merged isn't that bad, is it?","  x:    Hrm. It's still a pain to be forced to switch off all the time.", "  z:    Well it's not like I like letting you do all the work either!"};
 	string[] cutscene2Text = new string[]{"Wizard: Now now, the trials haven't finished yet! Let's see if you can get past the city guards."};
 
 
