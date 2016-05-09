@@ -65,8 +65,10 @@ public class PlayerControls : MonoBehaviour {
 
 	// animation
 	private bool wasZero = true;
-	Sprite[] frames;
+	Sprite[] pinkFrames;
+	Sprite[] blueFrames;
 	Sprite[] fireAnimation;
+	Sprite[] iceAnimation;
 
 	// Use this for initialization
 	void Start () {
@@ -87,8 +89,13 @@ public class PlayerControls : MonoBehaviour {
 		slopeCheck = transform.Find ("slopeCheck");
 		slopeCheckBack = transform.Find ("slopeCheckBack");
 		var blueStuff = GameObject.FindGameObjectsWithTag("Blue");
-		frames = new Sprite[]{Resources.Load<Sprite>("firem"),Resources.Load<Sprite>("firemback"),Resources.Load<Sprite>("firemfwd")};
+		pinkFrames = new Sprite[]{Resources.Load<Sprite>("firem"),Resources.Load<Sprite>("firemback"),Resources.Load<Sprite>("firemfwd")};
+		blueFrames = new Sprite[5];
+		for (int i = 1; i <= 5; i++) {
+			blueFrames.SetValue(Resources.Load<Sprite> ("icem" + i),i-1);
+		}
 		fireAnimation = new Sprite[]{Resources.Load<Sprite>("firem"),Resources.Load<Sprite>("firem"),Resources.Load<Sprite>("firemback"),Resources.Load<Sprite>("firem"),Resources.Load<Sprite>("firem"),Resources.Load<Sprite>("firemfwd")};
+		iceAnimation = new Sprite[]{blueFrames[2],blueFrames[2],blueFrames[1],blueFrames[0],blueFrames[1],blueFrames[2],blueFrames[2],blueFrames[3],blueFrames[4],blueFrames[3] };
 		foreach (var obj in blueStuff) {
 			if (obj.name != "BackgroundQuad (2)" && obj.name != "BackgroundQuad" && obj.name != "BackgroundQuad (1)") {
 				Vector3 newPos = new Vector3 (obj.transform.position.x, -obj.transform.position.y, obj.transform.position.z);
@@ -208,25 +215,49 @@ public class PlayerControls : MonoBehaviour {
 			moveForce = moveForceBlue;
 			maxSpeed = maxSpeedBlue;
 			jumpForce = jumpForceBlue;
-		} else {
-			if (animating==null) {
-				if ((int)(Time.time*100) % 600 == 0) {
-					wasZero = false;
-					animating = fireFlick ();
-					StartCoroutine (animating);
-				}
-				else if (rb2d.velocity.x < -0.5) {
-					sr.sprite = frames [1];
-					wasZero = false;
-				} else if (rb2d.velocity.x > 0.5) {
-					sr.sprite = frames [2];
-					wasZero = true;
+		}
+		if (animating==null) {
+			if (pink && (int)(Time.time*100) % 600 == 0) {
+				wasZero = false;
+				animating = fireFlick ();
+				StartCoroutine (animating);
+			}
+			else if (rb2d.velocity.x < -0.5) {
+				if (pink) {
+					sr.sprite = pinkFrames [1];
 				} else {
-					if (wasZero) {
-						sr.sprite = frames [0];
+					if (rb2d.velocity.x < -maxSpeed+2f) {
+						sr.sprite = blueFrames [4];
+					} else {
+						sr.sprite = blueFrames [3];
 					}
-					wasZero = true;
 				}
+				wasZero = false;
+			} else if (rb2d.velocity.x > 0.5) {
+				if (pink) {
+					sr.sprite = pinkFrames [2];
+				} else {
+					if (rb2d.velocity.x > maxSpeed-2f) {
+						sr.sprite = blueFrames [0];
+					} else {
+						sr.sprite = blueFrames [1];
+					}
+				}
+				wasZero = true;
+			} else {
+				if (wasZero) {
+					if (pink) {
+						sr.sprite = pinkFrames [0];
+					} else {
+						sr.sprite = blueFrames [2];
+						if ((int)(Time.time*100) % 600 == 0) {
+							wasZero = false;
+							animating = iceFlick ();
+							StartCoroutine (animating);
+						}
+					}
+				}
+				wasZero = true;
 			}
 		}
 		if (sloped) {
@@ -414,11 +445,33 @@ public class PlayerControls : MonoBehaviour {
 			yield return new WaitForSeconds (0.1f);
 		}
 		if (rb2d.velocity.x < 0) {
-			sr.sprite = frames [1];
+			sr.sprite = pinkFrames [1];
 		} else if (rb2d.velocity.x > 0) {
-			sr.sprite = frames [2];
+			sr.sprite = pinkFrames [2];
 		} else {
-			sr.sprite = frames [0];
+			sr.sprite = pinkFrames [0];
+		}
+		animating = null;
+	}
+
+	IEnumerator iceFlick() {
+		for (var i = 0; i < iceAnimation.Length; i++) {
+			sr.sprite = iceAnimation[i];
+			yield return new WaitForSeconds (0.1f);
+		}
+		if (rb2d.velocity.x < -0.5) {
+			if (rb2d.velocity.x < -maxSpeedBlue+2f) {
+				sr.sprite = blueFrames [4];
+			} else {
+				sr.sprite = blueFrames [3];
+			}
+		} else if (rb2d.velocity.x > 0.5) {
+			if (rb2d.velocity.x > maxSpeedBlue-2f) {
+				sr.sprite = blueFrames [0];
+			} else {
+				sr.sprite = blueFrames [1];
+			}
+			wasZero = true;
 		}
 		animating = null;
 	}
@@ -452,7 +505,7 @@ public class PlayerControls : MonoBehaviour {
 		for (int i = 0; i<7; i++) {
 				yield return new WaitForSeconds (0.05f);
 		}
-		sr.sprite = frames [0];
+		sr.sprite = pinkFrames [0];
 		animating = null;
 	}
 
