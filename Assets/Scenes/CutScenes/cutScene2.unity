@@ -876,8 +876,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   textBox: {fileID: 851617018}
   textScrollAudio: {fileID: 8300000, guid: f59db2050753b47b8bf28feb6d8b23ee, type: 3}
-  ancientAudio: {fileID: 8300000, guid: 51782b7d10e4e4356b3d4bdc1b49ff01, type: 3}
-  magicAudio: {fileID: 8300000, guid: 4f02836e82b324729be9f88d7dea6f1c, type: 3}
+  ancientAudio: {fileID: 8300000, guid: 4f02836e82b324729be9f88d7dea6f1c, type: 3}
+  magicAudio: {fileID: 8300000, guid: a84a848ee20494fe98b571f499e379ef, type: 3}
 --- !u!1001 &1147123232
 Prefab:
   m_ObjectHideFlags: 0
