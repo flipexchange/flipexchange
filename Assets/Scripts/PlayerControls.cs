@@ -204,6 +204,7 @@ public class PlayerControls : MonoBehaviour {
             {
                 boulderTriggered = true;
                 GameObject.Find("boulder").transform.position = new Vector3(39f,-2f,0f);
+				GameObject.Find ("boulder").GetComponent<AudioSource> ().Play ();
             }
             
             if (transform.position.x > 65 && !gunnerStarted)
