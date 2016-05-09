@@ -21,10 +21,10 @@ public class GameManager : MonoBehaviour {
 					SceneManager.LoadScene("introScene", LoadSceneMode.Single);
 					break;
 				case "cutscene1":
-					SceneManager.LoadScene("SecondLevel", LoadSceneMode.Single);
+					//SceneManager.LoadScene("SecondLevel", LoadSceneMode.Single);
 					break;
 				case "cutscene2":
-					SceneManager.LoadScene("MainMenu", LoadSceneMode.Single);
+					//SceneManager.LoadScene("MainMenu", LoadSceneMode.Single);
 					break;
 				case "Credits":
 					SceneManager.LoadScene("MainMenu", LoadSceneMode.Single);

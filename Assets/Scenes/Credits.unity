@@ -148,9 +148,9 @@ Canvas:
   m_GameObject: {fileID: 52503370}
   m_Enabled: 1
   serializedVersion: 2
-  m_RenderMode: 0
-  m_Camera: {fileID: 0}
-  m_PlaneDistance: 100
+  m_RenderMode: 1
+  m_Camera: {fileID: 1369257989}
+  m_PlaneDistance: 1
   m_PixelPerfect: 0
   m_ReceivesEvents: 1
   m_OverrideSorting: 0
@@ -233,7 +233,7 @@ MonoBehaviour:
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_FontData:
-    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
+    m_Font: {fileID: 12800000, guid: 0f367dfc4b95d4828ba7ccb4647aae9d, type: 3}
     m_FontSize: 60
     m_FontStyle: 1
     m_BestFit: 0
@@ -283,8 +283,8 @@ RectTransform:
   m_RootOrder: 1
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 37, y: 30}
-  m_SizeDelta: {x: 354.5, y: 228}
+  m_AnchoredPosition: {x: 5, y: -53}
+  m_SizeDelta: {x: 934, y: 432}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &119958252
 MonoBehaviour:
@@ -306,20 +306,24 @@ MonoBehaviour:
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_FontData:
-    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
+    m_Font: {fileID: 12800000, guid: 0f367dfc4b95d4828ba7ccb4647aae9d, type: 3}
     m_FontSize: 28
     m_FontStyle: 0
     m_BestFit: 0
     m_MinSize: 2
     m_MaxSize: 40
-    m_Alignment: 0
+    m_Alignment: 1
     m_AlignByGeometry: 0
     m_RichText: 1
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Game by Dylan Ho, Erica Yuen, Lisa Ruan, Rachel Thornton, Yuqi Hou, and
-    Jenny Xu
+  m_Text: "Game by Dylan Ho, Erica Yuen, Lisa Ruan, Rachel Thornton, Yuqi Hou, and
+    Jenny Xu\n\nMusic:\n \"Silver Blue Light\",\"Comfortable Mystery\",\"Enchanted
+    Journey\",\"Floating Cities\",\"Garden Music\",\"Harmful or Fatal\",\"On the Shore\",\"Thunderbird\"
+    by Kevin MacLeod (incompetech.com)\nSFX \"Crush 8-bit, Jump-Sound, BossDeath\"
+    from http://rpg.hamsterrepublic.com/ohrrpgce/Free_Sound_Effects\nLicensed under
+    Creative Commons: By Attribution 3.0 License\nhttp://creativecommons.org/licenses/by/3.0/"
 --- !u!222 &119958253
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -407,7 +411,7 @@ RectTransform:
   m_RootOrder: 2
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 15, y: -243}
+  m_AnchoredPosition: {x: 272, y: -397}
   m_SizeDelta: {x: 400, y: 139}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &270570970
@@ -430,7 +434,7 @@ MonoBehaviour:
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_FontData:
-    m_Font: {fileID: 12800000, guid: b7511d4acf1f743f8936172147451b3f, type: 3}
+    m_Font: {fileID: 12800000, guid: 0f367dfc4b95d4828ba7ccb4647aae9d, type: 3}
     m_FontSize: 30
     m_FontStyle: 0
     m_BestFit: 0
