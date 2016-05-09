@@ -63,11 +63,12 @@ public class dialogBehaviour : MonoBehaviour {
 
                 circleQuotes[0] = "I can't believe I'm trapped in a body with you...";
                 rectQuotes[0] = "When I find this wizard, I'm going to burn him alive!";
-				circleQuotes[1] = "I can climb that ramp. Give me a turn!\n<color=#24ACE2>(Press 'z' to swap characters)</color>";
+                circleQuotes[1] = "A ramp! I can climb that. Give me a turn!\n<color=#24ACE2><size=16>(PRESS 'Z' TO SWAP CHARACTERS)</size></color>"; //Press 'z' to swap characters
+                //circleQuotes[1] = "I can climb that ramp. Give me a turn!\n<color=#24ACE2>(Press 'z' to swap characters)</color>"; 
                 rectQuotes[1] = "This slidy thing must be a Iceworld invention.";
-				circleQuotes[2] = "I'm so nervous. I don't jump much in Iceworld...\n<color=#24ACE2>(Press 'spacebar' to jump)</color>";
-				rectQuotes[2] = "A chasm! Let me jump over it!\n<color=#ff0000ff>(Press 'spacebar' to jump)</color>";
-                circleQuotes[3] = "These red walls don't block me. I can pass them no problem.";
+				circleQuotes[2] = "I'm so nervous. I don't jump much in Iceworld...\n<color=#24ACE2><size=16>(PRESS 'SPACEBAR' TO JUMP)</size></color>"; //Press 'spacebar' to jump
+				rectQuotes[2] = "A chasm! Let me jump over it!\n<color=#ff0000ff><size=16>(PRESS 'SPACEBAR' TO JUMP)</size></color>";
+                circleQuotes[3] = "These red walls don't block me. I can pass through them no problem.";
                 rectQuotes[3] = "But I can pass through these blue walls no problem.";
 				circleQuotes[4] = "I know what to do! Try <color=#24ACE2>switching</color> to me in midair!";
                 rectQuotes[4] = "Snowball! We need to work together for this puzzle.";
@@ -101,7 +102,7 @@ public class dialogBehaviour : MonoBehaviour {
                 rectQuotes[0] = "Good! I can't stand another agonizing moment with you.";
                 circleQuotes[1] = "You don't have the mass to push it down. Let me try.";
                 rectQuotes[1] = "Only proves how fat you are...";
-				circleQuotes[2] = "Something's coming. We should  <color=#24ACE2>hide</color> in this crystal cave.";
+				circleQuotes[2] = "Something's coming. We should <color=#24ACE2>hide</color> in this crystal cave.";
                 rectQuotes[2] = "Something's rumbling like a volcano. Think fast!";
                 circleQuotes[3] = "We need to stay calm and collected for these puzzles.";
                 rectQuotes[3] = "Puzzles are all about speed and skill.";
