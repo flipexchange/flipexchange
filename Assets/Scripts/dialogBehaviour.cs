@@ -139,7 +139,7 @@ public class dialogBehaviour : MonoBehaviour {
                 rectQuotes[0] = "Against what odds? We're blazing through the levels!";
                 circleQuotes[1] = "There's a city guard blocking our exit.";
                 rectQuotes[1] = "There's someone in our way. Let's get fired up!";
-				circleQuotes[2] = " <color=#24ACE2>Get above</color> him, then <color=#24ACE2>roll</color> fire and ice boulders onto him.";
+				circleQuotes[2] = "<color=#24ACE2>Get above</color> him, then <color=#24ACE2>roll</color> fire and ice boulders onto him.";
                 rectQuotes[2] = "We need to take the key from him.";
                 /*
                 circleQuotes[3] = "This rock will hurt him!";
