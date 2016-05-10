@@ -2139,6 +2139,10 @@ Prefab:
       propertyPath: m_Ellipsoid.x
       value: 140
       objectReference: {fileID: 0}
+    - target: {fileID: 2672154, guid: b9c5ab37b65c643c3aba37fd3a44de90, type: 2}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: ef846b8b95b3e4d3ab7038c309278e76, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: b9c5ab37b65c643c3aba37fd3a44de90, type: 2}
   m_IsPrefabParent: 0
