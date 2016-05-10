@@ -55,7 +55,7 @@ public class PortalBehaviourScript : MonoBehaviour {
 
 	IEnumerator LoadNextLevel()
 	{
-		yield return new WaitForSeconds(3f);
+		yield return new WaitForSeconds(1.5f);
 
 		SceneManager.LoadScene(sceneNames[sceneIndex + 1], LoadSceneMode.Single);
 	}
