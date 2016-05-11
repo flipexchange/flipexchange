@@ -51,8 +51,8 @@ public class dialogBehaviour : MonoBehaviour {
 				infoPositions = new float[,] {
 					{ -6, -6, 7, -6 },
 					{ 7, -6, 26, -5 },
-					{ 26, -5, 50, -5 },
-					{ 50, -5, 60, -5 },
+					{ 26, -5, 51, -5 },
+					{ 51, -5, 60, -5 },
                     { 71, -5, 90, -4 },{
 						100,
 						-6,
@@ -70,7 +70,7 @@ public class dialogBehaviour : MonoBehaviour {
 				rectQuotes[2] = "A chasm! Let me jump over it!\n<color=#ff0000ff><size=16>(PRESS 'SPACEBAR' TO JUMP)</size></color>";
                 circleQuotes[3] = "These red walls don't block me. I can pass through them no problem.";
                 rectQuotes[3] = "But I can pass through these blue walls no problem.";
-				circleQuotes[4] = "I know what to do! Try <color=#24ACE2>switching</color> to me in midair!";
+				circleQuotes[4] = "I know what to do! <color=#24ACE2>Jump</color> and <color=#24ACE2>switch</color> to me in midair!";
                 rectQuotes[4] = "Snowball! We have to work together for this puzzle.";
 
                 /*
@@ -124,10 +124,10 @@ public class dialogBehaviour : MonoBehaviour {
 				infoPositions = new float[,] {
 					{ -10, -8, 15, -4 },
 					{ 15, -4, 24, -8 },
-					{ 33, -8, 76, -8 },
+					{ 33, -8, 79, -8 },
 					/*{ 40, -2, 44, -2 },
                     { 57, -2, 53, -2 },*/
-                    { 76, -8, 83, -8 },{
+                    { 79, -8, 83, -8 },{
 						150,
 						-5,
 						199,
@@ -139,7 +139,7 @@ public class dialogBehaviour : MonoBehaviour {
                 rectQuotes[0] = "Against what odds? We're blazing through the levels!";
                 circleQuotes[1] = "There's a city guard blocking our exit.";
                 rectQuotes[1] = "There's someone in our way. Let's get fired up!";
-				circleQuotes[2] = "<color=#24ACE2>Get above</color> him, then <color=#24ACE2>roll</color> fire and ice boulders onto him.";
+				circleQuotes[2] = "<size=18><color=#24ACE2>Jump</color> and <color=#24ACE2>switch</color> to get above, then <color=#24ACE2>roll</color> fire and ice boulders onto him.</size>";
 				rectQuotes[2] = "We need to take the <color=#ff0000ff>key</color> from him.";
                 /*
                 circleQuotes[3] = "This rock will hurt him!";
