@@ -2976,7 +2976,7 @@ EdgeCollider2D:
   m_Offset: {x: 0, y: 0}
   m_Points:
   - {x: 0.86035347, y: 0.23036098}
-  - {x: 0.86151695, y: -0.22391415}
+  - {x: 0.86151695, y: -0.08791447}
 --- !u!68 &982533201
 EdgeCollider2D:
   m_ObjectHideFlags: 0
@@ -2990,7 +2990,7 @@ EdgeCollider2D:
   m_UsedByEffector: 0
   m_Offset: {x: 0, y: 0}
   m_Points:
-  - {x: -0.8670578, y: -0.22668266}
+  - {x: -0.8670578, y: -0.07708359}
   - {x: -0.86338043, y: 0.22238874}
 --- !u!61 &982533202
 BoxCollider2D:
@@ -4817,8 +4817,8 @@ EdgeCollider2D:
   m_UsedByEffector: 0
   m_Offset: {x: 0, y: 0}
   m_Points:
-  - {x: 0.86035347, y: 0.22322607}
-  - {x: 0.86151695, y: -0.22391415}
+  - {x: 0.86035347, y: 0.22845745}
+  - {x: 0.86151695, y: -0.09313011}
 --- !u!68 &1576777502
 EdgeCollider2D:
   m_ObjectHideFlags: 0
@@ -4832,7 +4832,7 @@ EdgeCollider2D:
   m_UsedByEffector: 0
   m_Offset: {x: 0, y: 0}
   m_Points:
-  - {x: -0.8670578, y: -0.21954823}
+  - {x: -0.8696747, y: -0.08876324}
   - {x: -0.8669472, y: 0.22238874}
 --- !u!1 &1584303641
 GameObject:
