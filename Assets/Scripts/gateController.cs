@@ -11,6 +11,11 @@ public class gateController : MonoBehaviour {
 	public AudioClip battleAudio;
 	private GameObject player;
 	private bool playingBossSound;
+	private AudioSource audio1;
+	private AudioSource audio2;
+	private bool playBossNow = false;
+
+
 
 	// Use this for initialization
 	void Awake(){
@@ -21,17 +26,28 @@ public class gateController : MonoBehaviour {
 		prebattleAudioSource.loop = true;
 	} 
 	void Start () {
+		//audio1 = gameObject.AddComponent(AudioSource);
+		//audio1.clip = prebattleAudio;
+		//audio2 = gameObject.AddComponent(AudioSource);
+		//audio2.clip = battleAudio;
 		prebattleAudioSource.Play ();
 		player = GameObject.Find ("Player");
 	}
 	
 	// Update is called once per frame
 	void Update () {
-		if (player.transform.position.x > 25) {
-			if (playingBossSound == false) {
-				playingBossSound = true;
-				prebattleAudioSource.clip = battleAudio;
-				prebattleAudioSource.Play ();
+		if (player.transform.position.x > 23) {
+			if (playingBossSound == false && !playBossNow) {
+				if (prebattleAudioSource.volume > 0.01f) {
+					prebattleAudioSource.volume -= 0.005f;
+				} else {
+					prebattleAudioSource.volume= 1;
+					playBossNow = true;
+					playingBossSound = true;
+					prebattleAudioSource.clip = battleAudio;
+					prebattleAudioSource.Play ();
+				}
+
 			}
 		}
 	}
