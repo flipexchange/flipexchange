@@ -3572,7 +3572,7 @@ Prefab:
     m_Modifications:
     - target: {fileID: 429166, guid: 47e50c32c40444d64b7cd3d42aafadb3, type: 2}
       propertyPath: m_LocalPosition.x
-      value: 87
+      value: 51
       objectReference: {fileID: 0}
     - target: {fileID: 429166, guid: 47e50c32c40444d64b7cd3d42aafadb3, type: 2}
       propertyPath: m_LocalPosition.y
@@ -4335,8 +4335,8 @@ EdgeCollider2D:
   m_UsedByEffector: 0
   m_Offset: {x: 0, y: 0}
   m_Points:
-  - {x: 0.8581734, y: 0.20871592}
-  - {x: 0.8574753, y: -0.27550507}
+  - {x: 0.8581734, y: 0.20204782}
+  - {x: 0.8574753, y: -0.09608078}
 --- !u!68 &1340449646
 EdgeCollider2D:
   m_ObjectHideFlags: 0
@@ -4350,8 +4350,8 @@ EdgeCollider2D:
   m_UsedByEffector: 0
   m_Offset: {x: 0, y: 0}
   m_Points:
-  - {x: -0.86780167, y: -0.2703228}
-  - {x: -0.8680763, y: 0.19967842}
+  - {x: -0.8674698, y: -0.08423138}
+  - {x: -0.8664093, y: 0.19634485}
 --- !u!1 &1363302652
 GameObject:
   m_ObjectHideFlags: 0
