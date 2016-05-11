@@ -874,7 +874,7 @@ GameObject:
   - 58: {fileID: 228836632}
   m_Layer: 13
   m_Name: boulder2
-  m_TagString: Blue
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -936,7 +936,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 01db87ef8c90c4b489d04aed3a2e30a9, type: 3}
+  m_Sprite: {fileID: 21300000, guid: ebfbae1dc11bf4de69cc9daa64173c26, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -6174,7 +6174,7 @@ GameObject:
   - 58: {fileID: 1955669506}
   m_Layer: 13
   m_Name: boulder1
-  m_TagString: Pink
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -6236,8 +6236,8 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 601c788e75e10499bb260ea1ac477028, type: 3}
-  m_Color: {r: 0.8602941, g: 0.4744269, b: 0.53031105, a: 1}
+  m_Sprite: {fileID: 21300000, guid: ebfbae1dc11bf4de69cc9daa64173c26, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
 --- !u!4 &1955669509
