@@ -109,7 +109,7 @@ public class TextScroll : MonoBehaviour {
 		finishedType = false;
 		fireIcon.SetActive (false);
 		iceIcon.SetActive (false);
-		cutscenes = new Sprite[]{Resources.Load<Sprite>("cutscene2"),Resources.Load<Sprite>("cutscene3"),Resources.Load<Sprite>("cutscene4"),Resources.Load<Sprite>("instructions")};
+		cutscenes = new Sprite[]{Resources.Load<Sprite>("cutscene2"),Resources.Load<Sprite>("cutscene3"),Resources.Load<Sprite>("cutscene4")};
 		ambientAudioSource.Play ();
 	}
 
